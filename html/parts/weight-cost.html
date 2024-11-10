@@ -1,0 +1,18 @@
+<label>
+	<input type="text" class="obsidian-input-num-md" name="system.weight" data-dtype="Number"
+	       placeholder="0" value="{{item.system.weight}}">
+	<span>{{localize 'OBSIDIAN.Weight'}}</span>
+</label>
+<label class="obsidian-label-icon">
+	<input type="text" class="obsidian-input-num-lg obsidian-num-fmt" name="system.price.value"
+	       placeholder="0" value="{{item.system.price.value}}">
+	<span>{{localize 'OBSIDIAN.Cost'}}</span>
+</label>
+<div class="obsidian-currency-selection obsidian-icon-{{item.system.price.denomination}}">
+	<input type="hidden" name="system.price.denomination" value="{{item.system.price.denomination}}">
+	<ul>
+		{{#each @root.ObsidianConfig.CURRENCY}}
+			<li data-denomination="{{this}}"><i class="obsidian-icon obsidian-icon-sm obsidian-icon-{{this}}"></i></li>
+		{{/each}}
+	</ul>
+</div>
