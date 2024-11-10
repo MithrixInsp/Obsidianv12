@@ -1,0 +1,1914 @@
+:root {
+	--obs-bg: #252830;
+	--obs-mid: #434857;
+	--obs-dark: black;
+	--obs-light: white;
+	--obs-select: #1997c6;
+	--obs-border-subtle: rgba(0, 0, 0, .15);
+	--obs-text-regular: #cfd2da;
+	--obs-text-inverse: #495057;
+	--obs-text-bright: white;
+	--obs-text-secondary: #51586a;
+	--obs-text-subtle: #999;
+	--obs-text-placeholder: #6c757d;
+	--obs-highlight: #c53131;
+	--obs-highlight-rgba: rgba(197, 49, 49, .15);
+	--obs-btn-positive: #40d250;
+	--obs-btn-positive-hover: #2bb43a;
+	--obs-btn-positive-inner: #218b2c;
+	--obs-btn-negative: #c53131;
+	--obs-btn-negative-hover: #9c2727;
+	--obs-btn-negative-inner: #731d1d;
+	--obs-negative: #c53131;
+	--obs-positive: #40d250;
+	--obs-horizontal-space: 10px;
+	--obs-vertical-space: 20px;
+	--obs-bg-translucent: rgb(0 0 0 / 15%);
+	--obs-pill-bg: hsl(222deg 14% 10%);
+	--obs-pill-border-light: rgb(255 255 255 / 15%);
+	--obs-pill-border-dark: rgb(0 0 0 / 97%);
+	--obs-rarity-common: #999;
+	--obs-rarity-uncommon: #10630d;
+	--obs-rarity-rare: #366cab;
+	--obs-rarity-very-rare: #6b0e9c;
+	--obs-rarity-legendary: #9c7d2f;
+	--obs-rarity-artefact: #be8972;
+}
+
+.dnd5e.sheet.actor.obsidian-window {
+	min-width: 880px;
+	min-height: 625px;
+}
+
+.dnd5e.sheet.actor.npc.obsidian-window,
+.dnd5e.sheet.actor.vehicle.obsidian-window {
+	min-width: 500px;
+}
+
+.obsidian button,
+.obsidian-msg button,
+.dialog.obsidian-window button.dialog-button {
+	border-radius: 3px;
+	font-family: var(--obs-font-condensed);
+	cursor: pointer;
+	color: var(--obs-text-regular);
+}
+
+.obsidian button.obsidian-btn-sm {
+	display: inline-block;
+	width: auto;
+	font-size: 8px;
+	padding: 5px;
+	text-transform: uppercase;
+	height: 22px;
+	border-color: transparent;
+	transition: all 50ms;
+	line-height: normal;
+	min-width: 40px;
+}
+
+.obsidian button.obsidian-btn-positive {
+	background-color: transparent;
+	color: var(--obs-btn-positive);
+	border: 1px solid var(--obs-btn-positive);
+}
+
+.obsidian button.obsidian-btn-positive:hover {
+	box-shadow: inset 0 0 10px 2px var(--obs-btn-positive-inner);
+}
+
+.obsidian button.obsidian-btn-negative {
+	background-color: transparent;
+	color: var(--obs-btn-negative);
+	border: 1px solid var(--obs-btn-negative);
+}
+
+.obsidian button.obsidian-btn-negative:hover {
+	box-shadow: inset 0 0 10px 2px var(--obs-btn-negative-inner);
+}
+
+.obsidian button.obsidian-btn-outline,
+.obsidian-msg button.obsidian-btn-outline,
+.dialog.obsidian-window button.dialog-button {
+	background: transparent;
+	border: 1px solid var(--obs-highlight);
+}
+
+.obsidian button.obsidian-btn-outline:hover,
+.obsidian-msg button.obsidian-btn-outline:hover,
+.dialog.obsidian-window button.dialog-button:hover {
+	background: var(--obs-dark);
+	color: var(--obs-text-bright);
+}
+
+.obsidian button:disabled {
+	border: 1px solid var(--obs-mid);
+	color: var(--obs-text-secondary);
+	cursor: default;
+}
+
+.obsidian button:disabled:hover {
+	box-shadow: none;
+	cursor: default;
+}
+
+.obsidian select {
+	font-family: var(--obs-font-condensed);
+	background: transparent;
+	color: var(--obs-text-regular);
+	border-radius: 0;
+	border: 0 solid var(--obs-mid);
+	border-bottom-width: 1px;
+	outline: none;
+	font-size: 14px;
+}
+
+.obsidian select.obsidian-select-operator {
+	font-family: var(--obs-font);
+}
+
+.obsidian :disabled select,
+.obsidian select:disabled {
+	color: var(--obs-text-secondary);
+}
+
+.obsidian option {
+	color: var(--obs-text-inverse);
+	background: transparent;
+}
+
+.obsidian hr {
+	border: 1px solid var(--obs-mid);
+}
+
+.dnd5e.sheet.obsidian-window.obsidian-background {
+	pointer-events: none;
+}
+
+.obsidian-window.dialog .window-content,
+.obsidian-compendium .directory-list {
+	scrollbar-color: transparent rgba(0, 0, 0, .75);
+	scrollbar-width: thin;
+}
+
+.obsidian-window.dialog .window-content::-webkit-scrollbar,
+.obsidian-compendium .directory-list::-webkit-scrollbar {
+	height: 6px;
+}
+
+.obsidian-window.dialog .window-content::-webkit-scrollbar-track,
+.obsidian-compendium .directory-list::-webkit-scrollbar-track {
+	box-shadow: none;
+}
+
+.obsidian-window.dialog .window-content::-webkit-scrollbar-thumb,
+.obsidian-compendium .directory-list::-webkit-scrollbar-thumb {
+	border: none;
+	background: rgba(0, 0, 0, .75);
+}
+
+.obsidian-window .window-content {
+	background: var(--obs-bg);
+}
+
+.dnd5e.sheet.obsidian-window .window-content {
+	padding: 0;
+	overflow: auto;
+}
+
+.dnd5e.sheet form.obsidian > * {
+	flex: none;
+}
+
+.obsidian-ptr {
+	cursor: pointer;
+}
+
+.obsidian-hidden {
+	display: none !important;
+}
+
+.obsidian-flex {
+	display: flex;
+}
+
+.dnd5e.sheet form.editable.obsidian .rollable:hover {
+	color: var(--obs-text-regular);
+}
+
+.dnd5e.sheet form.obsidian {
+	display: grid;
+	grid-template-columns: 420px auto;
+	overflow: auto;
+}
+
+.dnd5e.sheet.npc form.obsidian,
+.dnd5e.sheet.vehicle form.obsidian {
+	padding: 12px 0;
+}
+
+.dnd5e.sheet form.obsidian.obsidian-collapsed {
+	grid-template-columns: 0 auto;
+}
+
+.obsidian {
+	background: var(--obs-bg);
+	color: var(--obs-text-regular);
+	padding: 20px;
+	font-family: var(--obs-font);
+	scrollbar-color: transparent rgba(0, 0, 0, .75);
+	scrollbar-width: thin;
+}
+
+.obsidian::-webkit-scrollbar {
+	height: 6px;
+}
+
+.obsidian::-webkit-scrollbar-track {
+	box-shadow: none;
+}
+
+.obsidian::-webkit-scrollbar-thumb {
+	border: none;
+	background: rgba(0, 0, 0, .75);
+}
+
+.dialog .obsidian {
+	padding: 0;
+}
+
+.dialog-content .obsidian {
+	padding: 0;
+}
+
+.obsidian .obsidian-condensed {
+	font-family: var(--obs-font-condensed);
+}
+
+.obsidian .obsidian-positive,
+.obsidian-msg .obsidian-positive {
+	color: var(--obs-positive);
+}
+
+.obsidian .obsidian-negative,
+.obsidian-msg .obsidian-negative {
+	color: var(--obs-negative);
+}
+
+.obsidian img {
+	border: none;
+}
+
+.obsidian-edit,
+.obsidian-delete,
+.obsidian-view,
+.obsidian-expand-collapse {
+	color: var(--obs-text-secondary);
+	font-size: 11px;
+}
+
+.obsidian-edit .fa-cog {
+	color: var(--obs-text-subtle);
+	margin-left: 1px;
+}
+
+.obsidian-edit .fa-plus-circle {
+	color: var(--obs-text-subtle);
+}
+
+.obsidian-delete.obsidian-alert {
+	color: var(--obs-negative);
+}
+
+.obsidian-sidebar {
+	padding-right: 20px;
+	border-right: 1px solid var(--obs-mid);
+	text-align: center;
+	position: relative;
+}
+
+.obsidian-collapsed .obsidian-sidebar {
+	padding: 0;
+}
+
+.obsidian img.obsidian-profile-img {
+	max-width: 400px;
+	padding-bottom: var(--obs-vertical-space);
+	border-bottom: 1px solid var(--obs-mid);
+}
+
+.npc .obsidian img.obsidian-profile-img,
+.vehicle .obsidian img.obsidian-profile-img {
+	padding-bottom: 0;
+	border: none;
+}
+
+.dnd5e.sheet form.obsidian.locked {
+	display: unset;
+	padding: 1rem;
+}
+
+.obsidian.locked img.obsidian-profile-img {
+	padding-bottom: 0;
+	border: 1px dotted var(--obs-mid);
+	box-shadow: inset 0 0 25px 5px rgb(0 0 0 / 25%);
+	float: left;
+	margin: 0 1rem 1rem 0;
+}
+
+.obsidian.locked .obsidian-drop-msg,
+#chat-log .obsidian-drop-hint {
+	display: none;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	bottom: 1rem;
+	left: 1rem;
+	background: var(--obs-bg);
+	padding: 1rem;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+	font-weight: bold;
+	color: var(--obs-text-subtle);
+	border: 6px dashed var(--obs-mid);
+	border-radius: 8px;
+	pointer-events: none;
+}
+
+#chat-log .obsidian-drop-hint {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-width: 4px;
+	opacity: .93;
+	z-index: 1;
+	text-align: center;
+}
+
+.obsidian.locked.obsidian-dragover,
+#chat-log.obsidian-dragover {
+	position: relative;
+}
+
+.obsidian.locked.obsidian-dragover .obsidian-drop-msg,
+#chat-log.obsidian-dragover .obsidian-drop-hint {
+	display: flex;
+}
+
+.dialog.obsidian-window button.dialog-button {
+	max-height: 34px;
+}
+
+.dialog.obsidian-window .dialog-buttons {
+	align-items: end;
+}
+
+.obsidian-collapsed .obsidian-profile-img,
+.obsidian-collapsed .obsidian-sidebar .obsidian-char-box-container,
+.obsidian-collapsed .obsidian-sidebar .obsidian-char-notes {
+	display: none;
+}
+
+.obsidian-sidebar .obsidian-char-box,
+.npc .obsidian [data-tab=desc] .obsidian-char-box {
+	width: 100%;
+	font-weight: normal;
+	text-align: left;
+	color: var(--obs-text-regular);
+	font-size: 13px;
+	padding: 12px;
+	border: none;
+	border-radius: 0 0 5px 5px;
+	background: var(--obs-bg-translucent);
+}
+
+.obsidian-sidebar .obsidian-char-box-text,
+.npc .obsidian [data-tab=desc] .obsidian-char-box-text {
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 12px;
+	font-size: 13px;
+	font-family: var(--obs-font);
+	font-weight: bold;
+	color: var(--obs-text-regular);
+	background: var(--obs-bg-translucent);
+	border-radius: 5px 5px 0 0;
+	margin-bottom: 2px;
+	text-transform: none;
+}
+
+.obsidian-sidebar .obsidian-collapsed .obsidian-char-box,
+.npc .obsidian [data-tab=desc] .obsidian-collapsed .obsidian-char-box {
+	display: none;
+}
+
+.obsidian-sidebar .obsidian-collapsed .obsidian-char-box-text,
+.npc .obsidian [data-tab=desc] .obsidian-collapsed .obsidian-char-box-text {
+	border-radius: 5px;
+}
+
+.obsidian-collapser-container {
+	top: 0;
+	right: 0;
+	height: 100%;
+	display: flex;
+	font-size: 16px;
+	position: absolute;
+	padding-right: 5px;
+	align-items: center;
+	color: var(--obs-text-secondary);
+}
+
+.obsidian-collapser-container:hover {
+	background-color: rgba(255, 255, 255, .1);
+}
+
+.obsidian-char-overview {
+	padding-left: 20px;
+}
+
+.obsidian-char-header-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.obsidian-char-header {
+	min-width: 300px;
+	display: inline-block;
+}
+
+.obsidian-char-top-level {
+	display: inline-flex;
+	padding-left: var(--obs-horizontal-space);
+}
+
+.obsidian-char-column {
+	display: flex;
+	flex-direction: column-reverse;
+	padding: 0 var(--obs-horizontal-space) var(--obs-vertical-space) 0;
+	align-items: center;
+}
+
+button.obsidian-btn-sm.obsidian-btn-sheet {
+	height: auto;
+	font-size: 10px;
+	font-weight: bold;
+	min-width: 80px;
+	margin-bottom: 10px;
+}
+
+.obsidian-btn-sheet i {
+	color: var(--obs-highlight);
+	margin-right: 6px;
+}
+
+.obsidian-char-box-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	break-inside: avoid;
+}
+
+.obsidian-char-box-stacked {
+	margin-top: 5px;
+}
+
+.obsidian-char-box-container.obsidian-btn-sheet {
+	padding-bottom: 16px;
+}
+
+.obsidian button.obsidian-btn-positive.obsidian-btn-sheet {
+	color: var(--obs-text-regular);
+	border-color: var(--obs-positive);
+}
+
+.obsidian button.obsidian-btn-positive.obsidian-btn-sheet:hover {
+	background: var(--obs-dark);
+	color: var(--obs-text-bright);
+	box-shadow: 0 0 5px var(--obs-positive);
+}
+
+.obsidian button.obsidian-btn-positive.obsidian-btn-sheet.obsidian-btn-active {
+	background: var(--obs-positive);
+	color: var(--obs-bg);
+}
+
+.obsidian button.obsidian-btn-negative.obsidian-btn-sheet {
+	color: var(--obs-text-regular);
+	border-color: var(--obs-negative);
+}
+
+.obsidian button.obsidian-btn-negative.obsidian-btn-sheet:hover {
+	background: var(--obs-dark);
+	color: var(--obs-text-bright);
+	box-shadow: 0 0 5px var(--obs-negative);
+}
+
+.obsidian button.obsidian-btn-negative.obsidian-btn-sheet.obsidian-btn-active {
+	background: var(--obs-negative);
+	color: var(--obs-bg);
+}
+
+.obsidian button.obsidian-btn-outline.obsidian-btn-active {
+	background: var(--obs-highlight);
+	color: var(--obs-bg);
+	font-weight: bold;
+}
+
+.obsidian-char-box-text {
+	font-family: var(--obs-font-condensed);
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: bold;
+	padding-bottom: 4px;
+	color: var(--obs-text-secondary);
+}
+
+.obsidian-char-sub-box-text {
+	color: var(--obs-text-subtle);
+	padding-top: 4px;
+	text-align: center;
+}
+
+.obsidian-char-box {
+	border: 4px solid var(--obs-mid);
+	padding: 12px 0 8px 0;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	min-width: 58px;
+	min-height: 46px;
+	line-height: 1rem;
+}
+
+.obsidian-char-box-minor {
+	min-width: 45px;
+	text-align: center;
+	color: var(--obs-text-subtle);
+	border: 2px solid var(--obs-mid);
+	border-top: none;
+	padding: 2px 0;
+}
+
+.obsidian-char-box:is(.obsidian-simple-dialog,[data-dialog]) {
+	position: relative;
+}
+
+.obsidian-char-box.obsidian-simple-dialog:hover {
+	color: transparent;
+}
+
+.obsidian-char-box:is(.obsidian-simple-dialog,[data-dialog]):hover:after {
+	content: '\f013';
+	font-family: 'Font Awesome 5 Free';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	color: var(--obs-text-regular);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-shadow: 0 0 8px var(--color-shadow-primary);
+}
+
+.obsidian-resource-box {
+	padding: 4px 8px;
+	font-size: 14px;
+	color: var(--obs-text-secondary);
+	font-family: var(--obs-font-condensed);
+}
+
+.obsidian-list-box {
+	min-height: 79px;
+	width: 150px;
+}
+
+.obsidian-list-box-row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.obsidian-defenses .obsidian-list-box-row {
+	font-weight: normal;
+	font-size: 12px;
+	font-family: var(--obs-font-condensed);
+	flex-wrap: nowrap;
+	text-align: left;
+	align-items: unset;
+}
+
+.obsidian-list-box-row span {
+	font-weight: normal;
+	font-family: var(--obs-font-condensed);
+	font-size: 13px;
+	line-height: 1.2;
+}
+
+.obsidian-list-box-row span:after {
+	content: ',';
+	margin-right: 3px;
+}
+
+.obsidian-list-box-row span:last-child:after {
+	content: '';
+	margin: 0;
+}
+
+.obsidian-defenses .obsidian-list-box-row > div:first-child {
+	margin: 0 5px 0 0;
+}
+
+.obsidian-char-hp {
+	padding: 4px 14px;
+}
+
+.obsidian-char-hd {
+	padding: 0 17px;
+	display: flex;
+	align-items: center;
+	min-height: 79px;
+}
+
+.obsidian-resource-box-subtle,
+.obsidian-resource-box .obsidian-resource-box-max,
+.obsidian .obsidian-resource-box input {
+	display: inline-block;
+}
+
+.obsidian-resource-box-subtle {
+	font-weight: normal;
+}
+
+.obsidian-resource-box .obsidian-input-num {
+	max-width: 40px;
+}
+
+.obsidian-char-hd .obsidian-input-num {
+	max-width: 25px;
+}
+
+.dnd5e.sheet form .obsidian-resource-box input[type=text] {
+	height: auto;
+	color: var(--obs-text-subtle);
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+.obsidian-char-hp,
+.dnd5e.sheet form .obsidian-char-hp input[type=text] {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.dnd5e.sheet form :is(.obsidian-char-hp, .obsidian-npc-hp-box) input[placeholder="TMP"] {
+	color: var(--obs-text-secondary);
+	font-weight: normal;
+}
+
+.obsidian-bisect {
+	border-bottom: 1px solid var(--obs-mid);
+}
+
+.obsidian-bisect:last-child {
+	border: none;
+}
+
+.obsidian-resource-box-max {
+	min-width: 40px;
+	color: var(--obs-text-regular);
+	font-weight: normal;
+}
+
+.obsidian-char-hd .obsidian-resource-box-max,
+.obsidian-char-hd .obsidian-resource-box-subtle {
+	min-width: 25px;
+}
+
+.dnd5e.sheet form.obsidian .obsidian-char-header-minor span {
+	color: var(--obs-text-subtle);
+	margin-right: 4px;
+	font-size: 12px;
+	display: inline-block;
+}
+
+.dnd5e.sheet.npc .obsidian .obsidian-char-header-minor span,
+.dnd5e.sheet.vehicle .obsidian .obsidian-char-header-minor span {
+	margin: 0;
+}
+
+.dnd5e.sheet form.obsidian .obsidian-char-header-minor span.obsidian-joined {
+	margin-right: 0;
+}
+
+.obsidian-char-charname-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 14px;
+}
+
+.obsidian-char-charname-container .obsidian-edit {
+	margin-right: 8px;
+}
+
+.dnd5e.sheet form input[type=text].obsidian-char-charname {
+	color: var(--obs-text-regular);
+	height: auto;
+	display: block;
+	font-size: 26px;
+	max-width: 300px;
+	line-height: 1;
+	margin: 0;
+}
+
+.dnd5e.sheet form input[type=number].obsidian-input-sheet,
+form.obsidian input[type=number].obsidian-input-sheet {
+	display: inline-block;
+	width: 40px;
+	font-family: var(--obs-font);
+	color: var(--obs-text-subtle);
+	font-size: 14px;
+	text-align: center;
+	padding: 4px 0;
+	border: none;
+	outline: none;
+	margin: 0;
+}
+
+form.obsidian .rollable:hover {
+	text-shadow: 0 0 10px red;
+	cursor: pointer;
+}
+
+.obsidian-char-xp {
+	width: 100%;
+	margin: 10px 0;
+}
+
+.obsidian-char-xp-bar {
+	display: flex;
+	align-items: center;
+	min-height: 13px;
+}
+
+.obsidian-char-lvl {
+	font-size: 7px;
+}
+
+.obsidian-char-lvl i {
+	font-size: 10px;
+	color: var(--obs-positive);
+}
+
+.obsidian-char-xp-progress {
+	flex-grow: 1;
+	margin: 0 5px;
+	background-color: var(--obs-mid);
+	height: 1px;
+}
+
+.obsidian-char-xp-progress-bar {
+	height: 1px;
+	background-color: var(--obs-highlight);
+	display: block;
+}
+
+.obsidian-char-xp-data {
+	font-size: 7px;
+	margin-top: 3px;
+	text-align: center;
+	color: var(--obs-text-subtle);
+	text-transform: uppercase;
+}
+
+.obsidian-inspiration {
+	color: var(--obs-highlight);
+	padding: 5px 0 0 0;
+	font-size: 28px;
+}
+
+.obsidian-char-ability {
+	display: inline-block;
+	padding: 0 var(--obs-horizontal-space) var(--obs-vertical-space) 0;
+}
+
+.npc .obsidian-char-ability,
+.vehicle .obsidian-char-ability {
+	padding: 0 4px 0 0;
+}
+
+.obsidian-char-ability-name {
+	text-transform: uppercase;
+	color: var(--obs-text-secondary);
+	font-size: 16px;
+	padding-bottom: 4px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.npc .obsidian-char-ability-name,
+.vehicle .obsidian-char-ability-name {
+	font-size: 13px;
+	padding-bottom: 2px;
+}
+
+.obsidian-char-ability-mod {
+	border: 4px solid var(--obs-mid);
+	border-bottom-width: 2px;
+	padding: 8px 0;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.npc .obsidian-char-ability-mod,
+.vehicle .obsidian-char-ability-mod {
+	padding: 6px 0;
+	font-size: 14px;
+}
+
+.dnd5e.sheet form input[type=text].obsidian-char-ability-score {
+	width: 58px;
+	border: 2px solid var(--obs-mid);
+	padding: 4px 0;
+	color: var(--obs-text-subtle);
+	font-size: 16px;
+	margin: 0;
+	border-radius: 0;
+	text-align: center;
+	font-family: var(--obs-font);
+	line-height: 1;
+}
+
+.dnd5e.sheet.npc form input[type=text].obsidian-char-ability-score,
+.dnd5e.sheet.vehicle form input[type=text].obsidian-char-ability-score {
+	padding: 2px 0;
+	width: 45px;
+	font-size: 13px;
+}
+
+.dnd5e.sheet form input[type=text].obsidian-char-ability-score.obsidian-positive {
+	color: var(--obs-positive);
+}
+
+.dnd5e.sheet form input[type=text].obsidian-char-ability-score.obsidian-negative {
+	color: var(--obs-negative);
+}
+
+.obsidian label {
+	font-family: var(--obs-font-condensed);
+	color: var(--obs-text-secondary);
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.obsidian p.notes {
+	color: var(--obs-text-subtle);
+}
+
+.obsidian input {
+	display: block;
+	width: 100%;
+	margin: 2px 0 14px 0;
+	padding: 0 3px;
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--obs-text-regular);
+	background-color: transparent;
+	border: 0 solid var(--obs-mid);
+	border-bottom-width: 1px;
+	border-radius: 0;
+	font-family: var(--obs-font-condensed);
+}
+
+.obsidian input.obsidian-input-lg {
+	font-size: 16px;
+}
+
+.obsidian .obsidian-form-row input.obsidian-input-lg {
+	font-size: 14px;
+}
+
+.obsidian .obsidian-resource-box input {
+	margin-bottom: 0;
+}
+
+.obsidian > input:last-child {
+	margin-bottom: 0;
+}
+
+.obsidian input::placeholder {
+	color: var(--obs-text-secondary);
+}
+
+.obsidian input:focus {
+	box-shadow: none;
+}
+
+.obsidian .obsidian-form-row input {
+	display: inline-block;
+}
+
+.obsidian label {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 6px;
+}
+
+.obsidian label .obsidian-icon {
+	display: inline-block;
+}
+
+.obsidian .obsidian-form-row label {
+	display: inline-block;
+	margin-right: 20px;
+	margin-bottom: 0;
+}
+
+.obsidian .obsidian-form-row label + select {
+	margin-left: -10px;
+}
+
+.obsidian label.obsidian-label-lg,
+.obsidian div.obsidian-label-lg {
+	align-items: flex-start;
+	margin: 0;
+	font-size: 16px;
+	text-transform: none;
+	font-weight: normal;
+	display: flex;
+	justify-content: space-between;
+	font-family: var(--obs-font-condensed);
+	color: var(--obs-text-secondary);
+}
+
+.obsidian label.obsidian-label-lg.obsidian-stacked-row {
+	margin-top: 10px;
+}
+
+.obsidian label > input[type=text],
+.obsidian label > select {
+	margin: 0;
+}
+
+.obsidian .obsidian-form-row label {
+	align-items: baseline;
+}
+
+.obsidian .obsidian-form-row label > input[type=text]:last-child,
+.obsidian .obsidian-form-row label > select:last-child,
+.obsidian .obsidian-form-row label > span:last-child {
+	margin-left: 6px;
+}
+
+.obsidian .obsidian-form-row label.obsidian-label-icon {
+	margin-right: 0;
+}
+
+.obsidian .obsidian-form-row.obsidian-align-labels label > span:last-child {
+	width: 28px;
+	display: inline-block;
+}
+
+.dialog form label.obsidian-label-lg button {
+	margin-bottom: 3px;
+}
+
+.dialog form label.obsidian-label-lg:last-child button {
+	margin-bottom: 10px;
+}
+
+.obsidian-form-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.obsidian-form-row:last-child {
+	margin-bottom: 10px;
+}
+
+.obsidian-form-bare .obsidian-form-row:last-child {
+	margin-bottom: 0;
+}
+
+.obsidian-stacked-row {
+	margin-top: 10px;
+}
+
+.obsidian-form-row select,
+.obsidian-form-row input {
+	margin: 0 10px 0 0;
+}
+
+.obsidian .obsidian-form-row input {
+	max-width: 100px;
+}
+
+.obsidian .obsidian-form-row input.obsidian-input-lg {
+	max-width: 150px;
+}
+
+.obsidian .obsidian-form-row input.obsidian-input-max {
+	max-width: 100%;
+}
+
+.obsidian input.obsidian-input-num,
+.obsidian input.obsidian-input-num-sm,
+.obsidian input.obsidian-input-num-md,
+.obsidian input.obsidian-input-num-lg {
+	text-align: center;
+}
+
+.obsidian-form-row label + span {
+	margin-left: -10px;
+}
+
+.obsidian-form-row .obsidian-constant {
+	color: var(--obs-text-subtle);
+	width: 100px;
+	display: inline-block;
+}
+
+.obsidian-form-row > div {
+	display: flex;
+	align-items: baseline;
+	width: 100%;
+}
+
+.obsidian-form-row > div label+label {
+	margin-left: 10px;
+}
+
+.obsidian-form-row > div .fancy-checkbox {
+	align-self: center;
+	margin-bottom: 0;
+}
+
+.fancy-checkbox {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	margin-bottom: 6px;
+}
+
+.obsidian-form-row input[type=checkbox].obsidian-hidden + .fancy-checkbox {
+	margin-left: 10px;
+}
+
+.obsidian-form-row input[type=checkbox].obsidian-hidden + input {
+	margin-left: 10px;
+}
+
+.obsidian-currency-row > div {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.obsidian-currency-row .obsidian-icon {
+	margin-right: 10px;
+}
+
+.fancy-checkbox {
+	display: inline-flex;
+}
+
+legend .fancy-checkbox {
+	margin-bottom: 0;
+}
+
+.checkbox-content {
+	display: inline-block;
+	margin-left: .75em;
+	font-family: var(--obs-font-condensed);
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: var(--obs-text-secondary);
+}
+
+.checkbox-container {
+	border: 10px solid var(--obs-mid);
+	border-radius: 3px;
+	display: inline-block;
+	outline: none;
+	position: relative;
+}
+
+.checkbox-inner-box {
+	border: 8px solid var(--obs-bg);
+	position: absolute;
+	left: -8px;
+	top: -8px;
+}
+
+.checkmark-container {
+	position: absolute;
+	height: 20px;
+	width: 20px;
+	top: -10px;
+	left: -10px;
+}
+
+.checkmark {
+	height: 100%;
+	width: 100%;
+	pointer-events: none;
+	position: absolute;
+	top: 7px;
+	left: 11px;
+	transform-origin: 0;
+	transform: rotate(-45deg);
+}
+
+.checkmark-short {
+	border: 1px solid var(--obs-bg);
+	height: 5px;
+	left: 0;
+	position: absolute;
+}
+
+.checkmark-long {
+	border: 1px solid var(--obs-bg);
+	position: absolute;
+	left: 0;
+	top: 5px;
+	width: 11px;
+}
+
+.selected .checkbox-inner-box {
+	border-color: var(--obs-mid);
+}
+
+.obsidian-binary-operator {
+	color: var(--obs-text-secondary);
+	margin-right: 10px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.obsidian-char-details {
+	display: grid;
+	grid-template-columns: 280px 280px 280px;
+	grid-template-rows: 229px 1fr;
+	grid-gap: 10px;
+	position: relative;
+}
+
+.obsidian-char-details-extra-abilities {
+	grid-template-rows: 244px 1fr;
+}
+
+.obsidian-main-left {
+	grid-row: 1 / span 2;
+}
+
+.obsidian-death-saves-box {
+	width: 100%;
+	height: 100%;
+}
+
+.obsidian-char-details-extra-abilities .obsidian-death-saves-box .obsidian-char-box-lg {
+	padding: 4px;
+}
+
+.obsidian-char-details-extra-abilities .obsidian-death-saves-box .obsidian-vertical-bisect {
+	gap: 0;
+}
+
+.obsidian-conditions-box .obsidian-char-box,
+.obsidian-death-saves-box .obsidian-char-box {
+	height: 100%;
+}
+
+.obsidian-saves-box {
+	grid-column-start: 2;
+}
+
+.obsidian-conditions-box {
+	grid-column-start: 3;
+}
+
+.obsidian-main {
+	grid-row-start: 2;
+	grid-column: 2 / span 2;
+}
+
+.obsidian-skills-box {
+	width: 100%;
+	padding: 8px 8px 0 8px;
+}
+
+.obsidian-skill-item,
+.obsidian-save-item {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--obs-mid);
+}
+
+.obsidian-skill-item {
+	margin-bottom: 5px;
+}
+
+.obsidian-skill-item:last-child {
+	border: none;
+}
+
+.obsidian-grid-3-row .obsidian-save-item:nth-child(3n),
+.obsidian-grid-4-row .obsidian-save-item:nth-child(4n) {
+	border: none;
+}
+
+.obsidian-prof,
+.obsidian-radio {
+	display: flex;
+	align-items: center;
+	padding-left: 3px;
+	width: 25px;
+	position: relative;
+}
+
+.obsidian-not-proficient span,
+.obsidian-half-proficient span,
+.obsidian-proficient span,
+.obsidian-expertise span,
+.obsidian-radio span {
+	width: 10px;
+	height: 10px;
+	border: 1px solid var(--obs-mid);
+	border-radius: 50%;
+}
+
+.obsidian-half-proficient span,
+.obsidian-proficient span,
+.obsidian-expertise span,
+.obsidian-radio-selected span {
+	background: var(--obs-mid);
+}
+
+.obsidian-half-proficient span {
+	width: 4px;
+	height: 8px;
+	border-bottom-right-radius: 8px;
+	border-top-right-radius: 8px;
+	margin-left: 5px;
+}
+
+.obsidian-half-proficient:before {
+	content: '';
+	width: 8px;
+	height: 8px;
+	border: 1px solid var(--obs-mid);
+	border-radius: 50%;
+	position: absolute;
+}
+
+.obsidian-expertise span {
+	width: 7px;
+	height: 7px;
+	margin-left: 2px;
+}
+
+.obsidian-expertise:before {
+	content: '';
+	width: 11px;
+	height: 11px;
+	border: 2px solid var(--obs-mid);
+	border-radius: 50%;
+	position: absolute;
+	left: 1px;
+}
+
+.dnd5e.sheet form .obsidian-skill-item select {
+	margin-right: 5px;
+	text-transform: uppercase;
+	background: transparent;
+	font-size: 12px;
+	border: none;
+	flex: none;
+}
+
+.obsidian-skill-name,
+.obsidian-save-name {
+	font-family: var(--obs-font-condensed);
+	font-size: 14px;
+	padding: 5px 0;
+	flex: 1;
+	font-weight: normal;
+	text-align: left;
+}
+
+.obsidian-skill-mod,
+.obsidian-skill-passive,
+.obsidian-save-mod {
+	padding: 5px;
+	text-align: right;
+	font-size: 14px;
+	font-weight: bold;
+	align-self: flex-end;
+	width: 25px;
+}
+
+.obsidian-skill-mod:hover,
+.obsidian-save-mod:hover {
+	text-shadow: 0 0 8px var(--color-shadow-primary);
+	font-family: 'Font Awesome 5 Free';
+}
+
+.obsidian-skill-passive {
+	color: var(--obs-text-subtle);
+	font-weight: normal;
+	font-size: 12px;
+	align-self: center;
+}
+
+.obsidian-char-box-lg {
+	width: 284px;
+	padding: 8px;
+	margin-right: var(--obs-horizontal-space);
+}
+
+.obsidian-char-details .obsidian-char-box-lg {
+	margin: 0;
+	width: 100%;
+}
+
+.obsidian-grid-2-col {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.obsidian-grid-col-dir {
+	grid-auto-flow: column;
+	row-gap: 5px;
+}
+
+.obsidian-grid-3-row {
+	grid-template-rows: 1fr 1fr 1fr;
+}
+
+.obsidian-grid-4-row {
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.obsidian-radio-label {
+	display: flex;
+	cursor: pointer;
+	font-size: 14px;
+	font-family: var(--obs-font-condensed);
+	font-weight: normal;
+	color: var(--obs-text-secondary);
+}
+
+.obsidian-radio-label.obsidian-radio-selected {
+	color: var(--obs-text-regular);
+}
+
+.obsidian-radio-selected .obsidian-radio-negative span,
+.obsidian-radio-selected.obsidian-radio-negative span {
+	border-color: var(--obs-negative);
+	background: var(--obs-negative);
+}
+
+.obsidian-radio-selected .obsidian-radio-positive span,
+.obsidian-radio-selected.obsidian-radio-positive span {
+	border-color: var(--obs-positive);
+	background: var(--obs-positive);
+}
+
+.obsidian-radio {
+	padding-left: 0;
+	width: 22px;
+}
+
+.obsidian-char-box-lg .obsidian-bisect {
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+}
+
+.obsidian-death-saves-box .obsidian-grid-2-col {
+	height: 100%;
+}
+
+.obsidian-death-saves-box .obsidian-vertical-bisect {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.obsidian-conditions-box .obsidian-char-box {
+	padding: 0;
+}
+
+.obsidian-conditions {
+	padding: 5px 10px 5px 5px;
+	row-gap: 2px;
+	column-gap: 5px;
+}
+
+.obsidian-conditions .obsidian-item-drop-pill {
+	cursor: pointer;
+}
+
+.obsidian-exhaustion .obsidian-item-drop-pill-body {
+	cursor: default;
+}
+
+.obsidian-exhaustion .obsidian-item-drop-pill-header {
+	cursor: pointer;
+}
+
+.obsidian-condition-pill-inactive {
+	color: var(--obs-text-secondary);
+}
+
+.obsidian-condition-pill-active {
+	color: var(--obs-negative);
+}
+
+.obsidian-condition-pill-active.obsidian-condition-invisible {
+	color: var(--obs-positive);
+}
+
+.obsidian-item-drop-pill.obsidian-condition-pill-active {
+	border-top-color: var(--obs-negative);
+	border-right-color: var(--obs-btn-negative-inner);
+	border-bottom-color: var(--obs-btn-negative-inner);
+	border-left-color: var(--obs-negative);
+}
+
+.obsidian-condition-pill-active .obsidian-item-drop-pill-header {
+	border-right-color: var(--obs-negative);
+}
+
+.obsidian-item-drop-pill.obsidian-condition-pill-active.obsidian-condition-invisible {
+	border-top-color: var(--obs-positive);
+	border-right-color: var(--obs-btn-positive-inner);
+	border-bottom-color: var(--obs-btn-positive-inner);
+	border-left-color: var(--obs-positive);
+}
+
+.obsidian-condition-pill-active.obsidian-condition-invisible .obsidian-item-drop-pill-header {
+	border-right-color: var(--obs-positive);
+}
+
+.obsidian-char-details-extra-abilities .obsidian-conditions {
+	padding-bottom: 12px;
+}
+
+.obsidian-meatballs .obsidian-radio {
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+}
+
+.obsidian-meatballs-title {
+	color: var(--obs-text-secondary);
+	font-size: 14px;
+	text-align: center;
+	font-family: var(--obs-font-condensed);
+	font-weight: normal;
+}
+
+.obsidian-meatballs-active {
+	color: var(--obs-text-regular);
+}
+
+.obsidian-save-item .obsidian-radio {
+	padding-left: 3px;
+}
+
+.obsidian-save-mod {
+	width: 40px;
+}
+
+.obsidian-conditions-and-saves {
+	padding-left: var(--obs-horizontal-space);
+	width: 598px;
+	height: 0;
+}
+
+.obsidian-vertical-bisect {
+	border-right: 1px solid var(--obs-mid);
+}
+
+.obsidian-vertical-bisect:last-child {
+	border: none;
+}
+
+.obsidian-vertical-bisect .obsidian-char-box-text {
+	padding: 0;
+}
+
+.dnd5e.sheet form span.rollable {
+	display: inline;
+}
+
+.dnd5e.sheet form.editable.obsidian span.rollable:hover {
+	color: var(--obs-text-regular);
+}
+
+.obsidian-formula-constant {
+	color: var(--obs-text-secondary);
+	margin-right: 10px;
+	font-size: 14px;
+}
+
+.obsidian-input-num-sm {
+	width: 25px !important;
+}
+
+.obsidian-input-num-md {
+	width: 40px !important;
+}
+
+.obsidian-input-num-lg {
+	width: 60px !important;
+}
+
+.obsidian-passive-item {
+	display: flex;
+	border-bottom: 1px solid var(--obs-mid);
+}
+
+.obsidian-passive-item:last-child {
+	border: none;
+	margin-bottom: 6px;
+}
+
+.obsidian-horizontal-list,
+.obsidian-skill-box-value {
+	margin: 8px 0;
+}
+
+.obsidian-horizontal-list span:after {
+	content: ', ';
+}
+
+.obsidian-horizontal-list span:last-child:after {
+	content: '';
+}
+
+.dnd5e.sheet form.obsidian :is(.obsidian-horizontal-list, .obsidian-skill-box-value) span {
+	display: inline;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.obsidian-skills-box .obsidian-bisect {
+	margin-bottom: 8px;
+}
+
+.obsidian-bisect .obsidian-char-box-text {
+	text-align: left;
+}
+
+.obsidian-list-compact {
+	margin-top: 0;
+	text-align: left;
+}
+
+.obsidian-char-box-text-compact {
+	padding-bottom: 0;
+}
+
+.obsidian-fullwidth {
+	width: 100%;
+}
+
+.compendium-pack[data-pack="dnd5e.spells"] {
+	display: none !important;
+}
+
+.obsidian-sidebar .obsidian-char-box-stacked,
+.npc .obsidian [data-tab="desc"] .obsidian-char-box-stacked,
+.vehicle .obsidian [data-tab=desc] .obsidian-char-box-stacked {
+	margin-top: 15px;
+}
+
+.obsidian-char-notes .obsidian-char-box-text {
+	display: flex;
+	justify-content: space-between;
+}
+
+.obsidian-char-notes .obsidian-edit {
+	color: var(--obs-text-subtle);
+}
+
+.obsidian-defenses {
+	padding: 8px;
+	text-align: unset;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px;
+}
+
+.obsidian-defenses .obsidian-item-drop-pill-body {
+	cursor: unset;
+}
+
+.obsidian-defenses .obsidian-css-icon {
+	margin-right: 4px;
+}
+
+#compendium li.compendium-pack {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#compendium li.compendium-pack h4.pack-title {
+	margin-bottom: 0;
+	display: flex;
+	align-items: center;
+}
+
+#compendium li.compendium-pack .entity-type {
+	display: none;
+}
+
+#compendium li.compendium-pack footer.compendium-footer {
+	text-transform: uppercase;
+	color: var(--obs-text-secondary);
+	margin-right: 28px;
+}
+
+#compendium li.compendium-pack .status-icons {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.obsidian-compendium .window-content {
+	background: var(--obs-bg);
+	font-family: var(--obs-font);
+	font-size: 13px;
+	color: var(--obs-text-bright);
+}
+
+.obsidian-compendium .compendium.directory .directory-list .directory-item {
+	line-height: normal;
+	border-bottom: 1px solid var(--obs-mid);
+	align-items: center;
+}
+
+.obsidian-compendium .directory-list .directory-item img {
+	width: 24px;
+	height: 24px;
+	flex: 0 0 24px;
+}
+
+.obsidian-compendium .directory-item a {
+	display: block;
+	padding: 8px 0;
+}
+
+.obsidian .form-group label {
+	font-family: var(--obs-font-condensed);
+	font-size: 16px;
+	text-transform: none;
+	font-weight: normal;
+}
+
+.obsidian .form-group .obsidian-input-lg {
+	margin-bottom: 4px;
+}
+
+.obsidian-window.minimized .window-content {
+	padding: 0;
+}
+
+.obsidian-checkbox-grid,
+.obsidian-npc-grid,
+.obsidian-actor-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.obsidian-npc-grid .obsidian-npc-grid-item {
+	flex-basis: 33%;
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+	border-bottom: 1px solid var(--obs-mid);
+}
+
+.obsidian-checkbox-grid .fancy-checkbox {
+	flex-basis: 25%;
+}
+
+.obsidian-npc-condition-grid .obsidian-npc-grid-item {
+	flex-basis: 20%;
+	border: none;
+}
+
+.obsidian-actor-grid {
+	gap: 6px;
+}
+
+.obsidian-actor-grid-item {
+	flex-basis: 32.6%;
+	display: flex;
+	cursor: pointer;
+	align-items: center;
+	border: 1px solid var(--obs-mid);
+	border-radius: 4px;
+	padding: 6px;
+	gap: 8px;
+}
+
+.obsidian-actor-grid-item.obsidian-actor-grid-item-active {
+	border-color: var(--obs-select);
+}
+
+.obsidian-actor-grid-icon {
+	width: 32px;
+	height: 32px;
+	overflow: hidden;
+}
+
+.obsidian-actor-grid-icon img {
+	width: 100%;
+	object-fit: cover;
+	object-position: 50%;
+}
+
+.obsidian-actor-grid-name {
+	text-transform: uppercase;
+	color: var(--obs-text-secondary);
+	font-weight: bold;
+	font-size: 13px;
+	word-break: break-word;
+}
+
+.obsidian-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	background-color: rgba(0, 0, 0, .75);
+}
+
+.obsidian-migrate-container {
+	margin: 100px auto 0 auto;
+	width: 450px;
+	position: relative;
+}
+
+.obsidian-migrate-box {
+	width: 100%;
+	border: 2px ridge var(--obs-mid);
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, .75);
+	background-color: var(--obs-bg);
+	color: var(--obs-text-regular);
+	font-size: 13px;
+	font-family: var(--obs-font);
+	padding: 10px;
+	border-radius: 3px;
+}
+
+.obsidian-migrate-box h3 {
+	width: 100%;
+	font-size: 16px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid var(--obs-mid);
+	margin-bottom: 10px;
+}
+
+.obsidian-migrate-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.obsidian-migrate-buttons button {
+	width: 50%;
+	color: var(--obs-text-bright);
+	font-size: 13px;
+	padding: 8px;
+	cursor: pointer;
+	background-color: transparent;
+	margin: 0;
+	line-height: 1;
+}
+
+.obsidian-migrate-buttons button:first-child {
+	margin-right: 10px;
+}
+
+.obsidian-migrate-buttons button:hover {
+	background-color: var(--obs-dark);
+}
+
+.obsidian-migrate-buttons .obsidian-btn-positive {
+	border: 1px solid var(--obs-positive);
+}
+
+.obsidian-migrate-buttons .obsidian-btn-positive i {
+	color: var(--obs-positive);
+}
+
+.obsidian-migrate-buttons .obsidian-btn-positive:hover {
+	box-shadow: 0 0 5px var(--obs-positive);
+}
+
+.obsidian-migrate-buttons .obsidian-btn-negative {
+	border: 1px solid var(--obs-negative);
+}
+
+.obsidian-migrate-buttons .obsidian-btn-negative i {
+	color: var(--obs-negative);
+}
+
+.obsidian-migrate-buttons .obsidian-btn-negative:hover {
+	box-shadow: 0 0 5px var(--obs-negative);
+}
+
+.obsidian-migrate-progress {
+	position: absolute;
+	left: 2px;
+	bottom: 2px;
+	width: 446px;
+	height: 4px;
+	display: none;
+}
+
+.obsidian-migrate-bar {
+	height: 4px;
+	background-color: var(--obs-positive);
+}
+
+.obsidian-multiline-input {
+	font-size: 14px;
+	font-family: var(--obs-font-condensed);
+	color: var(--obs-text-regular);
+	width: 100%;
+	outline: none;
+}
+
+.obsidian-multiline-input.obsidian-placeholder {
+	color: var(--obs-text-secondary);
+}
+
+.obsidian-hotbar-counter {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	background-color: rgba(0,0,0,.75);
+	color: var(--obs-text-regular);
+	font-size: 12px;
+}
+
+.dnd5e.loot-sheet-npc .item-properties {
+	display: none;
+}
+
+.obsidian-meatballs .fancy-checkbox {
+	margin-bottom: 0;
+}
+
+.obsidian-meatballs .obsidian-feature-use {
+	width: 20px;
+	height: 20px;
+}
+
+.obsidian-death-successes .selected :is(.checkbox-container, .checkbox-inner-box) {
+	border-color: var(--obs-positive);
+}
+
+.obsidian-death-failures .obsidian-feature-used {
+	border-color: var(--obs-negative);
+	background-color: var(--obs-negative);
+}
+
+[contenteditable], [contenteditable] * {
+	user-select: unset;
+	-moz-user-select: unset;
+	-webkit-user-select: unset;
+	-ms-user-select: unset;
+}
+
+.obsidian .obsidian-form-row label.obsidian-spin-buttons {
+	display: flex;
+	gap: 5px;
+}
+
+.obsidian .obsidian-spin-buttons button.obsidian-btn-outline.obsidian-btn-compact {
+	width: 24px;
+}

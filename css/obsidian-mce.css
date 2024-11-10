@@ -1,0 +1,25 @@
+#tinymce {
+	font-size: 13px;
+	color: #cfd2da;
+	font-family: var(--obs-font);
+	scrollbar-color: transparent rgba(0, 0, 0, .75);
+	scrollbar-width: thin;
+}
+
+#tinymce::-webkit-scrollbar {
+	height: 6px;
+}
+
+#tinymce::-webkit-scrollbar-track {
+	box-shadow: none;
+}
+
+#tinymce::-webkit-scrollbar-thumb {
+	border: none;
+	background: rgba(0, 0, 0, .75);
+}
+
+#tinymce hr {
+	border: none;
+	border-bottom: 1px solid #434857;
+}

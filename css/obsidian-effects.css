@@ -1,0 +1,421 @@
+.obsidian-effects-window {
+	max-height: 768px;
+}
+
+.obsidian-2-pane-window .window-content {
+	padding: 10px 0;
+}
+
+.obsidian-2-pane {
+	display: grid;
+	grid-template-columns: 512px 512px;
+	height: 100%;
+}
+
+.obsidian-2-pane-sm {
+	grid-template-columns: 400px 400px;
+}
+
+.obsidian-2-pane > section {
+	padding: 0 10px;
+}
+
+.obsidian-2-pane > section:first-child {
+	border-right: 1px solid var(--obs-mid);
+}
+
+.obsidian-2-pane-header > section:first-child {
+	border-right: none;
+}
+
+.obsidian-effects-tray {
+	position: absolute;
+	list-style-type: none;
+	margin: 0;
+	top: 30px;
+	overflow: auto;
+	left: 570px;
+	width: 184px;
+	height: 738px;
+	background: var(--obs-bg);
+	border-radius: 3px;
+	padding: 10px;
+	border: 2px ridge var(--obs-mid);
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, .5);
+	scrollbar-color: transparent rgba(0, 0, 0, .75);
+	scrollbar-width: thin;
+}
+
+.minimized .obsidian-effects-tray {
+	display: none;
+}
+
+.obsidian-effects-tray::-webkit-scrollbar {
+	height: 6px;
+}
+
+.obsidian-effects-tray::-webkit-scrollbar-track {
+	box-shadow: none;
+}
+
+.obsidian-effects-tray::-webkit-scrollbar-thumb {
+	border: none;
+	background: rgba(0, 0, 0, .75);
+}
+
+.obsidian-effects-pill {
+	background-color: var(--obs-dark);
+	padding-left: 34px;
+	background-repeat: no-repeat;
+	background-size: 24px;
+	background-position: 8px;
+	height: 34px;
+	overflow: hidden;
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+
+.obsidian-effects-pill {
+	width: 160px;
+	border-radius: 3px;
+}
+
+.obsidian-effects-tab:hover {
+	width: 160px;
+}
+
+.obsidian-effects-pill.obsidian-effects-pill-rm {
+	background-color: var(--obs-negative);
+}
+
+.obsidian-effects-pill-text {
+	text-transform: uppercase;
+	font-family: var(--obs-font-condensed);
+	font-size: 12px;
+	padding: 10px;
+	height: 34px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.obsidian-effect {
+	padding: 10px;
+	border: 2px ridge var(--obs-mid);
+	min-height: 100px;
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, .5);
+	margin-bottom: 10px;
+}
+
+.obsidian-effect.obsidian-selected {
+	border-color: var(--obs-select);
+}
+
+.obsidian-effect fieldset.obsidian-selected {
+	border-color: var(--obs-select);
+}
+
+.obsidian-effect legend {
+	cursor: pointer;
+}
+
+.obsidian-effect legend .obsidian-edit {
+	font-size: 14px;
+}
+
+.obsidian input[type=text].obsidian-effect-name {
+	width: 100%;
+	font-family: var(--obs-font);
+	color: var(--obs-text-subtle);
+	font-size: 16px;
+	border: none;
+	padding: 0;
+	margin: 0 0 10px 0;
+}
+
+.obsidian input[type=text].obsidian-effect-name:hover {
+	border: 1px solid var(--obs-dark);
+	box-shadow: 0 0 8px var(--obs-negative);
+}
+
+.obsidian-action-row {
+	display: flex;
+	justify-content: flex-start;
+	font-size: 14px;
+	font-family: var(--obs-font-condensed);
+	align-items: center;
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+	border-bottom: 1px dotted var(--obs-mid);
+}
+
+.obsidian-action-row:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.obsidian-action-row button {
+	margin-right: 10px;
+}
+
+.obsidian-item-drop {
+	border: 2px dashed var(--obs-mid);
+	margin-top: 10px;
+	padding: 5px 5px 0 5px;
+}
+
+.obsidian-item-drop.obsidian-empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+}
+
+.obsidian-item-drop-empty {
+	font-family: var(--obs-font-condensed);
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: var(--obs-text-secondary);
+}
+
+.obsidian-item-drop-pill {
+	display: inline-flex;
+	background-color: var(--obs-pill-bg);
+	border-radius: 5px;
+	font-family: var(--obs-font-condensed);
+	margin-bottom: 5px;
+	border-width: 1px;
+	border-style: solid;
+	border-top-color: var(--obs-pill-border-light);
+	border-right-color: var(--obs-pill-border-dark);
+	border-bottom-color: var(--obs-pill-border-dark);
+	border-left-color: var(--obs-pill-border-light);
+	font-size: 13px;
+	align-items: center;
+	font-weight: normal;
+	line-height: 1;
+}
+
+.obsidian-item-drop-pill-sm {
+	margin: 0;
+	font-size: 11px;
+}
+
+.obsidian-item-drop-pill-header,
+.obsidian-item-drop-pill-footer {
+	display: flex;
+	padding: 3px 4px;
+	align-items: center;
+}
+
+.obsidian-item-drop-pill-header {
+	border-right: 1px solid var(--obs-pill-border-light);
+}
+
+.obsidian-item-drop-pill-footer-num,
+.obsidian-item-drop-pill-header-num {
+	min-width: 24px;
+	justify-content: center;
+}
+
+.obsidian-item-drop-pill-header > :is(img, div),
+.obsidian-item-drop-pill-footer > :is(img, div) {
+	width: 16px;
+	height: 16px;
+	background-size: 16px 16px;
+}
+
+.obsidian-item-drop-pill-sm > :is(.obsidian-item-drop-pill-header, .obsidian-item-drop-pill-footer) > :is(img, div) {
+	width: 14px;
+	height: 14px;
+	background-size: 14px 14px;
+}
+
+.obsidian-item-drop-pill-body {
+	padding: 3px 8px;
+	cursor: pointer;
+}
+
+.obsidian-item-drop-pill-sm .obsidian-item-drop-pill-body {
+	padding: 5px 8px 4px 8px;
+}
+
+.obsidian-item-drop-pill-body .obsidian-icon {
+	margin-right: 4px;
+}
+
+.obsidian-item-drop-pill-rm {
+	padding: 3px 7px;
+	font-family: var(--obs-font);
+	cursor: pointer;
+}
+
+.obsidian-item-drop-pill-rm, .obsidian-item-drop-pill-footer {
+	border-left: 1px solid var(--obs-pill-border-light);
+}
+
+.obsidian-effect-row {
+	display: flex;
+	font-size: 13px;
+	margin-bottom: 5px;
+	position: relative;
+	padding-right: 20px;
+}
+
+.obsidian-effect-row .obsidian-delete {
+	position: absolute;
+	right: 5px;
+}
+
+.obsidian-effect-row-content {
+	font-weight: normal;
+	flex: 1;
+}
+
+.obsidian-effect-row-content strong:first-child {
+	cursor: pointer;
+}
+
+.obsidian-effect-row .obsidian-radio {
+	width: 12px;
+	cursor: pointer;
+	display: block;
+}
+
+.obsidian-effects-cat summary {
+	padding: 10px 20px 10px 10px;
+	margin-bottom: 5px;
+	width: 160px;
+}
+
+#obsidian-duration-bar {
+	position: fixed;
+	left: 256px;
+	bottom: 74px;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.obsidian-duration {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	cursor: pointer;
+}
+
+.obsidian-duration > img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+#obsidian-duration-menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+}
+
+#obsidian-duration-menu .context-items {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--obs-text-regular);
+	font-size: 11px;
+	border-radius: 50%;
+}
+
+#obsidian-duration-menu .context-item {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: black;
+}
+
+#obsidian-duration-menu .context-item:hover {
+	color: var(--obs-text-bright);
+	background: rgba(0, 0, 0, .75);
+}
+
+#obsidian-duration-menu .context-item:first-child {
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+#obsidian-duration-menu .context-item:last-child {
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+.obsidian-duration-remaining {
+	position: absolute;
+	right: -5px;
+	top: -5px;
+	width: 16px;
+	height: 16px;
+	background-color: var(--obs-highlight);
+	color: var(--obs-text-regular);
+	font-family: var(--obs-font);
+	font-weight: bold;
+	border-radius: 50%;
+	font-size: 11px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.obsidian-duration.context .obsidian-duration-remaining {
+	display: none;
+}
+
+.obsidian-effect .obsidian-sub-group {
+	border: none;
+	border-top: 1px solid var(--obs-mid);
+	padding: 0;
+	margin-top: 10px;
+}
+
+.obsidian-effect .obsidian-sub-group:last-child {
+	margin-top: 10px;
+}
+
+.obsidian-effect .obsidian-sub-group legend {
+	font-size: 13px;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: var(--obs-font);
+	cursor: default;
+}
+
+.obsidian-component-description > p {
+	margin: 0;
+	font-size: 14px;
+	font-family: var(--obs-font-condensed);
+	text-align: justify;
+}
+
+.obsidian-temp-effect {
+	padding: 10px 20px 10px 10px;
+	font-size: 13px;
+}
+
+.obsidian-temp-effect > div {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.obsidian-temp-effect > div a {
+	color: var(--obs-text-regular);
+	margin-right: 10px;
+}

@@ -1,0 +1,673 @@
+.obsidian-icon {
+	width: 20px;
+	height: 20px;
+	background: 50% transparent no-repeat;
+	background-size: 20px 20px;
+}
+
+li.context-item .obsidian-icon {
+	display: inline-block;
+	margin-right: 3px;
+	margin-bottom: -4px;
+}
+
+.obsidian-icon-sm {
+	width: 16px;
+	height: 16px;
+	background: 50% transparent no-repeat;
+	background-size: 16px 16px;
+	margin-left: 5px;
+}
+
+.obsidian-icon-xs {
+	width: 10px;
+	height: 10px;
+	background: 50% transparent no-repeat;
+	background-size: 10px 10px;
+	margin-left: 3px;
+}
+
+.obsidian-icon-melee {
+	background-image: url('../img/melee.svg');
+}
+
+.obsidian-icon-ranged {
+	background-image: url('../img/ranged.svg');
+}
+
+.obsidian-icon-unarmed {
+	background-image: url('../img/unarmed.svg');
+}
+
+.obsidian-icon-versatile {
+	background-image: url('../img/versatile.svg');
+}
+
+.obsidian-icon-blg {
+	background-image: url('../img/bludgeoning.svg');
+}
+
+.obsidian-icon-prc {
+	background-image: url('../img/piercing.svg');
+}
+
+.obsidian-icon-slh {
+	background-image: url('../img/slashing.svg');
+}
+
+.obsidian-icon-acd {
+	background-image: url('../img/acid.svg');
+}
+
+.obsidian-icon-cld {
+	background-image: url('../img/cold.svg');
+}
+
+.obsidian-icon-fir {
+	background-image: url('../img/fire.svg');
+}
+
+.obsidian-icon-frc {
+	background-image: url('../img/force.svg');
+}
+
+.obsidian-icon-lig {
+	background-image: url('../img/lightning.svg');
+}
+
+.obsidian-icon-ncr {
+	background-image: url('../img/necrotic.svg');
+}
+
+.obsidian-icon-psn {
+	background-image: url('../img/poison.svg');
+}
+
+.obsidian-icon-psy {
+	background-image: url('../img/psychic.svg');
+}
+
+.obsidian-icon-rad {
+	background-image: url('../img/radiant.svg');
+}
+
+.obsidian-icon-thn {
+	background-image: url('../img/thunder.svg');
+}
+
+.obsidian-icon-hlg {
+	background-image: url('../img/healing.svg');
+}
+
+.obsidian-icon-tmp {
+	background-image: url('../img/temp-hp.svg');
+}
+
+.obsidian-icon-spell {
+	background-image: url('../img/effect.svg');
+}
+
+.obsidian-icon-cp {
+	background-image: url('../img/currency/copper.png');
+}
+
+.obsidian-icon-sp {
+	background-image: url('../img/currency/silver.png');
+}
+
+.obsidian-icon-ep {
+	background-image: url('../img/currency/electrum.png');
+}
+
+.obsidian-icon-gp {
+	background-image: url('../img/currency/gold.png');
+}
+
+.obsidian-icon-pp {
+	background-image: url('../img/currency/platinum.png');
+}
+
+.obsidian-icon-amulet {
+	background-image: url('../img/amulet.svg');
+}
+
+.obsidian-icon-armour {
+	background-image: url('../img/armour.svg');
+}
+
+.obsidian-icon-belt {
+	background-image: url('../img/belt.svg');
+}
+
+.obsidian-icon-boots {
+	background-image: url('../img/boots.svg');
+}
+
+.obsidian-icon-bracers {
+	background-image: url('../img/bracers.svg');
+}
+
+.obsidian-icon-cloak {
+	background-image: url('../img/cloak.svg');
+}
+
+.obsidian-icon-potion,
+.obsidian-icon-consumable {
+	background-image: url('../img/consumable.svg');
+}
+
+.obsidian-icon-gauntlet {
+	background-image: url('../img/gauntlet.svg');
+}
+
+.obsidian-icon-helm {
+	background-image: url('../img/helm.svg');
+}
+
+.obsidian-icon-ring {
+	background-image: url('../img/ring.svg');
+}
+
+.obsidian-icon-tool {
+	background-image: url('../img/tool.svg');
+}
+
+.obsidian-icon-weapon {
+	background-image: url('../img/weapon.svg');
+}
+
+.obsidian-icon-gear {
+	background-image: url('../img/gear.svg');
+}
+
+.obsidian-icon-food {
+	background-image: url('../img/food.svg');
+}
+
+.obsidian-icon-loot {
+	background-image: url('../img/loot.svg');
+}
+
+.obsidian-icon-ammo {
+	background-image: url('../img/ammo.svg');
+}
+
+.obsidian-icon-scroll {
+	background-image: url('../img/scroll.svg');
+}
+
+.obsidian-icon-wand {
+	background-image: url('../img/wand.svg');
+}
+
+.obsidian-icon-rod {
+	background-image: url('../img/rod.svg');
+}
+
+.obsidian-icon-trinket {
+	background-image: url('../img/trinket.svg');
+}
+
+.obsidian-icon-effect {
+	background-image: url('../img/effect.svg');
+}
+
+.obsidian-icon-demolish {
+	background-image: url('../img/demolish.svg');
+}
+
+.obsidian-icon-vehicle {
+	background-image: url('../img/vehicle.svg');
+}
+
+.obsidian-icon-comp-attack {
+	background-image: url('../img/melee.svg');
+}
+
+.obsidian-icon-comp-resource {
+	background-image: url('../img/resource.svg');
+}
+
+.obsidian-icon-comp-damage {
+	background-image: url('../img/damage.svg');
+}
+
+.obsidian-icon-comp-save {
+	background-image: url('../img/save.svg');
+}
+
+.obsidian-icon-comp-scaling {
+	background-image: url('../img/scaling.svg');
+}
+
+.obsidian-icon-comp-target {
+	background-image: url('../img/target.svg');
+}
+
+.obsidian-icon-comp-consume {
+	background-image: url('../img/consume-resource.svg');
+}
+
+.obsidian-icon-comp-produce {
+	background-image: url('../img/produce-resource.svg');
+}
+
+.obsidian-icon-comp-spells {
+	background-image: url('../img/provides-spells.svg');
+}
+
+.obsidian-icon-comp-roll-mod {
+	background-image: url('../img/roll-modifier.svg');
+}
+
+.obsidian-icon-comp-filter {
+	background-image: url('../img/filter.svg');
+}
+
+.obsidian-icon-comp-item {
+	background-image: url('../img/create-item.svg');
+}
+
+.obsidian-icon-comp-bonus {
+	background-image: url('../img/bonus.svg');
+}
+
+.obsidian-icon-comp-duration {
+	background-image: url('../img/duration.svg');
+}
+
+.obsidian-icon-comp-expression {
+	background-image: url('../img/expression.svg');
+}
+
+.obsidian-icon-comp-applied {
+	background-image: url('../img/applied-effect.svg');
+}
+
+.obsidian-icon-comp-uses-ability {
+	background-image: url('../img/uses-ability.svg');
+}
+
+.obsidian-icon-comp-defense {
+	background-image: url('../img/defense.svg');
+}
+
+.obsidian-icon-comp-setter {
+	background-image: url('../img/set-score.svg');
+}
+
+.obsidian-icon-comp-description {
+	background-image: url('../img/description.svg');
+}
+
+.obsidian-icon-comp-check {
+	background-image: url('../img/check.svg');
+}
+
+.obsidian-icon-comp-roll-table {
+	background-image: url('../img/roll-table.svg');
+}
+
+.obsidian-icon-comp-multiplier {
+	background-image: url('../img/multiplier.svg');
+}
+
+.obsidian-icon-comp-condition {
+	background-image: url('../img/conditions/prone.svg');
+}
+
+.obsidian-icon-comp-extra-crit {
+	background-image: url('../img/extra-crit.svg');
+}
+
+.obsidian-icon-comp-extra-damage {
+	background-image: url('../img/extra-damage.svg');
+}
+
+.obsidian-icon-npc,
+.obsidian-icon-comp-summon,
+.obsidian-icon-entity-Actor {
+	background-image: url('../img/npc.svg');
+}
+
+.obsidian-icon-obsidian {
+	background-image: url('../img/obsidian.png');
+}
+
+.obsidian-icon-school-abj {
+	background-image: url('../img/magic/abjuration.png');
+}
+
+.obsidian-icon-school-con {
+	background-image: url('../img/magic/conjuration.png');
+}
+
+.obsidian-icon-school-div {
+	background-image: url('../img/magic/divination.png');
+}
+
+.obsidian-icon-school-enc {
+	background-image: url('../img/magic/enchantment.png');
+}
+
+.obsidian-icon-school-ill {
+	background-image: url('../img/magic/illusion.png');
+}
+
+.obsidian-icon-school-trs {
+	background-image: url('../img/magic/transmutation.png');
+}
+
+.obsidian-icon-school-evo {
+	background-image: url('../img/magic/evocation.png');
+}
+
+.obsidian-icon-school-nec {
+	background-image: url('../img/magic/necromancy.png');
+}
+
+.obsidian-icon-damage-reduction,
+.obsidian-icon-def-dr {
+	background-image: url('../img/damage-reduction.svg');
+}
+
+.obsidian-icon-entity-Compendium {
+	background-image: url('../img/compendium.svg');
+}
+
+.obsidian-icon-def-vuln {
+	background-image: url('../img/vulnerability.svg');
+}
+
+.obsidian-icon-def-res {
+	background-image: url('../img/resistance.svg');
+}
+
+.obsidian-icon-def-imm {
+	background-image: url('../img/immunity.svg');
+}
+
+.obsidian-icon-def-nonmagical {
+	background-image: url('../img/nonmagical.svg');
+}
+
+.obsidian-icon-d20-adv {
+	background-image: url('../img/d20-adv.svg');
+}
+
+.obsidian-icon-d20-dis {
+	background-image: url('../img/d20-dis.svg');
+}
+
+.obsidian-icon-condition-blinded {
+	background-image: url('../img/conditions/blinded.svg');
+}
+
+.obsidian-icon-condition-charmed {
+	background-image: url('../img/conditions/charmed.svg');
+}
+
+.obsidian-icon-condition-deafened {
+	background-image: url('../img/conditions/deafened.svg');
+}
+
+.obsidian-icon-condition-exhaust1 {
+	background-image: url('../img/conditions/exhaust1.svg');
+}
+
+.obsidian-icon-condition-exhaust2 {
+	background-image: url('../img/conditions/exhaust2.svg');
+}
+
+.obsidian-icon-condition-exhaust3 {
+	background-image: url('../img/conditions/exhaust3.svg');
+}
+
+.obsidian-icon-condition-exhaust4 {
+	background-image: url('../img/conditions/exhaust4.svg');
+}
+
+.obsidian-icon-condition-exhaust5 {
+	background-image: url('../img/conditions/exhaust5.svg');
+}
+
+.obsidian-icon-condition-exhaust6 {
+	background-image: url('../img/conditions/exhaust6.svg');
+}
+
+.obsidian-icon-condition-exhaustion {
+	background-image: url('../img/conditions/exhaustion.svg');
+}
+
+.obsidian-icon-condition-frightened {
+	background-image: url('../img/conditions/frightened.svg');
+}
+
+.obsidian-icon-condition-grappled {
+	background-image: url('../img/conditions/grappled.svg');
+}
+
+.obsidian-icon-condition-incapacitated {
+	background-image: url('../img/conditions/incapacitated.svg');
+}
+
+.obsidian-icon-condition-invisible {
+	background-image: url('../img/conditions/invisible.svg');
+}
+
+.obsidian-icon-condition-paralysed {
+	background-image: url('../img/conditions/paralysed.svg');
+}
+
+.obsidian-icon-condition-petrified {
+	background-image: url('../img/conditions/petrified.svg');
+}
+
+.obsidian-icon-condition-poisoned {
+	background-image: url('../img/conditions/poisoned.svg');
+}
+
+.obsidian-icon-condition-prone {
+	background-image: url('../img/conditions/prone.svg');
+}
+
+.obsidian-icon-condition-restrained {
+	background-image: url('../img/conditions/restrained.svg');
+}
+
+.obsidian-icon-condition-stunned {
+	background-image: url('../img/conditions/stunned.svg');
+}
+
+.obsidian-icon-condition-unconscious {
+	background-image: url('../img/conditions/unconscious.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-blinded {
+	background-image: url('../img/conditions/inactive/blinded.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-charmed {
+	background-image: url('../img/conditions/inactive/charmed.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-deafened {
+	background-image: url('../img/conditions/inactive/deafened.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-exhaust1 {
+	background-image: url('../img/conditions/inactive/exhaust1.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-exhaust2 {
+	background-image: url('../img/conditions/inactive/exhaust2.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-exhaust3 {
+	background-image: url('../img/conditions/inactive/exhaust3.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-exhaust4 {
+	background-image: url('../img/conditions/inactive/exhaust4.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-exhaust5 {
+	background-image: url('../img/conditions/inactive/exhaust5.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-exhaust6 {
+	background-image: url('../img/conditions/inactive/exhaust6.svg');
+}
+
+.obsidian-condition-pill-inactive.obsidian-icon-condition-exhaust1 {
+	background-image: url('../img/conditions/inactive/exhaust1.svg');
+}
+
+.obsidian-condition-pill-inactive.obsidian-icon-condition-exhaust2 {
+	background-image: url('../img/conditions/inactive/exhaust2.svg');
+}
+
+.obsidian-condition-pill-inactive.obsidian-icon-condition-exhaust3 {
+	background-image: url('../img/conditions/inactive/exhaust3.svg');
+}
+
+.obsidian-condition-pill-inactive.obsidian-icon-condition-exhaust4 {
+	background-image: url('../img/conditions/inactive/exhaust4.svg');
+}
+
+.obsidian-condition-pill-inactive.obsidian-icon-condition-exhaust5 {
+	background-image: url('../img/conditions/inactive/exhaust5.svg');
+}
+
+.obsidian-condition-pill-inactive.obsidian-icon-condition-exhaust6 {
+	background-image: url('../img/conditions/inactive/exhaust6.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-exhaustion {
+	background-image: url('../img/conditions/inactive/exhaustion.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-frightened {
+	background-image: url('../img/conditions/inactive/frightened.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-grappled {
+	background-image: url('../img/conditions/inactive/grappled.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-incapacitated {
+	background-image: url('../img/conditions/inactive/incapacitated.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-invisible {
+	background-image: url('../img/conditions/inactive/invisible.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-paralysed {
+	background-image: url('../img/conditions/inactive/paralysed.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-petrified {
+	background-image: url('../img/conditions/inactive/petrified.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-poisoned {
+	background-image: url('../img/conditions/inactive/poisoned.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-prone {
+	background-image: url('../img/conditions/inactive/prone.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-restrained {
+	background-image: url('../img/conditions/inactive/restrained.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-stunned {
+	background-image: url('../img/conditions/inactive/stunned.svg');
+}
+
+.obsidian-condition-pill-inactive .obsidian-icon-condition-unconscious {
+	background-image: url('../img/conditions/inactive/unconscious.svg');
+}
+
+.obsidian-svg-icon {
+	display: inline-flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	width: 16px;
+	height: 16px;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: var(--obs-font);
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.obsidian-css-icon-positive,
+.obsidian-svg-icon-positive {
+	color: var(--obs-bg);
+}
+
+.obsidian-css-icon-negative,
+.obsidian-svg-icon-negative {
+	color: var(--obs-text-regular);
+}
+
+.obsidian-css-icon {
+	width: 20px;
+	height: 20px;
+	font-weight: bold;
+	font-family: var(--obs-font);
+	font-size: 16px;
+	color: var(--obs-bg);
+	line-height: 20px;
+}
+
+.obsidian-css-icon-sm,
+.obsidian-svg-icon-sm {
+	width: 14px;
+	height: 14px;
+	font-size: 14px;
+	line-height: 14px;
+}
+
+.obsidian-css-icon-sm {
+	padding: 1px 0 0 2px;
+}
+
+.obsidian-css-icon-xs {
+	width: 12px;
+	height: 12px;
+	font-size: 11px;
+	line-height: 11px;
+	padding: 1px 0 0 1px;
+}
+
+sup .obsidian-css-icon {
+	width: 8px;
+	height: 8px;
+	font-size: 8px;
+	line-height: 8px;
+	padding: 0 0 0 1px;
+}
+
+.obsidian-css-icon-circle {
+	border-radius: 50%;
+}
+
+.obsidian-css-icon-circle.obsidian-css-icon-secondary {
+	background: var(--obs-text-secondary);
+}
+
+.obsidian-css-icon-circle.obsidian-css-icon-regular {
+	background: var(--obs-text-regular);
+}
+
+.obsidian-css-icon-circle.obsidian-css-icon-empty {
+	border: 1px solid var(--obs-text-regular);
+	color: var(--obs-text-regular);
+	font-weight: normal;
+}
