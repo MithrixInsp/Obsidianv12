@@ -1,0 +1,73 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.ConsumesResource'}}</legend>
+  <div class="obsidian-form-row">
+    <div>
+	    <label>
+		    {{localize 'OBSIDIAN.Resource'}}
+	      <select name="{{prefix}}.target" data-selector="{{prefix}}.target">
+	        {{#select target}}
+		        <option value="this-effect">{{localize 'OBSIDIAN.ConsumeTarget.this-effect'}}</option>
+		        <option value="this-item">{{localize 'OBSIDIAN.ConsumeTarget.this-item'}}</option>
+	          {{#if @root.actor}}
+		        <option value="item">{{localize 'OBSIDIAN.ConsumeTarget.item'}}</option>
+		        <option value="feat">{{localize 'OBSIDIAN.ConsumeTarget.feat'}}</option>
+	          {{/if}}
+		        <option value="spell">{{localize 'OBSIDIAN.ConsumeTarget.spell'}}</option>
+		        <option value="qty">{{localize 'OBSIDIAN.ConsumeTarget.qty'}}</option>
+	        {{/select}}
+	      </select>
+	    </label>
+	    {{#if @root.actor}}
+      <select name="{{prefix}}.itemID" data-selector-parent="{{prefix}}.target" data-show="item">
+	      {{selectOptions @root.itemsWithResources selected=itemID nameAttr='id' labelAttr='name'}}
+      </select>
+	    <select name="{{prefix}}.featID" data-selector-parent="{{prefix}}.target" data-show="feat">
+		    {{selectOptions @root.featsWithResources selected=featID nameAttr='id' labelAttr='name'}}
+	    </select>
+	    {{/if}}
+	    <select name="{{prefix}}.ref" data-selector-parent="{{prefix}}.target" data-hide="spell, qty">
+		    {{#select ref}}
+			    {{#each itemResourceComponents}}
+				    {{#if (or (not (eq ../target 'this-effect')) (eq parentEffect ../parentEffect))}}
+					    <option value="{{uuid}}">{{label}}</option>
+				    {{/if}}
+			    {{/each}}
+		    {{/select}}
+	    </select>
+	    <select name="{{prefix}}.slots" data-selector-parent="{{prefix}}.target" data-show="spell"
+	            data-selector="{{prefix}}.slots">
+		    {{selectOptions @root.ObsidianLabels.ConsumeSlots selected=slots}}
+	    </select>
+	    {{> select-class parent='slots' show='class'}}
+    </div>
+  </div>
+	<div class="obsidian-form-row obsidian-stacked-row" data-selector-parent="{{prefix}}.target"
+	     data-hide="spell">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.Amount'}}
+				<select name="{{prefix}}.calc" data-selector="{{prefix}}.calc">
+					{{selectOptions @root.ObsidianLabels.ConsumeCalc selected=calc}}
+				</select>
+			</label>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+			       name="{{prefix}}.fixed" value="{{fixed}}" data-selector-parent="{{prefix}}.calc"
+			       data-show="fixed">
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row" data-selector-parent="{{prefix}}.target"
+	     data-show="spell">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.MinSlotLevel'}}
+				<select name="{{prefix}}.slot" data-dtype="Number">
+					{{#select slot}}
+						{{#each (range 1 9)}}
+							<option value="{{this}}">{{spell-level-format this}}</option>
+						{{/each}}
+					{{/select}}
+				</select>
+			</label>
+		</div>
+	</div>
+</fieldset>

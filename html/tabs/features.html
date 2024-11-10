@@ -1,0 +1,18 @@
+<div class="obsidian-tab-container tab" data-group="main-tabs" data-tab="features">
+	<ul class="obsidian-tab-bar" data-group="feats-tabs">
+		<li class="obsidian-sub-tab item" data-tab="class">{{localize 'OBSIDIAN.ClassFeatures'}}</li>
+		<li class="obsidian-sub-tab item" data-tab="race">{{localize 'OBSIDIAN.RacialTraits'}}</li>
+		<li class="obsidian-sub-tab item" data-tab="feat">{{localize 'OBSIDIAN.Feats'}}</li>
+		<li class="obsidian-sub-tab item" data-tab="other">{{localize 'OBSIDIAN.Other'}}</li>
+		<li class="obsidian-sub-tab item" data-tab="item">{{localize 'OBSIDIAN.Special'}}</li>
+	</ul>
+	{{> modules/obsidian/html/tabs/sub-features.html group='class' active='passive'
+			title='OBSIDIAN.ClassFeatures'}}
+	{{> modules/obsidian/html/tabs/sub-features.html group='race' active='passive'
+			title='OBSIDIAN.RacialTraits'}}
+	{{> modules/obsidian/html/tabs/sub-features.html group='feat' active='passive'
+			title='OBSIDIAN.Feats'}}
+	{{> modules/obsidian/html/tabs/sub-features.html group='other' active='passive'
+			title='OBSIDIAN.Other'}}
+	{{> modules/obsidian/html/tabs/sub-features.html group='item' title='OBSIDIAN.Special'}}
+</div>

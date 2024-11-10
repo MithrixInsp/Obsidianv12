@@ -1,0 +1,19 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.HP'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<label>
+					<input type="text" name="system.attributes.hp.max" value="{{base.system.attributes.hp.max}}"
+					       class="obsidian-input-num-md" data-dtype="Number">
+					<span>{{localize 'OBSIDIAN.MaxHP'}}</span>
+				</label>
+				<span class="obsidian-binary-operator">&plus;</span>
+				<label>
+					<input type="text" name="system.attributes.hp.tempmax" data-dtype="Number"
+					       value="{{system.attributes.hp.tempmax}}" class="obsidian-input-num-md">
+				</label>
+			</div>
+		</div>
+	</fieldset>
+</form>

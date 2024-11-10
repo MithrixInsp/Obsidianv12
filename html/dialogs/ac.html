@@ -1,0 +1,37 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.AC'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<input type="text" name="flags.obsidian.attributes.ac.base" data-dtype="Number"
+				       value="{{actor.flags.obsidian.attributes.ac.base}}" placeholder="10"
+				       class="obsidian-input-num-sm">
+				<span class="obsidian-binary-operator">&plus;</span>
+				<select name="flags.obsidian.attributes.ac.ability1">
+					{{selectOptions ObsidianLabels.Ability
+					                selected=actor.flags.obsidian.attributes.ac.ability1}}
+				</select>
+				<span class="obsidian-binary-operator">&plus;</span>
+				<select name="flags.obsidian.attributes.ac.ability2">
+					{{selectOptions ObsidianLabels.Ability blank='—'
+					                selected=actor.flags.obsidian.attributes.ac.ability2}}
+				</select>
+				<label>
+					<input type="text" name="flags.obsidian.attributes.ac.override"
+					       class="obsidian-input-num-sm"
+					       value="{{actor.flags.obsidian.attributes.ac.override}}">
+					<span>{{localize 'OBSIDIAN.Override'}}</span>
+				</label>
+			</div>
+		</div>
+		{{#if dialogOptions.npc}}
+		<div class="obsidian-form-row obsidian-stacked-row">
+			<div>
+				<input type="text" name="flags.obsidian.attributes.ac.note" class="obsidian-input-max"
+				       placeholder="{{localize 'OBSIDIAN.Note'}}"
+				       value="{{actor.flags.obsidian.attributes.ac.note}}">
+			</div>
+		</div>
+		{{/if}}
+	</fieldset>
+</form>

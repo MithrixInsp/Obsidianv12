@@ -1,0 +1,15 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off" onsubmit="event.preventDefault();">
+	<div class="form-group">
+		<label>{{localize 'Name'}}</label>
+		<input type="text" name="name" placeholder="{{localize 'DOCUMENT.Create' type=upper}}"
+		       style="margin-bottom: 4px;">
+	</div>
+	<div class="form-group">
+		<label>{{localize 'Type'}}</label>
+		<select name="type">
+			{{#each types}}
+				<option value="{{this}}">{{obs-i18n 'ItemType' this}}</option>
+			{{/each}}
+		</select>
+	</div>
+</form>

@@ -1,0 +1,70 @@
+{{#*inline 'actor'}}
+	<div class="obsidian-actor-grid-item {{#if selected}}obsidian-actor-grid-item-active{{/if}}"
+	     data-actor-id="{{id}}">
+		<div class="obsidian-actor-grid-icon">
+			<img src="{{img}}" alt="{{name}}">
+		</div>
+		<div class="obsidian-actor-grid-name">{{name}}</div>
+	</div>
+{{/inline}}
+
+<form class="obsidian" autocomplete="off" onsubmit="event.preventDefault();">
+	<div class="obsidian-form-row">
+		{{#if remainder}}
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.Remainder'}}
+				<select name="remainder">
+					{{#select remainder}}
+						<option value="random">{{localize 'OBSIDIAN.AwardRemainder.random'}}</option>
+						<option value="none">{{localize 'OBSIDIAN.AwardRemainder.none'}}</option>
+					{{/select}}
+				</select>
+			</label>
+		</div>
+		{{/if}}
+		<button type="button" class="obsidian-btn-outline">
+			<i class="fas fa-exchange-alt"></i>
+			{{localize 'OBSIDIAN.SplitAward'}}
+		</button>
+	</div>
+	{{#if (not-empty actors.primary)}}
+	<fieldset style="margin-top: 10px;">
+		<legend>{{localize 'OBSIDIAN.PlayerCharacters'}}</legend>
+		<div class="obsidian-actor-grid">
+			{{#each actors.primary}}
+				{{#if name}}
+					{{> actor}}
+				{{/if}}
+			{{/each}}
+		</div>
+	</fieldset>
+	{{/if}}
+	{{#if (not-empty actors.character)}}
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.OtherPlayerCharacters'}}</legend>
+		<div class="obsidian-actor-grid">
+			{{#each actors.character}}
+				{{#if name}}
+					{{> actor}}
+				{{/if}}
+			{{/each}}
+		</div>
+	</fieldset>
+	{{/if}}
+	{{#if (not-empty actors.npc)}}
+	<details>
+		<summary>
+			<h3>{{localize 'OBSIDIAN.NonPlayerCharacters'}}</h3>
+			<i class="fas fa-angle-down"></i>
+		</summary>
+		<div class="obsidian-actor-grid" style="margin-top: 8px;">
+			{{#each actors.npc}}
+				{{#if name}}
+					{{> actor}}
+				{{/if}}
+			{{/each}}
+		</div>
+	</details>
+	{{/if}}
+</form>

@@ -1,0 +1,38 @@
+<div class="obsidian-form-row{{#if stacked}} obsidian-stacked-row{{/if}}">
+	<div>
+		{{#unless damage}}
+		<select name="{{prefix}}.mode">
+			{{selectOptions @root.ObsidianLabels.Roll selected=mode}}
+		</select>
+		{{/unless}}
+		<label style="margin-right: 10px;">
+			{{localize 'OBSIDIAN.Minimum'}}
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="1"
+			       name="{{prefix}}.min" value="{{min}}">
+		</label>
+		<label style="margin-right: 20px;">
+			{{localize 'OBSIDIAN.RerollLessThan'}}
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="1"
+			       name="{{prefix}}.reroll" value="{{reroll}}">
+		</label>
+		{{#unless damage}}
+		<label>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+			       name="{{prefix}}.ndice" value="{{ndice}}">
+			<span>{{localize 'OBSIDIAN.ExtraDice'}}</span>
+		</label>
+	</div>
+</div>
+<div class="obsidian-form-row obsidian-stacked-row">
+	<div>
+		{{#unless attack}}
+		<label>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="20"
+			       name="{{prefix}}.mcrit" value="{{mcrit}}">
+			<span>{{localize 'OBSIDIAN.CritRange'}}</span>
+		</label>
+		{{/unless}}
+		{{/unless}}
+		{{fancy-checkbox prefix 'max' content='OBSIDIAN.MaxRoll' checked=max}}
+	</div>
+</div>

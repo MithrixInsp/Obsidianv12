@@ -1,0 +1,52 @@
+<form class="obsidian" autocomplete="off">
+	<label>
+		<input name="flags.obsidian.details.gender" type="text" class="obsidian-input-lg"
+		       placeholder="{{localize 'OBSIDIAN.Gender'}}"
+		       value="{{actor.flags.obsidian.details.gender}}">
+	</label>
+	<label>
+		<input name="system.details.race" type="text" value="{{system.details.race}}"
+		       placeholder="{{localize 'OBSIDIAN.Race'}}" class="obsidian-input-lg">
+	</label>
+	<label>
+		<input name="flags.obsidian.details.subrace" type="text" class="obsidian-input-lg"
+		       placeholder="{{localize 'OBSIDIAN.Subrace'}}"
+		       value="{{actor.flags.obsidian.details.subrace}}">
+	</label>
+	<fieldset>
+		<legend>
+			{{localize 'OBSIDIAN.Classes'}}
+			<button type="button" class="obsidian-btn-positive obsidian-btn-sm obsidian-add-class">
+				{{localize 'OBSIDIAN.Add'}}
+			</button>
+		</legend>
+		{{#each actor.obsidian.classes}}
+			<div class="obsidian-class-row" data-item-id="{{_id}}">
+				<div class="obsidian-class-col-edit">
+					<a class="obsidian-edit" title="{{localize 'OBSIDIAN.EditClass'}}">
+						<i class="fas fa-cog"></i>
+					</a>
+				</div>
+				<div class="obsidian-class-col-name">{{obsidian.label}}</div>
+				<div class="obsidian-class-col-subclass {{#if subclass}}obsidian-class-col-subclass-item{{/if}}">
+					{{#if subclass}}
+						{{subclass.name}}
+					{{else}}
+						<input placeholder="{{localize 'OBSIDIAN.Subclass'}}" type="text"
+						       value="{{system.subclass}}" name="items.{{idx}}.system.subclass">
+					{{/if}}
+				</div>
+				<div class="obsidian-class-col-level">
+					<input type="text" class="obsidian-input-num-sm" data-dtype="Number"
+					       value="{{system.levels}}" name="items.{{idx}}.system.levels">
+				</div>
+				<div class="obsidian-class-col-hd">{{system.hitDice}}</div>
+				<div class="obsidian-class-col-rm">
+					<button type="button" class="obsidian-btn-negative obsidian-rm-class obsidian-btn-sm">
+						{{localize 'OBSIDIAN.Remove'}}
+					</button>
+				</div>
+			</div>
+		{{/each}}
+	</fieldset>
+</form>

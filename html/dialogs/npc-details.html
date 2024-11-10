@@ -1,0 +1,57 @@
+<form class="obsidian" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.Creature'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<label>
+					{{localize 'OBSIDIAN.SizeTitle'}}
+					<select name="system.traits.size">
+						{{selectOptions config.actorSizes selected=system.traits.size}}
+					</select>
+				</label>
+				<label>
+					{{localize 'OBSIDIAN.Type'}}
+					<select name="system.details.type.value">
+						{{selectOptions ObsidianLabels.CreatureType selected=system.details.type.value}}
+					</select>
+				</label>
+				<label>
+					{{localize 'OBSIDIAN.AlignmentTitle'}}
+					<select name="flags.obsidian.details.alignment1">
+						{{selectOptions ObsidianLabels.AlignmentPt1 blank='—'
+						                selected=actor.flags.obsidian.details.alignment1}}
+					</select>
+					<select name="flags.obsidian.details.alignment2">
+						{{selectOptions ObsidianLabels.AlignmentPt2 blank='—'
+						                selected=actor.flags.obsidian.details.alignment2}}
+					</select>
+				</label>
+			</div>
+		</div>
+		<div class="obsidian-form-row obsidian-stacked-row">
+			<div>
+				{{fancy-checkbox 'flags.obsidian.details.swarm' content='DND5E.CreatureSwarm'
+				                 selector='swarm' checked=actor.flags.obsidian.details.swarm}}
+				<select name="system.details.type.swarm" style="margin-left: 10px;"
+				        data-selector-parent="swarm">
+					{{selectOptions config.actorSizes selected=system.details.type.swarm blank='—'}}
+				</select>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.Tags'}}</legend>
+		<div class="obsidian-checkbox-grid">
+			{{#each ObsidianConfig.CREATURE_TAGS}}
+				{{fancy-checkbox 'flags.obsidian.details.tags' this
+				                 content=(add 'OBSIDIAN.CreatureTag.' this)
+				                 checked=(lookup ../actor.flags.obsidian.details.tags this)}}
+			{{/each}}
+		</div>
+		<div class="obsidian-form-row">
+			<input type="text" class="obsidian-input-max" placeholder="{{localize 'OBSIDIAN.Custom'}}"
+			       name="system.details.type.subtype"
+			       value="{{system.details.type.subtype}}">
+		</div>
+	</fieldset>
+</form>

@@ -1,0 +1,57 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.AttackTitle'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<select name="{{prefix}}.attack" data-selector="{{prefix}}.attack">
+				{{selectOptions @root.ObsidianLabels.AttackType selected=attack}}
+			</select>
+			<select name="{{prefix}}.category">
+				{{selectOptions @root.ObsidianLabels.AttackCat selected=category}}
+			</select>
+			<select name="{{prefix}}.ability">
+				{{selectOptions @root.ObsidianLabels.AbilitySpell selected=ability blank='—'}}
+			</select>
+			<span class="obsidian-binary-operator">&plus;</span>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+			       name="{{prefix}}.bonus" value="{{bonus}}">
+			<label>
+				<input type="text" class="obsidian-input-num-sm" name="{{prefix}}.crit" value="{{crit}}"
+				       placeholder="20" data-dtype="Number">
+				<span>{{localize 'OBSIDIAN.Crit'}}</span>
+			</label>
+			{{fancy-checkbox prefix 'proficient' content='OBSIDIAN.Proficiency.prof' checked=proficient}}
+		</div>
+	</div>
+	{{#unless @root.isCharacter}}
+	<div class="obsidian-form-row obsidian-stacked-row">
+		{{#unless (eq @root.item.type 'weapon')}}
+		<label data-selector-parent="{{prefix}}.attack" data-show="melee">
+			{{localize 'OBSIDIAN.Reach'}}
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" name="{{prefix}}.reach"
+			       value="{{reach}}" placeholder="5">
+		</label>
+		<label data-selector-parent="{{prefix}}.attack" data-show="ranged">
+			{{localize 'OBSIDIAN.Range'}}
+			<input type="text" class="obsidian-input-num-md" data-dtype="Number" name="{{prefix}}.range1"
+			       value="{{range1}}">
+		</label>
+		<span class="obsidian-binary-operator" data-selector-parent="{{prefix}}.attack"
+		      data-show="ranged">
+			&sol;
+		</span>
+		<input type="text" class="obsidian-input-num-md" data-dtype="Number" name="{{prefix}}.range2"
+		       value="{{range2}}" data-show="ranged" data-selector-parent="{{prefix}}.attack">
+		{{/unless}}
+		<input type="text" class="obsidian-input-lg" name="{{prefix}}.target" value="{{target}}"
+		       style="flex: 1; max-width: none;" placeholder="{{localize 'OBSIDIAN.TargetTitle'}}">
+	</div>
+	{{/unless}}
+	{{#if extraBonus}}
+		{{> modules/obsidian/html/components/effects/bonus-body.html extraBonus stacked=true
+				prefix=(add prefix '.extraBonus') attack=true}}
+	{{/if}}
+	{{#if rollMod}}
+		{{> modules/obsidian/html/components/effects/roll-mod-body.html rollMod stacked=true
+				prefix=(add prefix '.rollMod') attack=true}}
+	{{/if}}
+</fieldset>

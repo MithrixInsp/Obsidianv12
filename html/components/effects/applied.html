@@ -1,0 +1,23 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.AppliedEffect'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.ActivatedBy'}}
+				<select name="{{prefix}}.ref">
+					{{#select ref}}
+						{{#each @root.item.flags.obsidian.effects}}
+							<option value="{{uuid}}">{{effect-label this}}</option>
+						{{/each}}
+					{{/select}}
+				</select>
+			</label>
+			<label>
+				{{localize 'OBSIDIAN.AppliedOnTitle'}}
+				<select name="{{prefix}}.on">
+					{{selectOptions @root.ObsidianLabels.AppliedOn selected=on}}
+				</select>
+			</label>
+		</div>
+	</div>
+</fieldset>

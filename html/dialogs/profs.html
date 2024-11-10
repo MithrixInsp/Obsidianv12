@@ -1,0 +1,44 @@
+<form class="obsidian" autocomplete="off">
+	{{#unless dialogOptions.npc}}
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.Armour'}}</legend>
+		<div class="obsidian-checkbox-grid">
+			{{#each ObsidianConfig.PROF_ARMOUR}}
+				{{fancy-checkbox 'armorProf' this content=(add 'OBSIDIAN.ArmourProf.' this)
+				                 checked=(lookup ../profs.armorProf this)}}
+			{{/each}}
+		</div>
+		<div class="obsidian-form-row">
+			<input type="text" class="obsidian-input-max" placeholder="{{localize 'OBSIDIAN.Custom'}}"
+			       name="system.traits.armorProf.custom" value="{{system.traits.armorProf.custom}}"
+			       data-flag="armour">
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.Weapons'}}</legend>
+		<div class="obsidian-checkbox-grid">
+			{{#each weapons}}
+				{{fancy-checkbox 'weaponProf' key label=label checked=(lookup ../profs.weaponProf key)}}
+			{{/each}}
+		</div>
+		<div class="obsidian-form-row">
+			<input type="text" class="obsidian-input-max" placeholder="{{localize 'OBSIDIAN.Custom'}}"
+			       name="system.traits.weaponProf.custom" value="{{system.traits.weaponProf.custom}}"
+			       data-flag="weapons">
+		</div>
+	</fieldset>
+	{{/unless}}
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.Languages'}}</legend>
+		<div class="obsidian-checkbox-grid">
+			{{#each langs}}
+				{{fancy-checkbox 'languages' key label=label checked=(lookup ../profs.languages key)}}
+			{{/each}}
+		</div>
+		<div class="obsidian-form-row">
+			<input type="text" class="obsidian-input-max" placeholder="{{localize 'OBSIDIAN.Custom'}}"
+			       name="system.traits.languages.custom" value="{{system.traits.languages.custom}}"
+			       data-flag="langs">
+		</div>
+	</fieldset>
+</form>

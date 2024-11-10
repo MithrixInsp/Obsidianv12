@@ -1,0 +1,11 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.ConditionTitle'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<select name="{{prefix}}.condition">
+				{{selectOptions @root.ObsidianLabels.ConditionExh selected=condition}}
+			</select>
+			{{fancy-checkbox prefix 'temp' content='OBSIDIAN.ForDuration' checked=temp}}
+		</div>
+	</div>
+</fieldset>

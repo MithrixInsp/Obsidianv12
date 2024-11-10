@@ -1,0 +1,68 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.DamageHeal'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.Calculation'}}
+				<select name="{{prefix}}.calc" data-selector="{{prefix}}.calc">
+					{{selectOptions @root.ObsidianLabels.DamageCalc selected=calc}}
+				</select>
+			</label>
+			<label>
+				<input type="text" class="obsidian-input-num-sm" name="{{prefix}}.ncrit" value="{{ncrit}}"
+				       data-dtype="Number">
+				<span>{{localize 'OBSIDIAN.CritDice'}}</span>
+			</label>
+			{{fancy-checkbox prefix 'versatile' content='OBSIDIAN.Versatile' checked=versatile}}
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+			       name="{{prefix}}.ndice" value="{{ndice}}" data-selector-parent="{{prefix}}.calc"
+			       data-show="formula">
+			<select name="{{prefix}}.die" data-dtype="Number" data-selector-parent="{{prefix}}.calc"
+			        data-show="formula">
+				{{select-dice 4 12 selected=die}}
+			</select>
+			<span class="obsidian-binary-operator" data-selector-parent="{{prefix}}.calc"
+			      data-show="formula">&plus;</span>
+			<select name="{{prefix}}.ability">
+				{{selectOptions @root.ObsidianLabels.AbilitySpell selected=ability blank='—'}}
+			</select>
+			<span class="obsidian-binary-operator">&plus;</span>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+			       name="{{prefix}}.bonus" value="{{bonus}}">
+			<select name="{{prefix}}.damage">
+				{{selectOptions @root.ObsidianLabels.Damage selected=damage blank='—'}}
+			</select>
+		</div>
+	</div>
+	{{#if extraBonus}}
+		{{> modules/obsidian/html/components/effects/bonus-body.html extraBonus stacked=true damage=true
+				prefix=(add prefix '.extraBonus')}}
+	{{/if}}
+	{{#if rollMod}}
+		{{> modules/obsidian/html/components/effects/roll-mod-body.html rollMod stacked=true
+				damage=true prefix=(add prefix '.rollMod')}}
+	{{/if}}
+	{{#if extraCrit}}
+	{{#with extraCrit}}
+	<fieldset class="obsidian-sub-group">
+		<legend>{{localize 'OBSIDIAN.ExtraCrit'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+				       name="{{../prefix}}.extraCrit.ndice" value="{{ndice}}">
+				<select name="{{../prefix}}.extraCrit.die" data-dtype="Number">
+					{{select-dice 4 12 selected=die}}
+				</select>
+				<span class="obsidian-binary-operator">&plus;</span>
+				<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+				       name="{{../prefix}}.extraCrit.bonus" value="{{bonus}}">
+			</div>
+		</div>
+	</fieldset>
+	{{/with}}
+	{{/if}}
+</fieldset>

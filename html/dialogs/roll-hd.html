@@ -1,0 +1,23 @@
+<form class="obsidian" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.RollTitle'}}</legend>
+		{{#each actor.flags.obsidian.attributes.hd as |hd die|}}
+			{{#if (or (gt hd.max 0) (defined-and-not-empty hd.override))}}
+			<div class="obsidian-form-row">
+				<div style="display: flex; align-items: center;">
+					<label>
+						<input type="text" class="obsidian-input-num-sm" placeholder="0" name="hd.{{die}}">
+						<span style="font-weight: normal; text-transform: none; font-size: 14px;">{{die}}</span>
+					</label>
+				</div>
+			</div>
+			{{/if}}
+		{{/each}}
+	</fieldset>
+	<div class="obsidian-btn-row" style="margin-top: 10px;">
+		<button type="button" class="obsidian-btn-outline">
+			<i class="fas fa-dice-d20"></i>
+			{{localize 'OBSIDIAN.RollTitle'}}
+		</button>
+	</div>
+</form>

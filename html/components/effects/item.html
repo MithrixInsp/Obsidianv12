@@ -1,0 +1,25 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.CreateItem'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<label>
+				<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="1"
+				       name="{{prefix}}.amount" value="{{amount}}">
+				<span>{{localize 'OBSIDIAN.Amount'}}</span>
+			</label>
+		</div>
+	</div>
+	<div class="obsidian-item-drop obsidian-create-item-drop{{#unless itemData}} obsidian-empty{{/unless}}">
+		{{#if itemData}}
+			<div class="obsidian-item-drop-pill" data-id="{{itemData._id}}">
+				<div class="obsidian-item-drop-pill-header">
+					<img alt="{{obs-i18n 'Item'}}" src="modules/obsidian/img/create-item.svg">
+				</div>
+				<div class="obsidian-item-drop-pill-body obsidian-create-item-body">{{itemData.name}}</div>
+				<div class="obsidian-item-drop-pill-rm obsidian-rm-create-item">&times;</div>
+			</div>
+		{{else}}
+			<div class="obsidian-item-drop-empty">{{localize 'OBSIDIAN.DropItemHere'}}</div>
+		{{/if}}
+	</div>
+</fieldset>

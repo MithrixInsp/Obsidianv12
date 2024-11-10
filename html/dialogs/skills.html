@@ -1,0 +1,52 @@
+<form class="obsidian" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.Skills'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<label>
+					{{localize 'OBSIDIAN.RollTitle'}}
+					<select name="flags.obsidian.skills.roll">
+						{{selectOptions ObsidianLabels.Roll selected=actor.flags.obsidian.skills.roll}}
+					</select>
+				</label>
+				<label>
+					<input type="text" placeholder="0" name="flags.obsidian.skills.bonus" data-dtype="Number"
+					       value="{{actor.flags.obsidian.skills.bonus}}" class="obsidian-input-num-sm">
+					<span>{{localize 'OBSIDIAN.Bonus'}}</span>
+				</label>
+				{{fancy-checkbox 'flags.obsidian.skills.joat' content='OBSIDIAN.JackOfAllTrades'
+				                 checked=actor.flags.obsidian.skills.joat}}
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>
+			{{localize 'OBSIDIAN.CustomSkills'}}
+			<button type="button" class="obsidian-btn-positive obsidian-btn-sm obsidian-add-skill">
+				{{localize 'OBSIDIAN.Add'}}
+			</button>
+		</legend>
+		{{#each custom}}
+			<input type="hidden" name="flags.obsidian.skills.{{key}}.custom" value="true"
+			       data-dtype="Boolean">
+			<div class="obsidian-form-row" data-item-id="{{key}}">
+				<div>
+					<select name="flags.obsidian.skills.{{key}}.value" data-dtype="Number">
+						{{selectOptions @root.ObsidianLabels.Proficiency selected=value}}
+					</select>
+					<select name="flags.obsidian.skills.{{key}}.ability" style="text-transform: uppercase;">
+						{{selectOptions @root.ObsidianLabels.AbilityAbbr selected=(lc ability)}}
+					</select>
+					<input type="text" placeholder="Skill" value="{{label}}"
+					       name="flags.obsidian.skills.{{key}}.label">
+					<span class="obsidian-binary-operator">&plus;</span>
+					<input class="obsidian-input-num-sm" type="text" placeholder="0" value="{{bonus}}"
+					       data-dtype="Number" name="flags.obsidian.skills.{{key}}.bonus">
+				</div>
+				<button type="button" class="obsidian-btn-negative obsidian-btn-sm obsidian-rm-skill">
+					{{localize 'OBSIDIAN.Remove'}}
+				</button>
+			</div>
+		{{/each}}
+	</fieldset>
+</form>

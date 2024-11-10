@@ -1,0 +1,32 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.Initiative'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<select name="flags.obsidian.attributes.init.ability">
+					{{selectOptions ObsidianLabels.Ability
+					                selected=actor.flags.obsidian.attributes.init.ability}}
+				</select>
+				<span class="obsidian-binary-operator">&plus;</span>
+				<input type="text" name="system.attributes.init.value" value="{{system.attributes.init.value}}"
+				       class="obsidian-input-num-sm" placeholder="0" data-dtype="Number">
+				<label>
+					<input type="text" name="flags.obsidian.attributes.init.override"
+					       class="obsidian-input-num-sm"
+					       value="{{actor.flags.obsidian.attributes.init.override}}">
+					<span>{{localize 'OBSIDIAN.Override'}}</span>
+				</label>
+			</div>
+		</div>
+		<div class="obsidian-form-row obsidian-stacked-row">
+			<div>
+				<label>
+					{{localize 'OBSIDIAN.RollTitle'}}
+					<select name="flags.obsidian.attributes.init.roll">
+						{{selectOptions ObsidianLabels.Roll selected=actor.flags.obsidian.attributes.init.roll}}
+					</select>
+				</label>
+			</div>
+		</div>
+	</fieldset>
+</form>

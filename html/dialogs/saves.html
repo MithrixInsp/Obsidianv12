@@ -1,0 +1,17 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.SavesUC'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<select name="flags.obsidian.saves.roll">
+					{{selectOptions ObsidianLabels.Roll selected=actor.flags.obsidian.saves.roll}}
+				</select>
+				<label>
+					<input type="text" class="obsidian-input-num-sm" data-dtype="Number"
+					       name="flags.obsidian.saves.bonus" value="{{actor.flags.obsidian.saves.bonus}}">
+					<span>{{localize 'OBSIDIAN.Bonus'}}</span>
+				</label>
+			</div>
+		</div>
+	</fieldset>
+</form>

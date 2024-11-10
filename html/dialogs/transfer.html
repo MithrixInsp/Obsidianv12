@@ -1,0 +1,19 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off" onsubmit="event.preventDefault();">
+	<div class="obsidian-form-row" style="margin-bottom: 10px;">
+		<div>
+			<label class="obsidian-spin-buttons">
+				<button type="button" class="obsidian-btn-outline obsidian-btn-compact obsidian-number-decrement">
+					<i class="fa-solid fa-chevron-left"></i>
+				</button>
+				<input type="text" class="obsidian-input-num-md" data-dtype="Number" placeholder="0"
+				       value="1">
+				<button type="button" class="obsidian-btn-outline obsidian-btn-compact obsidian-number-increment">
+					<i class="fa-solid fa-chevron-right"></i>
+				</button>
+			</label>
+			<span class="obsidian-binary-operator">&sol;</span>
+			<span class="obsidian-feature-max">{{max}}</span>
+			<span style="font-size: 13px;">{{name}}</span>
+		</div>
+	</div>
+</form>

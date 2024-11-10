@@ -1,0 +1,27 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	<fieldset>
+		<legend>{{obs-i18n 'Ability' saveID}}</legend>
+		<div class="obsidian-form-row">
+			<label>
+				{{localize 'OBSIDIAN.RollTitle'}}
+				<select name="flags.obsidian.saves.{{saveID}}.roll">
+					{{selectOptions ObsidianLabels.Roll selected=save.roll}}
+				</select>
+			</label>
+		</div>
+		<div class="obsidian-form-row obsidian-stacked-row">
+			<div class="obsidian-flex">
+				<label>
+					<input placeholder="0" data-dtype="Number" name="flags.obsidian.saves.{{saveID}}.bonus"
+					       class="obsidian-input-num-sm" type="text" value="{{save.bonus}}">
+					<span>{{localize 'OBSIDIAN.Bonus'}}</span>
+				</label>
+				<label>
+					<input type="text" class="obsidian-input-num-sm" value="{{save.override}}"
+					       name="flags.obsidian.saves.{{saveID}}.override">
+					<span>{{localize 'OBSIDIAN.Override'}}</span>
+				</label>
+			</div>
+		</div>
+	</fieldset>
+</form>

@@ -1,0 +1,31 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off" onsubmit="event.preventDefault();">
+	{{#unless isObject}}
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.Features'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<label>
+					<input type="text" class="obsidian-input-num-sm" data-dtype="Number"
+					       name="system.resources.legact.max" placeholder="0"
+					       value="{{system.resources.legact.max}}">
+					<span>{{localize 'OBSIDIAN.LegendaryActions'}}</span>
+				</label>
+			</div>
+		</div>
+	</fieldset>
+	{{/unless}}
+	<div class="form-group">
+		<label>{{localize 'OBSIDIAN.AddFeature'}}</label>
+		<select>
+			{{#each ObsidianConfig.NPC_FEATURES}}
+				<option value="{{this}}">{{obs-i18n 'Feat' this}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<div class="obsidian-btn-row" style="margin-top: 8px;">
+		<button type="button" class="obsidian-btn-outline">
+			<i class="fas fa-check"></i>
+			{{localize 'OBSIDIAN.Add'}}
+		</button>
+	</div>
+</form>

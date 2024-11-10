@@ -1,0 +1,83 @@
+{{#unless (or attack damage)}}
+<div class="obsidian-form-row">
+	<div>
+		<input type="text" name="{{prefix}}.name" value="{{name}}"
+		       placeholder="{{localize 'OBSIDIAN.RollName'}}" style="margin-right: 20px;">
+		<label>
+			{{localize 'OBSIDIAN.Method'}}
+			<select name="{{prefix}}.method" data-selector="{{prefix}}.method">
+				{{selectOptions @root.ObsidianLabels.BonusMethod selected=method}}
+			</select>
+		</label>
+		{{fancy-checkbox prefix 'dmg.enabled' content='OBSIDIAN.DamageTitle' checked=dmg.enabled
+		                 selector=(add prefix '.dmg.enabled')}}
+		<select name="{{prefix}}.dmg.type" data-selector-parent="{{prefix}}.dmg.enabled"
+		        style="margin-left: 10px;">
+			{{selectOptions @root.ObsidianLabels.DamageWpn selected=dmg.type}}
+		</select>
+	</div>
+</div>
+{{/unless}}
+<div class="obsidian-form-row obsidian-stacked-row"
+     {{#unless (or attack damage)}}data-selector-parent="{{prefix}}.method" data-show="dice"{{/unless}}>
+	<div>
+		{{#if attack}}
+			<span class="obsidian-binary-operator">&plus;</span>
+		{{/if}}
+		{{#unless damage}}
+		<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+		       name="{{prefix}}.ndice" value="{{ndice}}">
+		<select name="{{prefix}}.die" data-dtype="Number">
+			{{select-dice 4 12 selected=die}}
+		</select>
+		{{/unless}}
+		{{#unless (or attack damage)}}
+		<span class="obsidian-binary-operator">&plus;</span>
+		<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+		       name="{{prefix}}.bonus" value="{{bonus}}">
+		{{/unless}}
+		{{#if damage}}
+		<span class="obsidian-binary-operator">&plus;</span>
+		<select name="{{prefix}}.prof">
+			{{selectOptions @root.ObsidianLabels.PlusProf selected=prof blank='—'}}
+		</select>
+		{{/if}}
+{{#unless (or attack damage)}}
+	</div>
+</div>
+<input type="hidden" name="{{prefix}}.formula" data-dtype="Boolean" value="true">
+<div class="obsidian-form-row obsidian-stacked-row" data-selector-parent="{{prefix}}.method"
+     data-show="formula">
+	<div>
+		{{#if (or attack damage)}}
+			<span class="obsidian-binary-operator">&plus;</span>
+		{{/if}}
+		<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+		       name="{{prefix}}.constant" value="{{constant}}">
+		<select class="obsidian-select-operator" name="{{prefix}}.operator">
+			{{#select operator}}
+				<option value="plus">&plus;</option>
+				<option value="mult">&times;</option>
+			{{/select}}
+		</select>
+		<select name="{{prefix}}.value" data-selector="{{prefix}}.value">
+			{{selectOptions @root.ObsidianLabels.BonusValue selected=value blank='—'}}
+		</select>
+		<select name="{{prefix}}.ability" data-selector-parent="{{prefix}}.value" data-show="abl">
+			{{selectOptions @root.ObsidianLabels.AbilitySpell selected=ability}}
+		</select>
+{{/unless}}
+		{{#if (or attack damage)}}
+		<span class="obsidian-binary-operator">&plus;</span>
+		<select name="{{prefix}}.level" data-selector="{{prefix}}.level">
+			{{selectOptions @root.ObsidianLabels.BonusLevel selected=level blank='—'}}
+		</select>
+		{{/if}}
+		{{#if (or attack damage)}}
+			{{> select-class parent='level' show='cls'}}
+		{{else}}
+			{{> select-class parent='value' show='cls'}}
+		{{/if}}
+		{{fancy-checkbox prefix 'summoner' content='OBSIDIAN.FromSummoner' checked=summoner}}
+	</div>
+</div>

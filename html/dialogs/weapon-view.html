@@ -1,0 +1,53 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	<div class="obsidian-item-card">
+		<div class="obsidian-item-card-header">
+			<h3>{{item.name}}</h3>
+			<div class="obsidian-item-card-sub-header">
+				{{#each item.obsidian.notes}}
+					<div class="obsidian-table-note-text">{{{this}}}</div>
+				{{/each}}
+			</div>
+			<div class="obsidian-item-card-header-row">
+				<div class="obsidian-item-card-header-key">{{localize 'OBSIDIAN.DamageTitle'}}:</div>
+				<div class="obsidian-item-card-header-value">
+					{{#each item.obsidian.collection.damage}}
+						<div class="obsidian-icon-value">
+							{{display}}
+							<div class="obsidian-icon-sm obsidian-icon-{{damage}}"
+							     title="{{obs-i18n 'Damage' damage}}"></div>
+						</div>
+					{{/each}}
+				</div>
+			</div>
+			{{#if item.flags.obsidian.tags.versatile}}
+			<div class="obsidian-item-card-header-row">
+				<div class="obsidian-item-card-header-key">{{localize 'OBSIDIAN.Versatile'}}</div>
+				<div class="obsidian-item-card-header-value">
+					{{#each item.obsidian.collection.versatile}}
+						<div class="obsidian-icon-value">
+							{{display}}
+							<div class="obsidian-icon-sm obsidian-icon-{{damage}}"
+							     title="{{obs-i18n 'Damage' damage}}"></div>
+						</div>
+					{{/each}}
+				</div>
+			</div>
+			{{/if}}
+			<div class="obsidian-item-card-header-row">
+				<div class="obsidian-item-card-header-key">{{localize 'OBSIDIAN.Weight'}}:</div>
+				<div class="obsidian-item-card-header-value">
+					{{item.system.weight}}
+					<span class="obsidian-table-unit">{{localize 'OBSIDIAN.PoundsAbbr'}}</span>
+				</div>
+			</div>
+			<div class="obsidian-item-card-header-row">
+				<div class="obsidian-item-card-header-key">{{localize 'OBSIDIAN.Cost'}}:</div>
+				<div class="obsidian-item-card-header-value obsidian-icon-value">
+					{{number-format item.system.price.value}}
+					<i class="obsidian-icon-sm obsidian-icon-{{item.system.price.denomination}}"></i>
+				</div>
+			</div>
+		</div>
+		<div class="obsidian-item-card-body">{{{clean-formatting item.system.description.value}}}</div>
+	</div>
+</form>

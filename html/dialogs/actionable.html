@@ -1,0 +1,11 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off" onsubmit="event.preventDefault();">
+	{{#each item.obsidian.actionable}}
+		<div class="obsidian-action-row">
+			<button type="button" class="obsidian-btn-outline obsidian-btn-compact"
+			        data-index="{{@index}}">
+				{{localize 'OBSIDIAN.Use'}}
+			</button>
+			{{#if (eq type 'spell')}}{{name}}{{else}}{{label}}{{/if}}
+		</div>
+	{{/each}}
+</form>

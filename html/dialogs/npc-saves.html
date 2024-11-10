@@ -1,0 +1,12 @@
+<form class="obsidian" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.SavingThrows'}}</legend>
+		<div class="obsidian-grid-2-col obsidian-grid-col-dir obsidian-grid-{{abilityRows}}-row">
+			{{> modules/obsidian/html/components/saves-part.html}}
+		</div>
+	</fieldset>
+	{{#if isNPC}}
+	{{fancy-checkbox 'flags.obsidian.showDeathSaves' content='OBSIDIAN.ShowDeathSaves'
+	                 checked=actor.flags.obsidian.showDeathSaves style='margin: 0 0 0 .75em;'}}
+	{{/if}}
+</form>

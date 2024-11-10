@@ -1,0 +1,65 @@
+<form class="obsidian" autocomplete="off" data-obsidian-name="effect">
+	<section class="obsidian-effect-body">
+		{{#if (eq item.type 'weapon')}}
+			{{> modules/obsidian/html/components/weapon.html}}
+		{{else if (eq item.type 'equipment')}}
+			{{> modules/obsidian/html/components/equipment.html}}
+		{{else if (eq item.type 'consumable')}}
+			{{> modules/obsidian/html/components/consumable.html}}
+		{{else if (eq item.type 'backpack')}}
+			{{> modules/obsidian/html/components/container.html}}
+		{{else if (eq item.type 'feat')}}
+			{{> modules/obsidian/html/components/feature.html}}
+		{{else if (eq item.type 'spell')}}
+			{{> modules/obsidian/html/components/spell.html}}
+		{{else if (eq item.type 'tool')}}
+			{{> modules/obsidian/html/components/tool.html}}
+		{{else if (eq item.type 'loot')}}
+			{{> modules/obsidian/html/components/loot.html}}
+		{{/if}}
+		{{#each item.flags.obsidian.effects as |effect effectIndex|}}
+			<div class="obsidian-effect" data-uuid="{{effect.uuid}}">
+				<input type="text" value="{{effect.name}}" placeholder="{{localize 'OBSIDIAN.EffectName'}}"
+				       name="flags.obsidian.effects.{{effectIndex}}.name" class="obsidian-input-lg">
+				{{#each components}}
+					{{> (add 'modules/obsidian/html/components/effects/' type '.html')
+							prefix=(add 'flags.obsidian.effects.' effectIndex '.components.' @index)}}
+				{{/each}}
+			</div>
+		{{/each}}
+		<label class="obsidian-label-lg">{{localize 'OBSIDIAN.Description'}}</label>
+		<div class="obsidian-rich-text">
+			{{editor item.system.description.value target='system.description.value' rollData=rollData}}
+		</div>
+	</section>
+	<ul class="obsidian-effects-tray">
+		<li class="obsidian-effects-pill obsidian-icon-effect obsidian-add-effect">
+			<div class="obsidian-effects-pill-text">{{localize 'OBSIDIAN.AddEffect'}}</div>
+		</li>
+		<li class="obsidian-effects-pill obsidian-effects-pill-rm obsidian-icon-demolish obsidian-rm-effect obsidian-hidden">
+			<div class="obsidian-effects-pill-text">{{localize 'OBSIDIAN.DeleteSelected'}}</div>
+		</li>
+		{{#each uncategorised}}
+			<li class="obsidian-effects-pill{{#if (eq mode 'rm')}} obsidian-effects-pill-rm{{/if}}
+					 obsidian-icon-comp-{{type}} obsidian-{{mode}}-{{type}}">
+				<div class="obsidian-effects-pill-text">{{label}}</div>
+			</li>
+		{{/each}}
+		{{#each categories}}
+			{{#unless (eq this.[0] 'none')}}
+			<details class="obsidian-effects-cat" data-key="{{this.[0]}}">
+				<summary class="obsidian-hidden">
+					<div><h3>{{this.1.label}}</h3></div>
+					<i class="fas fa-angle-down"></i>
+				</summary>
+				{{#each this.1.components}}
+					<li class="obsidian-effects-pill{{#if (eq mode 'rm')}} obsidian-effects-pill-rm{{/if}}
+					 obsidian-icon-comp-{{type}} obsidian-{{mode}}-{{type}}">
+						<div class="obsidian-effects-pill-text">{{label}}</div>
+					</li>
+				{{/each}}
+			</details>
+			{{/unless}}
+		{{/each}}
+	</ul>
+</form>

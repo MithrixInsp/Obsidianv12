@@ -1,0 +1,71 @@
+<form class="obsidian" autocomplete="off">
+	<fieldset>
+		<legend>{{item.obsidian.label}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				{{#if isCustom}}
+				<input type="text" name="name" value="{{item.name}}">
+				{{/if}}
+				{{#if subclass}}
+					<div class="obsidian-subclass-item" data-item-id="{{subclass._id}}">
+						{{subclass.name}}
+						<a class="obsidian-edit"><i class="fa-solid fa-pen-to-square"></i></a>
+						<a class="obsidian-delete"><i class="fas fa-trash"></i></a>
+					</div>
+				{{else}}
+					<input type="text" name="system.subclass" placeholder="{{localize 'OBSIDIAN.Subclass'}}"
+					       value="{{system.subclass}}">
+				{{/if}}
+				<label>
+					<input type="text" class="obsidian-input-num-sm" data-dtype="Number" name="system.levels"
+					       value="{{system.levels}}">
+					<span>{{localize 'OBSIDIAN.Level'}}</span>
+				</label>
+				<label>
+					<select name="system.hitDice">
+						{{#select system.hitDice}}
+							{{#each ObsidianConfig.HD}}
+								<option value="d{{this}}">d{{this}}</option>
+							{{/each}}
+						{{/select}}
+					</select>
+					<span>{{localize 'OBSIDIAN.HitDie'}}</span>
+				</label>
+			</div>
+		</div>
+		<div class="obsidian-form-row obsidian-stacked-row">
+			<div>
+				<label>
+					{{localize 'DND5E.Identifier'}}
+					<input type="text" name="system.identifier" placeholder="{{identifier}}"
+					       value="{{system.identifier}}">
+				</label>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset {{disabled (not item.flags.obsidian.spellcasting.enabled)}}>
+		<legend>
+			{{fancy-checkbox 'flags.obsidian.spellcasting.enabled' content='OBSIDIAN.Spellcasting'
+                       checked=item.flags.obsidian.spellcasting.enabled}}
+		</legend>
+		<div class="obsidian-form-row">
+			<select name="system.spellcasting.ability">
+				{{selectOptions ObsidianLabels.Ability selected=system.spellcasting.ability}}
+			</select>
+			<select name="system.spellcasting.progression">
+				{{selectOptions ObsidianLabels.SpellProg selected=system.spellcasting.progression}}
+			</select>
+			<select name="flags.obsidian.spellcasting.preparation">
+				{{selectOptions ObsidianLabels.SpellPrep
+				                selected=item.flags.obsidian.spellcasting.preparation}}
+			</select>
+			<select name="flags.obsidian.spellcasting.rituals">
+				{{selectOptions ObsidianLabels.RitualCast selected=item.flags.obsidian.spellcasting.rituals}}
+			</select>
+		</div>
+	</fieldset>
+	<label class="obsidian-label-lg">{{localize 'OBSIDIAN.Description'}}</label>
+	<div class="obsidian-rich-text">
+		{{editor system.description.value target='system.description.value' rollData=rollData}}
+	</div>
+</form>

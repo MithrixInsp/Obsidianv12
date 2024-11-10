@@ -1,0 +1,57 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.Filter'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.Filter'}}
+				<select name="{{prefix}}.filter" data-selector="{{prefix}}.filter">
+					{{selectOptions @root.ObsidianLabels.Filters selected=filter}}
+				</select>
+			</label>
+			<select name="{{prefix}}.score" data-selector-parent="{{prefix}}.filter" data-show="score"
+			        data-selector="{{prefix}}.score">
+				{{selectOptions @root.ObsidianLabels.Scores selected=score}}
+			</select>
+			<select name="{{prefix}}.roll" data-selector-parent="{{prefix}}.filter" data-show="roll"
+			        data-selector="{{prefix}}.roll">
+				{{selectOptions @root.ObsidianLabels.FilterRoll selected=roll}}
+			</select>
+			<select name="{{prefix}}.check" data-selector-parent="{{prefix}}.roll" data-show="check">
+				{{selectOptions @root.ObsidianLabels.Check selected=check}}
+			</select>
+			<select name="{{prefix}}.dmg" data-selector-parent="{{prefix}}.roll" data-show="damage">
+				{{selectOptions @root.ObsidianLabels.FilterDmg selected=dmg}}
+			</select>
+			{{#if isMulti}}
+			<select name="{{prefix}}.multi">
+				{{selectOptions @root.ObsidianLabels.Multi selected=multi}}
+			</select>
+			{{/if}}
+		</div>
+	</div>
+	{{#if isCollection}}
+	<div class="obsidian-checkbox-grid obsidian-stacked-row">
+		{{checkbox-grid availableSelections collection prefix 'collection'}}
+	</div>
+	{{/if}}
+	<div class="obsidian-form-row {{#unless isCollection}}obsidian-stacked-row{{/unless}}"
+	     data-selector-parent="{{prefix}}.filter" data-show="roll">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.RollingAt'}}
+				<select name="{{prefix}}.mode">
+					{{selectOptions @root.ObsidianLabels.Roll selected=mode blank='—'}}
+				</select>
+			</label>
+		</div>
+	</div>
+	{{#if usesAbility}}
+	<fieldset class="obsidian-sub-group">
+		<legend>{{localize 'OBSIDIAN.UsesAbility'}}</legend>
+		<div class="obsidian-checkbox-grid obsidian-stacked-row">
+			{{checkbox-grid @root.usesAbilities (lookup usesAbility 'abilities') prefix
+			                'usesAbility.abilities'}}
+		</div>
+	</fieldset>
+	{{/if}}
+</fieldset>

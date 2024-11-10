@@ -1,0 +1,36 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	<fieldset>
+		<legend>{{data.label}}</legend>
+		<div class="obsidian-form-row">
+				<select name="flags.obsidian.{{prop}}.{{id}}.value" data-dtype="Number">
+					{{selectOptions ObsidianLabels.Proficiency selected=data.value}}
+				</select>
+				<select name="flags.obsidian.{{prop}}.{{id}}.roll">
+					{{selectOptions ObsidianLabels.Roll selected=data.roll}}
+				</select>
+		</div>
+		<div class="obsidian-form-row obsidian-stacked-row">
+			<div class="obsidian-flex">
+				<label>
+					<input type="text" name="flags.obsidian.{{prop}}.{{id}}.bonus" data-dtype="Number"
+					       class="obsidian-input-num-sm" placeholder="0" value="{{data.bonus}}">
+					<span>{{localize 'OBSIDIAN.Bonus'}}</span>
+				</label>
+				<label>
+					<input type="text" class="obsidian-input-num-sm" value="{{data.override}}"
+					       name="flags.obsidian.{{prop}}.{{id}}.override">
+					<span>{{localize 'OBSIDIAN.Override'}}</span>
+				</label>
+			</div>
+		</div>
+		{{#unless tool}}
+		<div class="obsidian-form-row obsidian-stacked-row">
+			<label>
+				<input type="text" name="flags.obsidian.{{prop}}.{{id}}.passiveBonus" data-dtype="Number"
+				       class="obsidian-input-num-sm" placeholder="0" value="{{data.passiveBonus}}">
+				<span>{{localize 'OBSIDIAN.PassiveBonus'}}</span>
+			</label>
+		</div>
+		{{/unless}}
+	</fieldset>
+</form>

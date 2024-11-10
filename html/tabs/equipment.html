@@ -1,0 +1,172 @@
+<div class="obsidian-tab-container tab {{#if isVehicle}}obsidian-floating-tab{{/if}}"
+     data-group="main-tabs" data-tab="equipment">
+	<div class="obsidian-char-inv-header">
+		<div class="obsidian-char-inv-header-weight {{#if isVehicle}}obsidian-vehicle-weight{{/if}}">
+			<div>
+				{{localize 'OBSIDIAN.WeightCarried'}}:
+				<span>{{numberFormat actor.obsidian.inventory.weight decimals=2}}</span>
+				<span>&sol;</span>
+				<span>{{numberFormat actor.obsidian.inventory.max decimals=0}}</span>
+				{{#if isVehicle}}
+					<span class="obsidian-table-unit">{{obs-i18n 'Tons'}}</span>
+				{{else}}
+					<span class="obsidian-table-unit">{{localize 'OBSIDIAN.PoundsAbbr'}}</span>
+				{{/if}}
+			</div>
+			{{#if isVehicle}}
+			<div class="obsidian-vehicle-capacity-persons">
+				{{localize 'DND5E.VehicleCrew'}}:
+				<div{{#if (gt actor.obsidian.layout.crew flags.obsidian.crew)}} class="obsidian-negative"{{/if}}>
+					<span>{{numberFormat actor.obsidian.layout.crew}}</span>
+					<span>&sol;</span>
+					<span>{{numberFormat flags.obsidian.crew}}</span>
+				</div>
+			</div>
+			{{/if}}
+			<div class="obsidian-char-inv-header-encumbrance {{#if (or actor.obsidian.rules.encumbered
+					          actor.obsidian.rules.heavilyEncumbered
+					          actor.obsidian.rules.overCapacity)}}obsidian-negative{{/if}}">
+				{{#if actor.obsidian.rules.overCapacity}}
+					{{localize 'OBSIDIAN.OverCapacity'}}
+				{{else if actor.obsidian.rules.heavilyEncumbered}}
+					{{localize 'OBSIDIAN.HeavilyEncumbered'}}
+				{{else if actor.obsidian.rules.encumbered}}
+					{{localize 'OBSIDIAN.Encumbered'}}
+				{{else}}
+					{{localize 'OBSIDIAN.Unencumbered'}}
+				{{/if}}
+			</div>
+			{{#if isVehicle}}
+			<div class="obsidian-vehicle-capacity-persons">
+				{{localize 'DND5E.VehiclePassengers'}}:
+				<div{{#if (gt actor.obsidian.layout.passengers system.attributes.capacity.passengers)}} class="obsidian-negative"{{/if}}>
+					<span>{{numberFormat actor.obsidian.layout.passengers}}</span>
+					<span>&sol;</span>
+					<span>{{numberFormat system.attributes.capacity.passengers}}</span>
+				</div>
+			</div>
+			{{/if}}
+		</div>
+		{{#if isVehicle}}
+		</div><div class="obsidian-char-inv-header">
+		{{/if}}
+		<div class="obsidian-char-inv-header-currency" data-dialog="Currency" draggable="true">
+			{{localize 'OBSIDIAN.Currency'}}:
+			{{#each system.currency}}
+				<div class="obsidian-char-inv-header-currency-item">
+					<i class="obsidian-icon obsidian-icon-sm obsidian-icon-{{@key}}"></i>
+					{{number-format this}}
+				</div>
+			{{/each}}
+		</div>
+	</div>
+	<div class="obsidian-char-inv-search">
+		<div class="obsidian-input-search-container">
+			<input type="text" class="obsidian-input-search obsidian-search-inv-name"
+			       placeholder="{{localize 'OBSIDIAN.Search'}}...">
+			<i class="fas fa-search"></i>
+			<span class="obsidian-clear-search obsidian-clear-inv-name">&times;</span>
+		</div>
+	</div>
+	<ul class="obsidian-tab-bar" data-group="equipment">
+		<li class="obsidian-sub-tab item" data-tab="equipment-all">{{localize 'OBSIDIAN.All'}}</li>
+		{{#if isVehicle}}
+		<li class="obsidian-sub-tab item" data-tab="equipment-component">
+			{{localize 'OBSIDIAN.Components'}}
+		</li>
+		<li class="obsidian-sub-tab item" data-tab="equipment-cargo">
+			{{localize 'DND5E.VehicleCargo'}}
+		</li>
+		{{else}}
+		<li class="obsidian-sub-tab item" data-tab="equipment-magical">
+			{{localize 'OBSIDIAN.Magical'}}
+		</li>
+		<li class="obsidian-sub-tab item" data-tab="equipment-weapon">
+			{{localize 'OBSIDIAN.Weapons'}}
+		</li>
+		<li class="obsidian-sub-tab item" data-tab="equipment-armour">
+			{{localize 'OBSIDIAN.Armour'}}
+		</li>
+		<li class="obsidian-sub-tab item" data-tab="equipment-consumable">
+			{{localize 'OBSIDIAN.Consumables'}}
+		</li>
+		<li class="obsidian-sub-tab item" data-tab="equipment-other">{{localize 'OBSIDIAN.Other'}}</li>
+		<li class="obsidian-sub-tab item" data-tab="equipment-attunement">
+			{{localize 'OBSIDIAN.Attunement'}}
+		</li>
+		{{/if}}
+	</ul>
+	<div class="obsidian-tab-contents obsidian-inv-table tab">
+		<div class="obsidian-drag-indicator">
+			<i class="fas fa-angle-right"></i>
+			<i class="fas fa-angle-left"></i>
+		</div>
+		<div class="obsidian-scrollable">
+		<h3>
+			<div>
+				{{localize 'OBSIDIAN.Inventory'}}
+				<span class="obsidian-feature-recharge">
+					&bull; {{actor.obsidian.inventory.attunements}}
+					{{#if (eq actor.obsidian.inventory.attunements 1)}}
+						{{localize 'OBSIDIAN.Attunement'}}
+					{{else}}
+						{{localize 'OBSIDIAN.AttunementPlural'}}
+					{{/if}}
+				</span>
+			</div>
+			<a title="{{localize 'OBSIDIAN.AddCustomItem'}}"
+			   class="obsidian-edit obsidian-add-custom-item">
+				<i class="fas fa-plus-circle"></i>
+			</a>
+		</h3>
+		<div class="obsidian-table">
+			<div class="obsidian-thead">
+				<div class="obsidian-col-action"></div>
+				<div class="obsidian-col-inv-item">{{localize 'OBSIDIAN.Name'}}</div>
+				<div class="obsidian-col-weight">{{localize 'OBSIDIAN.Weight'}}</div>
+				<div class="obsidian-col-qty">{{localize 'OBSIDIAN.QuantityAbbr'}}</div>
+				<div class="obsidian-col-cost">{{localize 'OBSIDIAN.Cost'}}</div>
+				<div class="obsidian-col-type">{{localize 'OBSIDIAN.Type'}}</div>
+				{{#unless isVehicle}}
+					<div class="obsidian-col-notes">{{localize 'OBSIDIAN.Notes'}}</div>
+				{{/unless}}
+			</div>
+			<div class="obsidian-tbody">
+				{{> modules/obsidian/html/components/inventory.html actor.obsidian.inventory.root}}
+				{{#each actor.obsidian.inventory.containers}}
+					<details{{#if flags.obsidian.open}} open{{/if}}>
+						<summary draggable="true" data-reorderable="true" class="
+						{{~#if (gt obsidian.carriedWeight system.capacity.value)~}}
+							obsidian-negative
+						{{~/if}} obsidian-inv-container" data-item-id="{{_id}}">
+							<div>
+								<div class="obsidian-equipped-box{{#unless (eq system.equipped false)}} obsidian-equipped{{/unless}}"
+								     title="{{localize 'DND5E.Equipped'}}"></div>
+								<h3>{{name}}</h3>
+								<div class="obsidian-container-weight">
+									<div class="obsidian-details-sub-text">
+										&bull; {{numberFormat obsidian.carriedWeight decimals=2}}
+									</div>
+									<div class="obsidian-table-sub-text">{{localize 'OBSIDIAN.PoundsAbbr'}}</div>
+								</div>
+							</div>
+							<div>
+								{{#each flags.obsidian.currency}}
+								{{#if this}}
+									<div class="obsidian-char-inv-header-currency-item">
+										<i class="obsidian-icon obsidian-icon-sm obsidian-icon-{{@key}}"></i>
+										{{number-format this}}
+									</div>
+								{{/if}}
+								{{/each}}
+							</div>
+							<i class="fas fa-angle-down"></i>
+						</summary>
+						{{> modules/obsidian/html/components/inventory.html obsidian.contents}}
+					</details>
+				{{/each}}
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	<div class="obsidian-item-card">
+		<div class="obsidian-item-card-header">
+			<h3>{{item.name}}</h3>
+			<div class="obsidian-item-card-sub-header">
+				{{#each item.obsidian.notes}}
+					<div class="obsidian-table-note-text">{{{this}}}</div>
+				{{/each}}
+			</div>
+		</div>
+		<div class="obsidian-item-card-body">{{{clean-formatting item.system.description.value}}}</div>
+	</div>
+</form>

@@ -1,0 +1,40 @@
+<form class="obsidian" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.Senses'}}</legend>
+		{{#each senses}}
+			<div class="obsidian-form-row">
+				<label>
+					<input class="obsidian-input-num-md" type="text" name="system.attributes.senses.{{@key}}"
+					       data-dtype="Number" placeholder="&mdash;"
+					       value="{{lookup ../system.attributes.senses @key}}">
+					<span>{{obs-i18n 'Sense' @key}}</span>
+				</label>
+			</div>
+		{{/each}}
+	</fieldset>
+	{{#unless dialogOptions.npc}}
+	<fieldset>
+		<legend>
+			{{localize 'OBSIDIAN.PassiveDisplay'}}
+			<button type="button" class="obsidian-btn-positive obsidian-btn-sm obsidian-add-passive">
+				{{localize 'OBSIDIAN.Add'}}
+			</button>
+		</legend>
+		{{#each actor.flags.obsidian.skills.passives as |passive id|}}
+			<div class="obsidian-form-row">
+				<select>
+					{{#select passive}}
+						{{#each ../system.skills as |skill id|}}
+							<option value="{{id}}">{{skill.label}}</option>
+						{{/each}}
+					{{/select}}
+				</select>
+				<button type="button" class="obsidian-btn-negative obsidian-btn-sm obsidian-rm-passive"
+				        data-row-id="{{id}}">
+					{{localize 'OBSIDIAN.Remove'}}
+				</button>
+			</div>
+		{{/each}}
+	</fieldset>
+	{{/unless}}
+</form>

@@ -1,0 +1,46 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off" onsubmit="event.preventDefault();">
+	<div class="obsidian-form-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.AvailableTo'}}
+				<select name="availability" data-selector="availability">
+					<option value="any">{{localize 'OBSIDIAN.Availability.any'}}</option>
+					<option value="some">{{localize 'OBSIDIAN.Availability.some'}}</option>
+				</select>
+			</label>
+		</div>
+	</div>
+	<div class="obsidian-checkbox-grid obsidian-stacked-row" data-selector-parent="availability"
+	     data-show="some">
+		<div>
+			{{checkbox-grid users.users users.selected 'users'}}
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row" style="margin-bottom: 10px;">
+		<div>
+			{{#if actor}}
+			<select name="operation" data-selector="operation">
+				<option value="transfer">{{localize 'OBSIDIAN.ParcelOperation.transfer'}}</option>
+				<option value="copy">{{localize 'OBSIDIAN.ParcelOperation.copy'}}</option>
+			</select>
+			{{/if}}
+			<label class="obsidian-spin-buttons" style="margin-left: 10px;">
+				{{localize 'OBSIDIAN.Amount'}}
+				<button type="button" class="obsidian-btn-outline obsidian-btn-compact obsidian-number-decrement">
+					<i class="fa-solid fa-chevron-left"></i>
+				</button>
+				<input type="text" value="1" name="amount" class="obsidian-input-num-md"
+				       data-dtype="Number">
+				<button type="button" class="obsidian-btn-outline obsidian-btn-compact obsidian-number-increment">
+					<i class="fa-solid fa-chevron-right"></i>
+				</button>
+			</label>
+			{{#if actor}}
+			<div data-selector-parent="operation" data-show="transfer">
+				<span class="obsidian-binary-operator">&sol;</span>
+				<span class="obsidian-feature-max">{{item.system.quantity}}</span>
+			</div>
+			{{/if}}
+		</div>
+	</div>
+</form>

@@ -1,0 +1,32 @@
+<form class="obsidian" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'DND5E.Vehicle'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<label>
+					{{localize 'OBSIDIAN.SizeTitle'}}
+					<select name="system.traits.size">
+						{{#select system.traits.size}}
+							{{#each config.actorSizes}}
+								<option value="{{@key}}">{{obs-i18n 'Size' @key}}</option>
+							{{/each}}
+						{{/select}}
+					</select>
+				</label>
+				<label>
+					{{localize 'OBSIDIAN.Type'}}
+					<select name="flags.obsidian.details.type">
+						{{selectOptions ObsidianLabels.VehicleType selected=actor.flags.obsidian.details.type}}
+					</select>
+				</label>
+			</div>
+		</div>
+		<div class="obsidian-form-row obsidian-stacked-row">
+			<div>
+				<input type="text" class="obsidian-input-max" name="system.traits.dimensions"
+				       value="{{system.traits.dimensions}}"
+				       placeholder="{{localize 'OBSIDIAN.DimensionsWeight'}}">
+			</div>
+		</div>
+	</fieldset>
+</form>

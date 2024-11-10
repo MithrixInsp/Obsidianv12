@@ -1,0 +1,17 @@
+<div class="obsidian-tab-contents tab" data-group="feats-tabs" data-tab="{{group}}">
+	<div class="obsidian-scrollable">
+	<h3>
+		{{localize title}}
+		{{#if active}}
+		<a title="{{localize 'OBSIDIAN.AddCustomFeature'}}" class="obsidian-edit obsidian-add-feat"
+		   data-active="{{active}}" data-source="{{group}}">
+			<i class="fas fa-plus-circle"></i>
+		</a>
+		{{/if}}
+	</h3>
+	<div class="obsidian-feature-list">
+		{{> modules/obsidian/html/components/features.html
+				feats=(filter actor.obsidian.feats 'flags.obsidian.source.type' group)}}
+	</div>
+	</div>
+</div>

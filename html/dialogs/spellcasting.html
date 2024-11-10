@@ -1,0 +1,98 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	{{#if isNPC}}
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.NPCSpellcaster'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<select name="system.attributes.spellcasting">
+					{{selectOptions ObsidianLabels.Ability selected=system.attributes.spellcasting
+					                blank='—'}}
+				</select>
+				<label>
+					{{localize 'OBSIDIAN.Level'}}
+					<input type="text" class="obsidian-input-num-sm" data-dtype="Number"
+					       name="system.details.spellLevel" value="{{system.details.spellLevel}}">
+				</label>
+			</div>
+		</div>
+		<div class="obsidian-form-row obsidian-stacked-row">
+			<div>
+				<label>
+					<input type="text" class="obsidian-input-num-sm" data-dtype="Number"
+					       name="flags.obsidian.spells.attack" value="{{actor.flags.obsidian.spells.attack}}">
+					<span>{{localize 'OBSIDIAN.AttackOverride'}}</span>
+				</label>
+				<label>
+					<input type="text" class="obsidian-input-num-sm" data-dtype="Number"
+					       name="flags.obsidian.spells.save" value="{{actor.flags.obsidian.spells.save}}">
+					<span>{{localize 'OBSIDIAN.SaveOverride'}}</span>
+				</label>
+			</div>
+		</div>
+	</fieldset>
+	{{/if}}
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.SlotOverride'}}</legend>
+		<div class="obsidian-form-row obsidian-align-labels">
+			{{#each (range 1 5)}}
+				<label>
+					<input type="text" name="system.spells.spell{{this}}.override" data-dtype="Number"
+					       value="{{#with (lookup ../system.spells (add 'spell' this))}}{{override}}{{/with}}"
+					       class="obsidian-input-num-sm">
+					<span>
+						{{#if (eq this 1)}}
+							{{localize 'OBSIDIAN.FirstN'}}
+						{{else if (eq this 2)}}
+							{{localize 'OBSIDIAN.SecondN'}}
+						{{else if (eq this 3)}}
+							{{localize 'OBSIDIAN.ThirdN'}}
+						{{else}}
+							{{this}}{{localize 'OBSIDIAN.th'}}
+						{{/if}}
+					</span>
+				</label>
+			{{/each}}
+		</div>
+		<div class="obsidian-form-row obsidian-align-labels">
+			{{#each (range 6 9)}}
+				<label>
+					<input type="text" name="system.spells.spell{{this}}.override" data-dtype="Number"
+					       value="{{#with (lookup ../system.spells (add 'spell' this))}}{{override}}{{/with}}"
+					       class="obsidian-input-num-sm">
+					<span>{{this}}{{localize 'OBSIDIAN.th'}}</span>
+				</label>
+			{{/each}}
+			<label>
+				<input type="text" class="obsidian-input-num-sm" name="system.spells.pact.override"
+				       value="{{system.spells.pact.override}}" data-dtype="Number">
+				<span>{{localize 'OBSIDIAN.Pact'}}</span>
+			</label>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.PactMagic'}}</legend>
+		<div class="obsidian-form-row">
+			<label>
+				{{localize 'OBSIDIAN.PactSlotLevel'}}
+				<select name="flags.obsidian.spells.slots.pactLevel">
+					{{#select actor.flags.obsidian.spells.slots.pactLevel}}
+						<option value="">&mdash;</option>
+						{{#each (range 1 9)}}
+							<option value="{{this}}">
+								{{#if (eq this 1)}}
+									{{localize 'OBSIDIAN.FirstN'}}
+								{{else if (eq this 2)}}
+									{{localize 'OBSIDIAN.SecondN'}}
+								{{else if (eq this 3)}}
+									{{localize 'OBSIDIAN.ThirdN'}}
+								{{else}}
+									{{this}}{{localize 'OBSIDIAN.th'}}
+								{{/if}}
+							</option>
+						{{/each}}
+					{{/select}}
+				</select>
+			</label>
+		</div>
+	</fieldset>
+</form>

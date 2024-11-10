@@ -1,0 +1,44 @@
+<fieldset>
+	<legend>{{localize 'OBSIDIAN.Container'}}</legend>
+	<div class="obsidian-form-row-img">
+		<div>
+			<img class="profile" src="{{item.img}}" alt="{{item.name}}" data-edit="img">
+		</div>
+		<div>
+			<div class="obsidian-form-row">
+				<div>
+					<input type="text" class="obsidian-input-lg" name="name" value="{{item.name}}"
+					       placeholder="{{localize 'OBSIDIAN.Name'}}">
+					{{> modules/obsidian/html/components/parts/weight-cost.html}}
+				</div>
+			</div>
+			<div class="obsidian-form-row obsidian-stacked-row">
+				<div>
+					<label>
+						<input type="text" class="obsidian-input-num-md" name="system.capacity.value"
+						       data-dtype="Number" placeholder="0" value="{{item.system.capacity.value}}">
+						<span>{{localize 'OBSIDIAN.Capacity'}}</span>
+					</label>
+					{{fancy-checkbox 'system.capacity.weightless' content='OBSIDIAN.WeightlessContents'
+					                 checked=item.system.capacity.weightless}}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{> modules/obsidian/html/components/parts/magic.html}}
+</fieldset>
+<fieldset>
+	<legend>{{localize 'OBSIDIAN.Currency'}}</legend>
+	{{#each ObsidianConfig.CURRENCY}}
+		<div class="obsidian-form-row obsidian-currency-row">
+			<div>
+				<div class="obsidian-icon obsidian-icon-sm obsidian-icon-{{this}}"></div>
+				<input type="text" name="flags.obsidian.currency.{{this}}" data-dtype="Number"
+				       class="obsidian-input-num-lg" placeholder="0"
+				       value="{{lookup ../item.flags.obsidian.currency this}}">
+				<input type="text" class="obsidian-add-remove" data-key="{{this}}" style="width: 200px;"
+				       placeholder="{{localize 'OBSIDIAN.AddRemove'}}">
+			</div>
+		</div>
+	{{/each}}
+</fieldset>

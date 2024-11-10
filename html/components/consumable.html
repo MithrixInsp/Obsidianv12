@@ -1,0 +1,29 @@
+<fieldset>
+	<legend>{{localize 'OBSIDIAN.Gear'}}</legend>
+	<div class="obsidian-form-row-img">
+		<div>
+			<img class="profile" src="{{item.img}}" alt="{{item.name}}" data-edit="img">
+		</div>
+		<div>
+			<div class="obsidian-form-row">
+				<div>
+					<input type="text" class="obsidian-input-lg" name="name" value="{{item.name}}"
+					       placeholder="{{localize 'OBSIDIAN.Name'}}">
+					<select name="flags.obsidian.subtype" data-selector="subtype">
+						{{selectOptions ObsidianLabels.ConsumableType selected=item.flags.obsidian.subtype}}
+					</select>
+					{{fancy-checkbox 'system.uses.autoDestroy' content='OBSIDIAN.DestroyOnEmpty'
+					                 checked=system.uses.autoDestroy}}
+				</div>
+			</div>
+			<div class="obsidian-form-row obsidian-stacked-row">
+				<div>
+					{{> modules/obsidian/html/components/parts/weight-cost.html}}
+					{{fancy-checkbox 'flags.obsidian.attunement' content='OBSIDIAN.RequiresAttunement'
+					                 checked=item.flags.obsidian.attunement}}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{> modules/obsidian/html/components/parts/magic.html}}
+</fieldset>

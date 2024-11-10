@@ -1,0 +1,84 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.Resource'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<input type="text" class="obsidian-input-lg" name="{{prefix}}.name" value="{{name}}"
+			       placeholder="{{localize 'OBSIDIAN.ResourceName'}}" style="margin-right: 20px;">
+			{{fancy-checkbox prefix 'pool' content='OBSIDIAN.DicePool' checked=pool
+			                 selector=(add prefix '.pool')}}
+			<select name="{{prefix}}.die" data-dtype="Number" data-selector-parent="{{prefix}}.pool"
+			        style="margin-left: 10px;">
+				{{select-dice 4 20 selected=die}}
+			</select>
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.Recharges'}}
+				<select name="{{prefix}}.recharge.time" data-selector="{{prefix}}.recharge.time">
+					{{selectOptions @root.ObsidianLabels.Recharge selected=recharge.time}}
+				</select>
+			</label>
+			<select name="{{prefix}}.recharge.calc" data-selector-parent="{{prefix}}.recharge.time"
+			        data-hide="never, roll" data-selector="{{prefix}}.recharge.calc">
+				{{selectOptions @root.ObsidianLabels.RechargeCalc selected=recharge.calc}}
+			</select>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+			       name="{{prefix}}.recharge.ndice" data-hide="all" value="{{recharge.ndice}}"
+			       data-selector-parent="{{prefix}}.recharge.calc">
+			<select name="{{prefix}}.recharge.die" data-selector-parent="{{prefix}}.recharge.calc"
+			        data-hide="all" data-dtype="Number">
+				{{select-dice 2 20 selected=recharge.die}}
+			</select>
+			<span class="obsidian-binary-operator" data-selector-parent="{{prefix}}.recharge.calc"
+			      data-hide="all">&plus;</span>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+			       name="{{prefix}}.recharge.bonus" data-hide="all" value="{{recharge.bonus}}"
+			       data-selector-parent="{{prefix}}.recharge.calc">
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" value="{{recharge.roll}}"
+			       name="{{prefix}}.recharge.roll" data-show="roll"
+			       data-selector-parent="{{prefix}}.recharge.time">
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.Calculation'}}
+				<select name="{{prefix}}.calc" data-selector="{{prefix}}.calc">
+					{{selectOptions @root.ObsidianLabels.ResourceUses selected=calc}}
+				</select>
+			</label>
+			<input type="text" class="obsidian-input-num-sm" data-selector-parent="{{prefix}}.calc"
+			       data-show="fixed" name="{{prefix}}.fixed" value="{{fixed}}" data-dtype="Number"
+			       placeholder="0">
+			<label data-selector-parent="{{prefix}}.calc" data-show="formula">
+				<input type="text" class="obsidian-input-num-sm" name="{{prefix}}.min" value="{{min}}"
+				       data-dtype="Number" placeholder="0">
+				<span>{{localize 'OBSIDIAN.Minimum'}}</span>
+			</label>
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row" data-show="formula"
+	     data-selector-parent="{{prefix}}.calc">
+		<div>
+			<input type="text" class="obsidian-input-num-sm" name="{{prefix}}.bonus" value="{{bonus}}"
+			       data-dtype="Number" placeholder="0">
+			<select class="obsidian-select-operator" name="{{prefix}}.operator">
+				{{#select operator}}
+					<option value="plus">&plus;</option>
+					<option value="mult">&times;</option>
+				{{/select}}
+			</select>
+			<select name="{{prefix}}.key" data-selector="{{prefix}}.key">
+				{{selectOptions @root.ObsidianLabels.UsesKey selected=key}}
+			</select>
+			<select name="{{prefix}}.ability" data-selector-parent="{{prefix}}.key" data-show="abl">
+				{{selectOptions @root.ObsidianLabels.Ability selected=ability}}
+			</select>
+			{{fancy-checkbox prefix 'summoner' content='OBSIDIAN.FromSummoner' checked=summoner
+			                 selectorParent=(add prefix '.key') show='abl'}}
+			{{> select-class parent='key' show='cls'}}
+		</div>
+	</div>
+</fieldset>

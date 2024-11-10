@@ -1,0 +1,20 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.CombatDuration'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+			       name="{{prefix}}.ndice" value="{{ndice}}">
+			<select name="{{prefix}}.die" data-dtype="Number">
+				{{select-dice 4 20 selected=die}}
+			</select>
+			<span class="obsidian-binary-operator">&plus;</span>
+			<label>
+				<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="1"
+				       name="{{prefix}}.duration" value="{{duration}}">
+				<span>{{localize 'OBSIDIAN.Rounds'}}</span>
+			</label>
+			{{fancy-checkbox (add prefix '.concentration') content='OBSIDIAN.Concentration'
+                       checked=concentration}}
+		</div>
+	</div>
+</fieldset>

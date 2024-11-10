@@ -1,0 +1,17 @@
+<form class="obsidian" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.Currency'}}</legend>
+		{{#each system.currency}}
+			<div class="obsidian-form-row obsidian-currency-row">
+				<div>
+					<div class="obsidian-icon obsidian-icon-sm obsidian-icon-{{@key}}"></div>
+					<input type="text" class="obsidian-input-num-lg" name="system.currency.{{@key}}"
+					       data-dtype="Number" placeholder="0"
+					       value="{{get-property ../system.currency @key}}">
+					<input type="text" class="obsidian-add-remove" data-key="{{@key}}"
+					       placeholder="{{localize 'OBSIDIAN.AddRemove'}}" style="width: 200px;">
+				</div>
+			</div>
+		{{/each}}
+	</fieldset>
+</form>

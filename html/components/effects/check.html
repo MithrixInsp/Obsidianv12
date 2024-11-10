@@ -1,0 +1,47 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.AbilityCheck'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.Calculation'}}
+				<select name="{{prefix}}.calc" data-selector="{{prefix}}.calc">
+					{{selectOptions @root.ObsidianLabels.ResourceUses selected=calc}}
+				</select>
+			</label>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+			       name="{{prefix}}.fixed" value="{{fixed}}" data-selector-parent="{{prefix}}.calc"
+			       data-show="fixed">
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row" data-selector-parent="{{prefix}}.calc"
+	     data-show="formula">
+		<div>
+			<input type="text" class="obsidian-input-num-sm" placeholder="0" name="{{prefix}}.bonus"
+			       value="{{bonus}}">
+			<span class="obsidian-binary-operator">&plus;</span>
+			<select name="{{prefix}}.prof" data-dtype="Number">
+				{{selectOptions @root.ObsidianLabels.PlusProf selected=prof blank='—'}}
+			</select>
+			<span class="obsidian-binary-operator">&plus;</span>
+			<select name="{{prefix}}.ability">
+				{{selectOptions @root.ObsidianLabels.AbilitySpell selected=ability blank='—'}}
+			</select>
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.CheckTitle'}}
+				<select name="{{prefix}}.target">
+					{{selectOptions @root.ObsidianLabels.Ability selected=target}}
+				</select>
+			</label>
+			<select name="{{prefix}}.skill" data-selector="{{prefix}}.skill">
+				{{selectOptions @root.ObsidianLabels.SkillCustom selected=skill blank='—'}}
+			</select>
+			<input type="text" class="obsidian-input-lg" name="{{prefix}}.custom" data-show="custom"
+			       value="{{custom}}" placeholder="{{localize 'OBSIDIAN.Custom'}}"
+			       data-selector-parent="{{prefix}}.skill">
+		</div>
+	</div>
+</fieldset>

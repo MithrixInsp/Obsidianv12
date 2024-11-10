@@ -1,0 +1,72 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.DefenseTitle'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			{{fancy-checkbox prefix 'disease' content='OBSIDIAN.ImmuneDisease' checked=disease}}
+			{{fancy-checkbox prefix 'sleep' content='OBSIDIAN.ImmuneSleep' checked=sleep}}
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			<label>
+				<input type="text" class="obsidian-input-num-sm" data-dtype="Number" name="{{prefix}}.dr"
+				       value="{{dr}}">
+				<span>{{localize 'OBSIDIAN.NonMagicalDamageReduction'}}</span>
+			</label>
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.DefenseTitle'}}
+				<select name="{{prefix}}.defense" data-selector="{{prefix}}.defense">
+					{{selectOptions @root.ObsidianLabels.Defense selected=defense blank='—'}}
+				</select>
+			</label>
+			<select name="{{prefix}}.condition.level" data-selector-parent="{{prefix}}.defense"
+			        data-show="condition">
+				{{selectOptions @root.ObsidianLabels.ConditionLevel selected=condition.level}}
+			</select>
+			<select name="{{prefix}}.condition.condition" data-selector-parent="{{prefix}}.defense"
+			        data-show="condition">
+				{{#select condition.condition}}
+					{{#each @root.ObsidianConfig.CONDITIONS}}
+						<option value="{{this}}">{{obs-i18n 'Condition' this}}</option>
+					{{/each}}
+					<option value="exhaustion">{{localize 'OBSIDIAN.Exhaustion'}}</option>
+					{{#if (or (eq condition.level 'adv') (eq condition.level 'dis'))}}
+						<option value="spell">{{localize 'OBSIDIAN.Condition.spell'}}</option>
+						<option value="magic">{{localize 'OBSIDIAN.Condition.magic'}}</option>
+					{{/if}}
+				{{/select}}
+			</select>
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row" data-selector-parent="{{prefix}}.defense"
+	     data-show="damage">
+		<div>
+			<select name="{{prefix}}.damage.level">
+				{{selectOptions @root.ObsidianLabels.DefenseLevel selected=damage.level}}
+			</select>
+			<select name="{{prefix}}.damage.dmg">
+				{{selectOptions @root.ObsidianLabels.DamageSpell selected=damage.dmg}}
+			</select>
+			{{#unless (eq damage.dmg 'spell')}}
+			<select name="{{prefix}}.damage.magic" data-selector="{{prefix}}.damage.magic">
+				{{#select damage.magic}}
+					<option value="">&mdash;</option>
+					<option value="non">{{localize 'OBSIDIAN.Defense.non'}}</option>
+				{{/select}}
+			</select>
+			<select name="{{prefix}}.damage.material" data-show="non"
+			        data-selector-parent="{{prefix}}.damage.magic">
+				{{#select damage.material}}
+					<option value="">&mdash;</option>
+					<option value="sil">{{localize 'OBSIDIAN.Defense.sil'}}</option>
+					<option value="adm">{{localize 'OBSIDIAN.Defense.adm'}}</option>
+				{{/select}}
+			</select>
+			{{/unless}}
+		</div>
+	</div>
+</fieldset>

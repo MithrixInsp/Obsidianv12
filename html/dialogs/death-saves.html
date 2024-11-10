@@ -1,0 +1,26 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.DeathSaves'}}</legend>
+		<div class="obsidian-form-row">
+			<div>
+				<span class="obsidian-formula-constant">1d20</span>
+				<span class="obsidian-binary-operator">&plus;</span>
+				<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+				       name="flags.obsidian.attributes.death.bonus"
+				       value="{{actor.flags.obsidian.attributes.death.bonus}}">
+				<span class="obsidian-binary-operator">&gt;&equals;</span>
+				<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+				       name="flags.obsidian.attributes.death.threshold"
+				       value="{{actor.flags.obsidian.attributes.death.threshold}}">
+			</div>
+		</div>
+		<div class="obsidian-form-row obsidian-stacked-row">
+			<label>
+				{{localize 'OBSIDIAN.RollTitle'}}
+				<select name="flags.obsidian.attributes.death.roll">
+					{{selectOptions ObsidianLabels.Roll selected=actor.flags.obsidian.attributes.death.roll}}
+				</select>
+			</label>
+		</div>
+	</fieldset>
+</form>

@@ -1,0 +1,37 @@
+<form class="obsidian obsidian-form-bare" autocomplete="off">
+	<fieldset>
+		<legend>{{localize 'OBSIDIAN.SpeedTitle'}}</legend>
+		{{#unless (or dialogOptions.npc dialogOptions.vehicle)}}
+			<div class="obsidian-form-row">
+				<label>
+					<select name="flags.obsidian.attributes.speedDisplay">
+						{{selectOptions ObsidianLabels.Speed
+						                selected=actor.flags.obsidian.attributes.speedDisplay}}
+					</select>
+					<span>{{localize 'OBSIDIAN.DisplaySpeed'}}</span>
+				</label>
+			</div>
+		{{/unless}}
+		{{#each ObsidianConfig.SPEEDS as |id|}}
+		{{#if (or (not @root.dialogOptions.vehicle) (eq id 'walk'))}}
+			<div class="obsidian-form-row">
+				<div class="obsidian-flex">
+					<label>
+						<input class="obsidian-input-num-md" name="system.attributes.movement.{{id}}" type="text"
+						       data-dtype="Number" value="{{lookup ../base.system.attributes.movement id}}">
+						{{#if @root.dialogOptions.vehicle}}
+							<span>{{obs-i18n 'Speed' 'drive'}}</span>
+						{{else}}
+							<span>{{obs-i18n 'Speed' id}}</span>
+						{{/if}}
+					</label>
+					{{#if (eq id 'fly')}}
+						{{fancy-checkbox 'system.attributes.movement.hover' content='OBSIDIAN.Hover'
+						                 checked=../base.system.attributes.movement.hover}}
+					{{/if}}
+				</div>
+			</div>
+		{{/if}}
+		{{/each}}
+	</fieldset>
+</form>

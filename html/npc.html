@@ -1,0 +1,457 @@
+<form class="obsidian obsidian-main-form {{cssClass}}" autocomplete="off">
+	<ul class="obsidian-tab-bar" data-group="main-tabs">
+		<li class="obsidian-tab item" data-tab="desc">{{localize 'OBSIDIAN.Description'}}</li>
+		<li class="obsidian-tab item" data-tab="stats">{{localize 'OBSIDIAN.Stats'}}</li>
+		<li class="obsidian-tab item" data-tab="equipment">{{localize 'OBSIDIAN.Equipment'}}</li>
+		<li class="obsidian-tab item" data-tab="effects">{{localize 'OBSIDIAN.Effects'}}</li>
+	</ul>
+	<div class="obsidian-tab-container tab" data-group="main-tabs" data-tab="desc">
+		<div class="obsidian-scrollable">
+		<section>
+			<img class="obsidian-profile-img obsidian-ptr profile" src="{{actor.img}}"
+			     title="{{actor.name}}" alt="{{actor.name}}" data-edit="img">
+			<div>
+				<div class="obsidian-char-box-container obsidian-char-box-stacked">
+					<div class="obsidian-char-box-text">{{localize 'OBSIDIAN.PersonalityTraits'}}</div>
+					<div class="obsidian-char-box" contenteditable="true" data-edit="system.details.trait">
+						{{{system.details.trait}}}
+					</div>
+				</div>
+				<div class="obsidian-char-box-container obsidian-char-box-stacked">
+					<div class="obsidian-char-box-text">{{localize 'OBSIDIAN.Ideals'}}</div>
+					<div class="obsidian-char-box" contenteditable="true" data-edit="system.details.ideal">
+						{{{system.details.ideal}}}
+					</div>
+				</div>
+				<div class="obsidian-char-box-container obsidian-char-box-stacked">
+					<div class="obsidian-char-box-text">{{localize 'OBSIDIAN.Bonds'}}</div>
+					<div class="obsidian-char-box" contenteditable="true" data-edit="system.details.bond">
+						{{{system.details.bond}}}
+					</div>
+				</div>
+				<div class="obsidian-char-box-container obsidian-char-box-stacked">
+					<div class="obsidian-char-box-text">{{localize 'OBSIDIAN.Flaws'}}</div>
+					<div class="obsidian-char-box" contenteditable="true" data-edit="system.details.flaw">
+						{{{system.details.flaw}}}
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<h3>
+				{{localize 'OBSIDIAN.Notes'}}
+				<a class="obsidian-edit-npc-notes"><i class="fas fa-edit"></i></a>
+			</h3>
+			<div class="obsidian-rich-text">
+				{{editor biographyHTML button=true editable=editable
+				         target='system.details.biography.value'}}
+			</div>
+		</section>
+		</div>
+	</div>
+	<div class="obsidian-tab-container obsidian-npc-stats tab" data-group="main-tabs"
+	     data-tab="stats">
+		<div class="obsidian-scrollable">
+		<header>
+			<div class="obsidian-char-header-container">
+				<input name="name" type="text" value="{{actor.name}}"
+				       class="obsidian-char-charname obsidian-condensed"
+				       placeholder="{{localize 'OBSIDIAN.CharacterName'}}">
+				<div class="obsidian-char-header-minor obsidian-condensed">{{{creatureType}}}</div>
+				{{#if summonLevel}}
+				<div class="obsidian-char-header-minor obsidian-condensed obsidian-summon-level">
+					{{summonLevel}}
+				</div>
+				{{/if}}
+			</div>
+			<div class="obsidian-npc-cr-container">
+				<div class="obsidian-npc-cr">
+					<div class="obsidian-npc-cr-input">
+						{{obs-i18n 'CR'}}
+						<input name="system.details.cr" type="text" value="{{labels.cr}}" placeholder="&mdash;">
+					</div>
+					<div class="obsidian-npc-cr-xp">
+						{{number-format system.details.xp.value}} {{obs-i18n 'XP'}}
+					</div>
+				</div>
+				<div class="obsidian-char-box-container">
+					<div class="obsidian-char-box" title="{{obs-i18n 'ProficiencyTitle'}}">
+						{{numberFormat system.attributes.prof decimals=0 sign=true}}
+					</div>
+				</div>
+			</div>
+			<div class="obsidian-npc-btns">
+				{{#if (not isObject)}}
+				<div class="obsidian-npc-btn-row">
+					<button type="button" class="obsidian-btn-outline obsidian-btn-sm obsidian-btn-sheet
+					        obsidian-short-rest">
+						<i class="fas fa-hourglass-half"></i>
+						{{localize 'OBSIDIAN.ShortRest'}}
+					</button>
+					<button type="button" class="obsidian-btn-outline obsidian-btn-sm obsidian-btn-sheet
+					        obsidian-long-rest">
+						<i class="fas fa-campground"></i>
+						{{localize 'OBSIDIAN.LongRest'}}
+					</button>
+				</div>
+				{{/if}}
+				<div class="obsidian-npc-btn-row">
+					<button type="button" class="
+					        {{#if (eq actor.flags.obsidian.sheet.roll 'adv')}}obsidian-btn-active{{/if}}
+					        obsidian-btn-outline obsidian-btn-sm obsidian-btn-sheet obsidian-btn-positive
+					        obsidian-global-advantage">
+						{{localize 'OBSIDIAN.Roll.adv'}}
+					</button>
+					<button type="button" class="
+					        {{#if (eq actor.flags.obsidian.sheet.roll 'dis')}}obsidian-btn-active{{/if}}
+					        obsidian-btn-outline obsidian-btn-sm obsidian-btn-sheet obsidian-btn-negative
+					        obsidian-global-disadvantage">
+						{{localize 'OBSIDIAN.Roll.dis'}}
+					</button>
+				</div>
+			</div>
+		</header>
+		<main>
+			<section class="obsidian-npc-stat-block">
+				<div class="obsidian-npc-box-row">
+					<div class="obsidian-char-box-container">
+						<div class="obsidian-char-box-text">{{obs-i18n 'ACAbbr'}}</div>
+						<div class="obsidian-char-box obsidian-npc-ac obsidian-ptr obsidian-simple-dialog"
+						     data-title="{{obs-i18n 'ManageAC'}}" data-template="ac.html" data-npc="true"
+						     data-width="450"
+							{{#if actor.flags.obsidian.attributes.ac.note}}
+							   title="{{actor.flags.obsidian.attributes.ac.note}}"
+							{{else if actor.obsidian.armourDisplay}}
+							   title="{{actor.obsidian.armourDisplay}}"
+							{{/if}}>
+							{{system.attributes.ac.value}}
+						</div>
+					</div>
+					<div class="obsidian-char-box-container">
+						<div class="obsidian-char-box-text rollable" data-roll="abl" data-abl="init">
+							{{obs-i18n 'Initiative'}}
+						</div>
+						<div class="obsidian-char-box">
+							{{numberFormat system.attributes.init.mod decimals=0 sign=true}}
+						</div>
+					</div>
+					<div class="obsidian-char-box-container">
+						<div class="obsidian-char-box-text">{{obs-i18n 'DT'}}</div>
+						<div class="obsidian-char-box obsidian-char-input-box">
+							<input type="text" data-dtype="Number" name="flags.obsidian.attributes.dt"
+							       class="obsidian-input-num" value="{{actor.flags.obsidian.attributes.dt}}"
+							       placeholder="&mdash;">
+						</div>
+					</div>
+					{{#each ObsidianConfig.SPEEDS as |id|}}
+					{{#with (lookup @root.system.attributes.movement id)}}
+					<div class="obsidian-char-box-container">
+						<div class="obsidian-char-box-text">
+							{{#if (eq id 'walk')}}
+								{{obs-i18n 'SpeedTitle'}}
+							{{else}}
+								{{obs-i18n 'SpeedAbbr' id}}
+							{{/if}}
+						</div>
+						<div class="obsidian-char-box obsidian-npc-speed obsidian-ptr obsidian-simple-dialog"
+						     data-title="{{obs-i18n 'ManageSpeed'}}" data-template="speed.html" data-width="250"
+						     title="{{obs-i18n 'ManageSpeed'}}" data-npc="true">
+							{{this}}
+						</div>
+						{{#if (and @root.system.attributes.movement.hover (eq id 'fly'))}}
+							<div class="obsidian-char-box-text obsidian-char-sub-box-text">
+								{{obs-i18n 'Hover'}}
+							</div>
+						{{/if}}
+					</div>
+					{{/with}}
+					{{/each}}
+				</div>
+				<div class="obsidian-npc-box-row">
+					<div class="obsidian-char-box-container">
+						<div class="obsidian-char-box-text obsidian-npc-roll-hp rollable">
+							{{obs-i18n 'HP'}}
+						</div>
+						<div class="obsidian-char-box obsidian-resource-box obsidian-npc-hp-box">
+							<div class="obsidian-bisect">
+								<input type="text" name="system.attributes.hp.value" class="obsidian-input-num"
+								       value="{{system.attributes.hp.value}}" data-dtype="Number">
+								&sol;
+								<input type="text" name="system.attributes.hp.max" class="obsidian-input-num"
+								       value="{{system.attributes.hp.max}}" data-dtype="Number">
+							</div>
+							<div class="obsidian-bisect">
+								<input type="text" name="system.attributes.hp.temp" data-dtype="Number"
+								       class="obsidian-input-num" placeholder="{{localize 'OBSIDIAN.TempAbbrUC'}}"
+								       value="{{#if system.attributes.hp.temp}}{{system.attributes.hp.temp}}{{/if}}">
+							</div>
+						</div>
+					</div>
+					{{#unless isObject}}
+					<div class="obsidian-char-box-container">
+						<div class="obsidian-char-box-text obsidian-npc-roll-hd rollable">
+							{{obs-i18n 'HD'}}
+						</div>
+						<div class="obsidian-char-box obsidian-resource-box obsidian-npc-hd-box">
+							<div class="obsidian-bisect">
+								<input type="text" name="flags.obsidian.attributes.hd.value" data-dtype="Number"
+								       value="{{actor.flags.obsidian.attributes.hd.value}}" placeholder="0"
+								       class="obsidian-input-num">
+								&sol;
+								<input type="text" name="flags.obsidian.attributes.hd.max" data-dtype="Number"
+								       value="{{actor.flags.obsidian.attributes.hd.max}}" placeholder="0"
+								       class="obsidian-input-num">
+								<div class="obsidian-resource-box-subtle">
+									d{{actor.obsidian.attributes.hd.die}}
+								</div>
+							</div>
+							<div class="obsidian-bisect">
+								<div class="obsidian-resource-box-subtle" style="padding: 4px 0;">
+									{{numberFormat actor.obsidian.attributes.hd.const decimals=0 sign=true}}
+								</div>
+							</div>
+						</div>
+					</div>
+					{{/unless}}
+				</div>
+				{{#if actor.flags.obsidian.showDeathSaves}}
+				<div class="obsidian-npc-box-row">
+					<div class="obsidian-char-box-container obsidian-death-saves-box">
+						<div class="obsidian-char-box-text">
+						<span class="rollable" data-roll="save" data-save="death">
+							{{localize 'OBSIDIAN.DeathSaves'}}
+						</span>
+						</div>
+						<div class="obsidian-char-box obsidian-char-box-lg">
+							<div class="obsidian-grid-2-col">
+								<div class="obsidian-vertical-bisect">
+									<div class="obsidian-char-box-text">{{localize 'OBSIDIAN.Successes'}}</div>
+									<div class="obsidian-meatballs obsidian-death-successes">
+										{{#each (range 1 3) as |n|}}
+											<div class="
+										{{~#if (leq n ../system.attributes.death.success)~}}selected{{~/if}}
+										fancy-checkbox" data-value="{{n}}">
+												<div class="checkbox-container">
+													<div class="checkbox-inner-box"></div>
+													<div class="checkmark-container">
+														<div class="checkmark">
+															<div class="checkmark-short"></div>
+															<div class="checkmark-long"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										{{/each}}
+									</div>
+								</div>
+								<div class="obsidian-vertical-bisect">
+									<div class="obsidian-char-box-text">{{localize 'OBSIDIAN.Failures'}}</div>
+									<div class="obsidian-meatballs obsidian-death-failures obsidian-feature-uses">
+										{{#each (range 1 3) as |n|}}
+											<div class="
+										{{~#if (leq n ../system.attributes.death.failure)~}}obsidian-feature-used{{~/if}}
+										obsidian-feature-use" data-value="{{n}}">&times;</div>
+										{{/each}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{/if}}
+				<div class="obsidian-char-abilities">
+					{{#each system.abilities}}
+					<div class="obsidian-char-ability">
+						<div class="obsidian-char-ability-name rollable obsidian-condensed" draggable="true"
+						     data-roll="abl" data-abl="{{@key}}"
+						     title="{{localize 'OBSIDIAN.AbilityCheckFmt' abl=(obs-i18n 'Ability' @key)}}">
+							{{obs-i18n 'AbilityAbbr' @key}}
+						</div>
+						<div class="obsidian-char-ability-mod">
+							{{numberFormat mod decimals=0 sign=true}}
+						</div>
+						{{#with (lookup ../base.system.abilities @key)}}
+						<input type="text" value="{{../value}}" placeholder="10" name="abl-facade-{{@key}}"
+							class="obsidian-char-ability-score
+								{{#if (gt ../value value)}}
+									obsidian-positive
+								{{else if (lt ../value value)}}
+									obsidian-negative
+								{{/if}}">
+						<input name="system.abilities.{{@key}}.value" type="hidden" value="{{value}}"
+						       data-dtype="Number">
+						{{/with}}
+						<div class="obsidian-char-box rollable" data-roll="save" data-save="{{@key}}"
+						     title="{{localize 'OBSIDIAN.SavingThrowFmt' save=(obs-i18n 'Ability' @key)}}">
+							{{numberFormat save decimals=0 sign=true}}
+						</div>
+					</div>
+					{{/each}}
+				</div>
+				<div class="obsidian-npc-stat-block-grid">
+					<div class="obsidian-char-box-container obsidian-char-box-stacked">
+						<div class="obsidian-char-box obsidian-skills-box">
+							{{#unless isObject}}
+							<div class="obsidian-passive-item">
+								<div class="obsidian-skill-name">
+									{{localize 'OBSIDIAN.PassiveFmt' skl=(obs-i18n 'Skill' 'prc')}}
+								</div>
+								<div class="obsidian-skill-passive">{{system.skills.prc.passive}}</div>
+							</div>
+							<div class="obsidian-bisect">
+								<div class="obsidian-char-box-text obsidian-char-box-text-compact">
+									{{obs-i18n 'Senses'}}
+									<a class="obsidian-edit" data-dialog="Senses" data-npc="true">
+										<i class="fas fa-cog"></i>
+									</a>
+								</div>
+								{{#if hasSenses}}
+								<div class="obsidian-horizontal-list obsidian-list-compact">
+								{{#each senses}}
+									{{#if (gt (lookup ../system.attributes.senses @key) 0)}}
+										<span>
+											{{obs-i18n 'Sense' @key}}
+											{{lookup ../system.attributes.senses @key}}
+											{{localize 'OBSIDIAN.FeetAbbr'~}}
+										</span>
+									{{/if}}
+								{{/each}}
+								</div>
+								{{/if}}
+							</div>
+							<div class="obsidian-bisect">
+								<div class="obsidian-char-box-text obsidian-char-box-text-compact">
+									{{obs-i18n 'Skills'}}
+									<a class="obsidian-edit" data-dialog="NPCSkills"><i class="fas fa-cog"></i></a>
+								</div>
+								{{#if (not-empty skills)}}
+								<div class="obsidian-horizontal-list obsidian-list-compact">
+									{{#each skills}}
+									<span class="rollable" data-roll="skl" data-skl="{{@key}}">
+										{{obs-i18n 'Skill' @key}} {{numberFormat total decimals=0 sign=true}}
+									</span>
+									{{/each}}
+								</div>
+								{{/if}}
+							</div>
+							{{/unless}}
+							<div class="obsidian-bisect">
+								<div class="obsidian-char-box-text obsidian-char-box-text-compact">
+									{{localize 'OBSIDIAN.Defenses'}}
+									<a title="{{localize 'OBSIDIAN.ManageDefenses'}}" class="obsidian-edit"
+									   data-dialog="Defenses">
+										<i class="fas fa-cog"></i>
+									</a>
+								</div>
+								<div class="obsidian-horizontal-list obsidian-list-compact">
+									{{#each actor.obsidian.defenses.display.all}}
+										{{defense-pill this}}
+									{{/each}}
+								</div>
+							</div>
+							{{#unless isObject}}
+							<div class="obsidian-bisect">
+								<div class="obsidian-char-box-text obsidian-char-box-text-compact">
+									{{obs-i18n 'Languages'}}
+									<a class="obsidian-edit" data-dialog="Proficiencies" data-npc="true">
+										<i class="fas fa-cog"></i>
+									</a>
+								</div>
+								{{#if (or (not-empty system.traits.languages.selected) (not-empty actor.flags.obsidian.traits.profs.custom.langs))}}
+								<div class="obsidian-horizontal-list obsidian-list-compact">
+								{{#each system.traits.languages.selected}}<span>{{obs-i18n 'Lang' @key}}</span>{{/each}}
+								{{#each actor.flags.obsidian.traits.profs.custom.langs}}
+									<span>{{this}}</span>
+								{{/each}}
+								</div>
+								{{/if}}
+							</div>
+							{{/unless}}
+						</div>
+					</div>
+					<div class="obsidian-char-box-container obsidian-conditions-box obsidian-char-box-stacked">
+						<div class="obsidian-char-box obsidian-char-box-lg">
+							<div class="obsidian-grid-2-col obsidian-conditions">
+								{{#each ObsidianConfig.CONDITIONS}}
+									{{condition-pill this active=(lookup ../actor.obsidian.conditions this)}}
+								{{/each}}
+							</div>
+							<div class="obsidian-exhaustion">
+								<div class="
+								{{#if (gt actor.obsidian.conditions.exhaustion 0)}}
+									obsidian-condition-pill-active
+								{{else}}
+									obsidian-condition-pill-inactive
+								{{/if}} obsidian-item-drop-pill obsidian-item-drop-pill-sm">
+									{{#each (range 1 6) as |level|}}
+										<div class="obsidian-item-drop-pill-header" data-value="{{level}}">
+											<div class="
+											{{#if (gt level ../actor.obsidian.conditions.exhaustion)}}
+												obsidian-condition-pill-inactive
+											{{else}}
+												obsidian-condition-pill-active
+											{{/if}} obsidian-svg-icon obsidian-svg-icon-sm
+											        obsidian-icon-condition-exhaust{{level}}"></div>
+										</div>
+									{{/each}}
+									<div class="obsidian-item-drop-pill-body">{{localize 'OBSIDIAN.Exhaustion'}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="obsidian-npc-configure">
+					<div data-dialog="NPCSaves">
+						{{obs-i18n 'Saves'}} <i class="fas fa-cog"></i>
+					</div>
+					<div data-dialog="NPCFeatures">
+						{{localize 'OBSIDIAN.Features'}} <i class="fas fa-cog"></i>
+					</div>
+				</div>
+			</section>
+			{{#if featCategories.none}}
+				<section>
+					{{> modules/obsidian/html/components/features.html feats=featCategories.none}}
+				</section>
+			{{/if}}
+			{{#if featCategories.action}}
+				<section>
+					{{> modules/obsidian/html/components/features.html feats=featCategories.action
+							heading='OBSIDIAN.Actions' alreadySorted=true}}
+				</section>
+			{{/if}}
+			{{#if featCategories.bonus}}
+				<section>
+					{{> modules/obsidian/html/components/features.html feats=featCategories.bonus
+							heading='OBSIDIAN.BonusActions'}}
+				</section>
+			{{/if}}
+			{{#if featCategories.reaction}}
+				<section>
+					{{> modules/obsidian/html/components/features.html feats=featCategories.reaction
+							heading='OBSIDIAN.Reactions'}}
+				</section>
+			{{/if}}
+			{{#if featCategories.legendary}}
+				<section>
+					{{> modules/obsidian/html/components/features.html feats=featCategories.legendary
+							heading='OBSIDIAN.LegendaryActions' legendary=system.resources.legact}}
+				</section>
+			{{/if}}
+			{{#if featCategories.lair}}
+				<section>
+					{{> modules/obsidian/html/components/features.html feats=featCategories.lair
+							heading='OBSIDIAN.LairActions' subtext='OBSIDIAN.LairRules'}}
+				</section>
+			{{/if}}
+		</main>
+		</div>
+		<div class="obsidian-spell-tab-toggle">
+			<object type="image/svg+xml" data="modules/obsidian/img/effect.svg" width="15"
+			        height="15"></object>
+		</div>
+	</div>
+	{{> modules/obsidian/html/tabs/equipment.html}}
+	{{> modules/obsidian/html/tabs/spells.html}}
+	{{> modules/obsidian/html/tabs/effects.html}}
+</form>
