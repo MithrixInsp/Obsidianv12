@@ -1,0 +1,21 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.Targets'}}</legend>
+  <div class="obsidian-form-row">
+    <div>
+      <select name="{{prefix}}.target" data-selector="{{prefix}}.target">
+	      {{selectOptions @root.ObsidianLabels.SingleTarget selected=target}}
+      </select>
+      <input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+             name="{{prefix}}.count" value="{{this.count}}" data-selector-parent="{{prefix}}.target"
+             data-show="individual">
+	    <label data-selector-parent="{{prefix}}.target" data-show="area">
+		    <input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+		           name="{{prefix}}.distance" value="{{distance}}">
+		    <span>{{localize 'OBSIDIAN.FeetAbbr'}}</span>
+	    </label>
+      <select name="{{prefix}}.area" data-selector-parent="{{prefix}}.target" data-show="area">
+	      {{selectOptions @root.ObsidianLabels.AreaTarget selected=area}}
+      </select>
+    </div>
+  </div>
+</fieldset>

@@ -1,0 +1,49 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.SavingThrow'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.Calculation'}}
+				<select name="{{prefix}}.calc" data-selector="{{prefix}}.calc">
+					{{selectOptions @root.ObsidianLabels.ResourceUses selected=calc}}
+				</select>
+			</label>
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+			       name="{{prefix}}.fixed" value="{{fixed}}" data-selector-parent="{{prefix}}.calc"
+			       data-show="fixed">
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row" data-selector-parent="{{prefix}}.calc"
+	     data-show="formula">
+		<div>
+			<input type="text" class="obsidian-input-num-sm" placeholder="8" name="{{prefix}}.bonus"
+			       value="{{bonus}}">
+			<span class="obsidian-binary-operator">&plus;</span>
+			<select name="{{prefix}}.prof" data-dtype="Number">
+				{{selectOptions @root.ObsidianLabels.PlusProf selected=prof blank='—'}}
+			</select>
+			<span class="obsidian-binary-operator">&plus;</span>
+			<select name="{{prefix}}.ability">
+				{{selectOptions @root.ObsidianLabels.AbilitySpell selected=ability blank='—'}}
+			</select>
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.TargetTitle'}}
+				<select name="{{prefix}}.target">
+					{{selectOptions @root.ObsidianLabels.Ability selected=target}}
+				</select>
+			</label>
+			<input type="text" class="obsidian-input-lg" name="{{prefix}}.effect" value="{{effect}}"
+			       placeholder="{{localize 'OBSIDIAN.Effect'}}">
+			<label style="margin: 0;">
+				{{localize 'OBSIDIAN.OnSaveTitle'}}
+				<select name="{{prefix}}.save">
+					{{selectOptions @root.ObsidianLabels.OnSave selected=save blank='—'}}
+				</select>
+			</label>
+		</div>
+	</div>
+</fieldset>

@@ -1,0 +1,13 @@
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.SetScore'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<label>
+				<input type="text" class="obsidian-input-num-md" data-dtype="Number" name="{{prefix}}.score"
+				       value="{{score}}" placeholder="0">
+				<span>{{localize 'OBSIDIAN.Score'}}</span>
+			</label>
+			{{fancy-checkbox prefix 'min' content='OBSIDIAN.NoEffectIfHigher' checked=min}}
+		</div>
+	</div>
+</fieldset>

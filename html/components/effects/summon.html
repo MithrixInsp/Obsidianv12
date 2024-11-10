@@ -1,0 +1,76 @@
+{{#*inline 'formula'}}
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			{{fancy-checkbox prefix 'enabled' content=content checked=enabled selector=prefix}}
+			<input type="text" class="obsidian-input-num-sm" data-dtype="Number" value="{{bonus}}"
+			       data-selector-parent="{{prefix}}" name="{{prefix}}.bonus" placeholder="0">
+			<select class="obsidian-select-operator" name="{{prefix}}.operator"
+			        data-selector-parent="{{prefix}}">
+				{{#select operator}}
+					<option value="plus">&plus;</option>
+					<option value="mult">&times;</option>
+				{{/select}}
+			</select>
+			<select name="{{prefix}}.key" data-selector="{{prefix}}.key"
+			        data-selector-parent="{{prefix}}">
+				{{selectOptions @root.ObsidianLabels.SummonBonus selected=key blank='—'}}
+			</select>
+			<select name="{{prefix}}.ability" data-selector-parent="{{prefix}}.key" data-show="abl">
+				{{selectOptions @root.ObsidianLabels.Ability selected=ability}}
+			</select>
+			{{> select-class parent='key' show='cls'}}
+		</div>
+	</div>
+{{/inline}}
+<fieldset data-uuid="{{uuid}}">
+	<legend>{{localize 'OBSIDIAN.AddSummons'}}</legend>
+	<div class="obsidian-form-row">
+		<div>
+			{{fancy-checkbox prefix 'prof' content='OBSIDIAN.ReplaceProf' checked=prof}}
+		</div>
+	</div>
+	{{#with ac}}
+		{{> formula prefix=(add ../prefix '.ac') content='OBSIDIAN.BonusAC'}}
+	{{/with}}
+	{{#with hp}}
+		{{> formula prefix=(add ../prefix '.hp') content='OBSIDIAN.BonusHP'}}
+	{{/with}}
+	{{#with tmp}}
+		{{> formula prefix=(add ../prefix '.tmp') content='OBSIDIAN.BonusTemp'}}
+	{{/with}}
+	{{#with dmg}}
+		{{> formula prefix=(add ../prefix '.dmg') content='OBSIDIAN.BonusDamage'}}
+	{{/with}}
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			<label>
+				{{localize 'OBSIDIAN.ReplaceAttackRolls'}}
+				<select name="{{prefix}}.attack">
+					{{selectOptions @root.ObsidianLabels.AbilitySpell selected=attack blank='—'}}
+				</select>
+			</label>
+			<label>
+				{{localize 'OBSIDIAN.ReplaceSaveDCs'}}
+				<select name="{{prefix}}.save">
+					{{selectOptions @root.ObsidianLabels.AbilitySpell selected=save blank='—'}}
+				</select>
+			</label>
+		</div>
+	</div>
+	<div class="obsidian-item-drop obsidian-actor-drop{{#unless processed.length}} obsidian-empty{{/unless}}">
+		{{#unless processed.length}}
+			<div class="obsidian-item-drop-empty">{{localize 'OBSIDIAN.DropActorsHere'}}</div>
+		{{/unless}}
+		{{#each processed}}
+			<div class="obsidian-item-drop-pill" data-id="{{uuid}}">
+				<div class="obsidian-item-drop-pill-header">
+					<img alt="{{obs-i18n entity}}" title="{{obs-i18n entity}}" src="{{icon}}">
+				</div>
+				<div class="obsidian-item-drop-pill-body obsidian-provide-actor-body">
+					{{name}}
+				</div>
+				<div class="obsidian-item-drop-pill-rm obsidian-rm-provide-actor">&times;</div>
+			</div>
+		{{/each}}
+	</div>
+</fieldset>
