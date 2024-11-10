@@ -1,0 +1,77 @@
+<fieldset>
+	<legend>{{obs-i18n 'ItemType' item.type}}</legend>
+	<div class="obsidian-form-row-img">
+		<div>
+			<img class="profile" src="{{item.img}}" alt="{{item.name}}" data-edit="img">
+		</div>
+		<div>
+			<div class="obsidian-form-row">
+				<div>
+					<input type="text" class="obsidian-input-lg" name="name" value="{{item.name}}"
+					       placeholder="{{localize 'OBSIDIAN.Name'}}">
+					<select name="flags.obsidian.subtype" data-selector="subtype">
+						{{#select item.flags.obsidian.subtype}}
+							{{#each equipTypes}}
+								<option value="{{this}}">{{obs-i18n 'ItemType' this}}</option>
+							{{/each}}
+						{{/select}}
+					</select>
+					<select name="flags.obsidian.componentType" data-selector-parent="subtype"
+					        data-show="vehicle" data-selector="componentType">
+						{{selectOptions ObsidianLabels.VehicleComponents
+						                selected=item.flags.obsidian.componentType}}
+					</select>
+				</div>
+			</div>
+			<div class="obsidian-form-row obsidian-stacked-row">
+				<div>
+					{{> modules/obsidian/html/components/parts/weight-cost.html}}
+					{{fancy-checkbox 'flags.obsidian.attunement' content='OBSIDIAN.RequiresAttunement'
+					                 checked=item.flags.obsidian.attunement}}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{#if (eq item.flags.obsidian.subtype 'vehicle')}}
+		{{> modules/obsidian/html/components/mountable.html}}
+	{{/if}}
+	{{> modules/obsidian/html/components/parts/magic.html}}
+</fieldset>
+{{#unless (eq item.flags.obsidian.subtype 'vehicle')}}
+<fieldset {{disabled (not item.flags.obsidian.armour)}}>
+	<legend>
+		{{fancy-checkbox 'flags.obsidian.armour' content='OBSIDIAN.ItemType.armour'
+		                 checked=item.flags.obsidian.armour}}
+	</legend>
+	<div class="obsidian-form-row">
+		<div>
+			<select name="system.armor.type">
+				{{selectOptions ObsidianLabels.ArmourType selected=item.system.armor.type}}
+			</select>
+			<label>
+				<input type="text" class="obsidian-input-num-sm" name="system.armor.value" data-dtype="Number"
+				       value="{{item.system.armor.value}}" placeholder="0">
+				<span>{{localize 'OBSIDIAN.ACAbbr'}}</span>
+			</label>
+			{{fancy-checkbox 'flags.obsidian.addDex' content='OBSIDIAN.AddDexMod' selector='add-dex'
+                       checked=item.flags.obsidian.addDex}}
+			<label data-selector-parent="add-dex">
+				<input type="text" class="obsidian-input-num-sm" data-dtype="Number" name="system.armor.dex"
+				       value="{{system.armor.dex}}">
+				<span>{{localize 'OBSIDIAN.Maximum'}}</span>
+			</label>
+		</div>
+	</div>
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			<label>
+				<input type="text" class="obsidian-input-num-sm" data-dtype="Number" name="system.strength"
+				       value="{{item.system.strength}}">
+				<span>{{localize 'OBSIDIAN.MinStr'}}</span>
+			</label>
+			{{fancy-checkbox 'system.stealth' content='OBSIDIAN.StealthDisadvantage'
+			                 checked=item.system.stealth}}
+		</div>
+	</div>
+</fieldset>
+{{/unless}}

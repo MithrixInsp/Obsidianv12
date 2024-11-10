@@ -1,0 +1,86 @@
+<fieldset>
+	<legend>{{localize 'OBSIDIAN.Feature'}}</legend>
+	<div class="obsidian-form-row-img">
+		<div>
+			<img class="profile" src="{{item.img}}" alt="{{item.name}}" data-edit="img">
+		</div>
+		<div>
+		  <div class="obsidian-form-row">
+		    <div>
+		      <input type="text" class="obsidian-input-lg" name="name" value="{{item.name}}"
+		             placeholder="{{localize 'OBSIDIAN.Feature'}}">
+			    <input type="text" class="obsidian-input-num-sm" data-dtype="Number" data-show="legendary"
+			           name="system.activation.cost" placeholder="1" value="{{system.activation.cost}}"
+			           data-selector-parent="activation">
+			    <select name="system.activation.type" data-selector="activation">
+
+				    {{#select item.system.activation.type}}
+					    {{#each ObsidianConfig.FEAT_ACTION}}
+						    <option value="{{this}}">{{obs-i18n 'FeatAction' this}}</option>
+					    {{/each}}
+					    {{#if isNPC}}
+						    <option value="legendary">{{localize 'OBSIDIAN.FeatAction.legendary'}}</option>
+						    <option value="lair">{{localize 'OBSIDIAN.FeatAction.lair'}}</option>
+					    {{/if}}
+				    {{/select}}
+			    </select>
+			    <select name="flags.obsidian.trigger" data-selector-parent="activation"
+			            data-show="special">
+				    {{selectOptions ObsidianLabels.Trigger selected=item.flags.obsidian.trigger
+				                    blank='—'}}
+			    </select>
+		    </div>
+		  </div>
+			{{#unless (eq item.flags.obsidian.source.type 'item')}}
+			<div class="obsidian-form-row obsidian-stacked-row">
+				<div>
+					<label>
+						{{localize 'OBSIDIAN.Source'}}
+						<select name="flags.obsidian.source.type" data-selector="source">
+							{{selectOptions ObsidianLabels.FeatSrc selected=item.flags.obsidian.source.type}}
+						</select>
+					</label>
+					{{#if actor}}
+					<select name="flags.obsidian.source.class" data-selector-parent="source"
+					        data-show="class">
+						{{#select item.flags.obsidian.source.class}}
+							{{#each actor.obsidian.classes}}
+								<option value="{{id}}">{{obsidian.label}}</option>
+							{{/each}}
+						{{/select}}
+					</select>
+					{{else}}
+					<input type="text" name="flags.obsidian.source.text" data-selector-parent="source"
+					       value="{{item.flags.obsidian.source.text}}" data-show="class"
+					       placeholder="{{localize 'OBSIDIAN.ClassTitle'}}">
+					{{/if}}
+					<input type="text" class="obsidian-input-lg" data-show="other"
+					       data-selector-parent="source" name="flags.obsidian.source.other"
+					       value="{{item.flags.obsidian.source.other}}"
+					       placeholder="{{localize 'OBSIDIAN.Source'}}">
+					{{fancy-checkbox 'flags.obsidian.magical' content='OBSIDIAN.Magical'
+					                 checked=item.flags.obsidian.magical}}
+				</div>
+			</div>
+			{{/unless}}
+		</div>
+	</div>
+	{{#if isVehicle}}
+	<div class="obsidian-form-row obsidian-stacked-row">
+		<div>
+			<label>
+				{{localize 'DND5E.Cover'}}
+				<select name="system.cover" data-dtype="Number">
+					{{selectOptions config.cover selected=item.system.cover localize=true}}
+				</select>
+			</label>
+			<label>
+				{{obs-i18n 'MinCrew'}}
+				<input type="text" class="obsidian-input-num-sm" data-dtype="Number" placeholder="0"
+				       value="{{item.flags.obsidian.conditions.crew}}"
+				       name="flags.obsidian.conditions.crew">
+			</label>
+		</div>
+	</div>
+	{{/if}}
+</fieldset>

@@ -1,0 +1,80 @@
+<div class="obsidian-item-card">
+	<div class="obsidian-item-card-header">
+		<h3>
+			{{#if (eq system.level 0)}}
+				{{obs-i18n 'SpellSchool' system.school}}
+				{{spell-level-format system.level cantrip=true}}
+			{{else}}
+				{{spell-level-format system.level level=true}}
+				{{obs-i18n 'SpellSchool' system.school}}
+			{{/if}}
+			{{#if system.components.ritual}}
+				({{localize 'OBSIDIAN.RitualLC'}})
+			{{/if}}
+		</h3>
+		{{#if (and (gt system.level 0) (gt upcast 0))}}
+			<h4>
+				{{localize 'OBSIDIAN.CastAtLC'}} {{spell-level-format (add upcast system.level) level=true}}
+			</h4>
+		{{/if}}
+		<div class="obsidian-item-card-header-row">
+			<div class="obsidian-item-card-header-key">{{localize 'OBSIDIAN.CastTimeTitle'}}:</div>
+			<div class="obsidian-item-card-header-value">
+				{{flags.obsidian.time.n}}
+				{{lc (obs-i18n 'CastTime' flags.obsidian.time.type)}}
+				{{~#if (eq flags.obsidian.time.type 'react')~}}
+					, {{flags.obsidian.time.react}}
+				{{/if}}
+			</div>
+		</div>
+		<div class="obsidian-item-card-header-row">
+			<div class="obsidian-item-card-header-key">{{localize 'OBSIDIAN.Range'}}:</div>
+			<div class="obsidian-item-card-header-value">
+				{{#if (or (eq flags.obsidian.range.type 'short') (eq flags.obsidian.range.type 'long'))}}
+					{{flags.obsidian.range.n}}
+					<span class="obsidian-table-unit">
+						{{obs-i18n 'SpellRangeAbbr' flags.obsidian.range.type}}
+					</span>
+				{{else}}
+					{{obs-i18n 'SpellRange' flags.obsidian.range.type}}
+				{{/if}}
+			</div>
+		</div>
+		<div class="obsidian-item-card-header-row">
+			<div class="obsidian-item-card-header-key">{{localize 'OBSIDIAN.Components'}}:</div>
+			<div class="obsidian-item-card-header-value">
+				{{#if flags.obsidian.components.v~}}
+					<div class="obsidian-spell-card-component">{{localize 'OBSIDIAN.VerbalAbbr'}}</div>
+				{{~/if~}}
+				{{~#if flags.obsidian.components.s~}}
+					<div class="obsidian-spell-card-component">{{localize 'OBSIDIAN.SomaticAbbr'}}</div>
+				{{~/if~}}
+				{{~#if flags.obsidian.components.r~}}
+					<div class="obsidian-spell-card-component">{{localize 'OBSIDIAN.RoyaltyAbbr'}}</div>
+				{{~/if~}}
+				{{~#if flags.obsidian.components.m~}}
+					<div class="obsidian-spell-card-component">{{localize 'OBSIDIAN.MaterialAbbr'}}</div>
+					<span class="obsidian-table-sub-text">({{system.materials.value}})</span>
+				{{/if}}
+			</div>
+		</div>
+		<div class="obsidian-item-card-header-row">
+			<div class="obsidian-item-card-header-key">{{localize 'OBSIDIAN.DurationTitle'}}:</div>
+			<div class="obsidian-item-card-header-value">
+				{{#if system.components.concentration}}
+					{{localize 'OBSIDIAN.Concentration'}},
+					{{localize 'OBSIDIAN.UpTo'}} {{format-spell-duration this}}
+				{{else}}
+					{{format-spell-duration this}}
+				{{/if}}
+			</div>
+		</div>
+	</div>
+	<div class="obsidian-item-card-body">
+		{{#if details}}
+			{{{clean-formatting details}}}
+		{{else}}
+			{{{clean-formatting system.description.value}}}
+		{{/if}}
+	</div>
+</div>

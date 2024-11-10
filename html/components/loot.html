@@ -1,0 +1,22 @@
+<fieldset>
+	<legend>{{localize 'OBSIDIAN.Item'}}</legend>
+	<div class="obsidian-form-row-img">
+		<div>
+			<img class="profile" src="{{item.img}}" alt="{{item.name}}" data-edit="img">
+		</div>
+		<div>
+			<div class="obsidian-form-row">
+				<div>
+					<input type="text" class="obsidian-input-lg" name="name" value="{{item.name}}"
+					       placeholder="{{localize 'OBSIDIAN.Name'}}">
+				</div>
+			</div>
+			<div class="obsidian-form-row obsidian-stacked-row">
+				<div>
+					{{> modules/obsidian/html/components/parts/weight-cost.html}}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{> modules/obsidian/html/components/parts/magic.html}}
+</fieldset>

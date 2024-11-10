@@ -1,0 +1,117 @@
+{{#each this}}
+	<div class="obsidian-tr item" data-item-id="{{_id}}" data-reorderable="true" data-name="{{name}}"
+	     draggable="true"
+	     {{#if @root.isVehicle}}
+		     {{#if (and (eq type 'equipment') (eq flags.obsidian.subtype 'vehicle'))}}data-filter-component="true"
+		     {{else if (and (eq type 'weapon') (eq flags.obsidian.category 'siege'))}}data-filter-component="true"
+		     {{else}}data-filter-cargo="true" {{/if}}
+	     {{else}}
+		     {{#if flags.obsidian.magical}}data-filter-magical="true" {{/if}}
+		     {{#if (eq type 'weapon')}}data-filter-weapon="true" {{/if}}
+		     {{#if (eq flags.obsidian.subtype 'armour')}}data-filter-armour="true" {{/if}}
+		     {{#if (eq type 'consumable')}}data-filter-consumable="true" {{/if}}
+		     {{#if flags.obsidian.attunement}}data-filter-attunement="true"{{/if}}
+	     {{/if}}>
+		<div class="obsidian-col-action">
+			{{#if obsidian.equippable}}
+				<button type="button" class="{{#if system.equipped}}obsidian-btn-active{{/if}}
+				        obsidian-btn-outline obsidian-equip-action">
+					{{#if system.equipped}}
+						{{localize 'OBSIDIAN.Unequip'}}
+					{{else}}
+						{{localize 'OBSIDIAN.Equip'}}
+					{{/if}}
+				</button>
+			{{else if (or (eq type 'tool') obsidian.consumable)}}
+				<button type="button" class="obsidian-btn-outline obsidian-equip-action">
+					{{localize 'OBSIDIAN.Use'}}
+				</button>
+			{{else}}
+				<span class="obsidian-blank">&mdash;</span>
+			{{/if}}
+		</div>
+		<div class="obsidian-col-inv-item
+			{{#if flags.obsidian.attunement}}obsidian-sibling-attunement{{/if}}">
+			<div class="obsidian-table-text {{#if (eq flags.obsidian.source.type 'item')}}obsidian-positive{{/if}}">{{name}}</div>
+			<div class="obsidian-table-sub-text">
+				{{#if (eq type 'weapon')}}
+					{{#if (eq flags.obsidian.type 'melee')}}
+						{{localize 'OBSIDIAN.MeleeWeapon'}}
+					{{else if (eq flags.obsidian.type 'ranged')}}
+						{{localize 'OBSIDIAN.RangedWeapon'}}
+					{{/if}}
+				{{else if (eq type 'equipment')}}
+					{{#if (eq flags.obsidian.subtype 'armour')}}
+						{{obs-i18n 'ArmourTypeFull' system.armor.type}}
+					{{else}}
+						{{obs-i18n 'ItemType' flags.obsidian.subtype}}
+					{{/if}}
+				{{else if (eq type 'consumable')}}
+					{{obs-i18n 'ConsumableType' flags.obsidian.subtype}}
+				{{else}}
+					{{obs-i18n 'ItemType' type}}
+				{{/if}}
+			</div>
+		</div>
+		{{#if flags.obsidian.attunement}}
+		<div class="obsidian-col-attunement">
+			<div class="obsidian-attune obsidian-rarity-{{system.rarity}}
+				{{#if system.attunement}}obsidian-attuned{{/if}}"
+			     title="
+					{{#if system.attunement}}
+				     {{localize 'OBSIDIAN.Attuned'}}
+			     {{else}}
+				     {{localize 'OBSIDIAN.RequiresAttunement'}}
+			     {{/if}}">
+				<i class="fas fa-certificate"></i>
+			</div>
+		</div>
+		{{/if}}
+		<div class="obsidian-col-weight">
+			<div class="obsidian-table-number-{{num-size system.weight}}">
+				{{#if system.weight}}
+					{{system.weight}}
+					<span class="obsidian-table-unit">{{localize 'OBSIDIAN.PoundsAbbr'}}</span>
+				{{else}}
+					&mdash;
+				{{/if}}
+			</div>
+		</div>
+		<div class="obsidian-col-qty">
+			<input type="text" class="obsidian-table-input" data-name="items.{{idx}}.system.quantity"
+			       data-dtype="Number" placeholder="1" value="{{system.quantity}}">
+		</div>
+		<div class="obsidian-col-cost">
+			<div class="obsidian-table-number-{{num-size system.price.value}}">
+				{{#if system.price.value}}
+					<i class="obsidian-icon obsidian-icon-xs obsidian-icon-{{system.price.denomination}}"></i>
+					{{number-format system.price.value}}
+				{{else}}
+					&mdash;
+				{{/if}}
+			</div>
+		</div>
+		<div class="obsidian-col-type">
+			<div class="obsidian-icon obsidian-icon-
+				{{~#if (or (eq type 'equipment') (eq type 'consumable'))~}}
+					{{~flags.obsidian.subtype~}}
+				{{~else~}}
+					{{~type~}}
+				{{~/if~}}
+			" title="
+				{{~#if (or (eq type 'equipment') (eq type 'consumable'))~}}
+					{{obs-i18n 'ItemType' flags.obsidian.subtype}}
+				{{~else~}}
+					{{obs-i18n 'ItemType' type}}
+				{{~/if~}}
+			"></div>
+		</div>
+		{{#unless @root.isVehicle}}
+		<div class="obsidian-col-notes">
+			{{#each obsidian.notes}}
+				<div class="obsidian-table-note-text">{{{this}}}</div>
+			{{/each}}
+		</div>
+		{{/unless}}
+	</div>
+{{/each}}

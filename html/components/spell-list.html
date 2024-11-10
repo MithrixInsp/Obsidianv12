@@ -1,0 +1,81 @@
+{{#if (or maxCantrips maxKnown maxPrepared)}}
+	<div class="obsidian-spell-totals">
+		{{#if maxCantrips}}
+			<div>{{localize 'OBSIDIAN.Cantrips'}}: {{totalCantrips}}&sol;{{maxCantrips}}</div>
+		{{/if}}
+		{{#if maxKnown}}
+			<div>{{localize 'OBSIDIAN.KnownSpells'}}: {{totalKnown}}&sol;{{maxKnown}}</div>
+		{{/if}}
+		{{#if maxPrepared}}
+			<div>{{localize 'OBSIDIAN.PreparedSpells'}}: {{totalPrepared}}&sol;{{maxPrepared}}</div>
+		{{/if}}
+	</div>
+{{/if}}
+{{#if filter}}
+	<div class="obsidian-spell-filter">
+		<div class="obsidian-input-search-container">
+			<input type="text" class="obsidian-input-search"
+			       placeholder="{{localize 'OBSIDIAN.SpellName'}}...">
+			<i class="fas fa-search"></i>
+			<span class="obsidian-clear-search">&times;</span>
+		</div>
+		<ul class="obsidian-tab-bar">
+			{{#each (range 0 9)}}
+				{{#if (not-empty (filter ../spells 'system.level' this))}}
+					<li class="obsidian-sub-tab obsidian-spell-level-tab" data-value="{{this}}">
+						{{spell-level-format this}}
+					</li>
+				{{/if}}
+			{{/each}}
+		</ul>
+	</div>
+{{/if}}
+<div class="obsidian-spell-list">
+	{{#each spells as |spell id|}}
+		<details data-item-id="{{spell._id}}" data-spell-list="{{../spellList}}"
+		         data-name="{{spell.name}}" data-level="{{spell.system.level}}">
+			<summary>
+				<div class="obsidian-col-icon">
+					<div class="obsidian-icon obsidian-icon-school-{{spell.system.school}}"></div>
+				</div>
+				<div class="obsidian-col-spell">
+					<div class="obsidian-table-text">{{spell.name}}</div>
+					{{#if spell.system.components.concentration}}
+						<sup><div class="obsidian-css-icon obsidian-css-icon-xs obsidian-css-icon-circle
+						 obsidian-css-icon-regular" title="{{localize 'OBSIDIAN.Concentration'}}">
+							{{localize 'OBSIDIAN.ConcentrationAbbr'}}
+						</div></sup>
+					{{/if}}
+					{{#if spell.system.components.ritual}}
+						<sup><div class="obsidian-css-icon obsidian-css-icon-xs obsidian-css-icon-circle
+						 obsidian-css-icon-regular" title="{{localize 'OBSIDIAN.Ritual'}}">
+							{{localize 'OBSIDIAN.RitualAbbr'}}
+						</div></sup>
+					{{/if}}
+					<div class="obsidian-table-sub-text">
+						({{spell-level-format spell.system.level cantrip=true}})
+					</div>
+				</div>
+				<button type="button"
+				        class="{{#if (has-spell-with-name ../active spell)}}obsidian-btn-active{{/if}}
+				        obsidian-btn-outline obsidian-spell-action">
+					{{#if (has-spell-with-name ../active spell)}}
+						{{#if (or spell.system.level (not ../btnCantripActive))}}
+							{{localize ../btnActive}}
+						{{else}}
+							{{localize ../btnCantripActive}}
+						{{/if}}
+					{{else}}
+						{{#if (or spell.system.level (not ../btnCantrip))}}
+							{{localize ../btn}}
+						{{else}}
+							{{localize ../btnCantrip}}
+						{{/if}}
+					{{/if}}
+				</button>
+				<i class="fas fa-angle-down"></i>
+			</summary>
+			{{> modules/obsidian/html/components/spell-card.html spell view=false}}
+		</details>
+	{{/each}}
+</div>
