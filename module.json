@@ -1,0 +1,65 @@
+{
+	"id": "obsidian",
+	"name": "obsidian",
+	"title": "Obsidian Character Sheets",
+	"description": "Dark theme character sheets.",
+	"version": "6.5.12",
+	"minimumCoreVersion": "10",
+	"compatibleCoreVersion": "11",
+	"minimumSystemVersion": "2.1.4",
+	"compatibility": {
+		"minimum": 10,
+		"verified": 11
+	},
+	"relationships": {
+		"systems": [{
+			"id": "dnd5e",
+			"compatibility": {
+				"minimum": "2.1.4"
+			}
+		}]
+	},
+	"authors": [{"name": "Kim Mantas"}],
+	"system": ["dnd5e"],
+	"esmodules": ["js/main.js"],
+	"socket": true,
+	"styles": [
+		"css/fonts.css", "css/obsidian.css", "css/obsidian-icons.css", "css/obsidian-main.css",
+		"css/obsidian-effects.css", "css/obsidian-npc.css"
+	],
+	"packs": [{
+		"name": "spells",
+		"label": "Spells",
+		"system": "dnd5e",
+		"module": "obsidian",
+		"path": "packs/spells.db",
+		"entity": "Item",
+		"type": "Item"
+	}],
+	"url": "https://bitbucket.org/Fyorl/obsidian",
+	"bugs": "https://bitbucket.org/Fyorl/obsidian/issues",
+	"manifest": "https://bitbucket.org/Fyorl/obsidian/raw/master/module.json",
+	"download": "https://bitbucket.org/Fyorl/obsidian/get/6.5.12.zip",
+	"license": "LICENSE",
+	"languages": [{
+		"lang": "en",
+		"name": "English",
+		"path": "lang/en.json"
+	}, {
+		"lang": "de",
+		"name": "Deutsch",
+		"path": "lang/de.json"
+	}, {
+		"lang": "it",
+		"name": "Italian",
+		"path": "lang/it.json"
+	}, {
+		"lang": "ja",
+		"name": "日本語",
+		"path": "lang/ja.json"
+	}, {
+		"lang": "zh-TW",
+		"name": "正體中文",
+		"path": "lang/zh-TW.json"
+	}]
+}
