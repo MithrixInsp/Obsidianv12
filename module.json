@@ -38,8 +38,8 @@
 	}],
 	"url": "https://github.com/MithrixInsp/Obsidianv12",
 	"bugs": "https://bitbucket.org/Fyorl/obsidian/issues",
-	"manifest": "https://bitbucket.org/Fyorl/obsidian/raw/master/module.json",
-	"download": "https://bitbucket.org/Fyorl/obsidian/get/6.5.12.zip",
+	"manifest": "https://github.com/MithrixInsp/Obsidianv12/blob/main/module.json",
+	"download": "https://github.com/MithrixInsp/Obsidianv12/archive/refs/heads/main.zip",
 	"license": "LICENSE",
 	"languages": [{
 		"lang": "en",
